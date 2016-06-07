@@ -1,1 +1,1 @@
-Sauce Labs: Selenium101 Training Course
+Sauce Labs: Appium 101 Training Course
