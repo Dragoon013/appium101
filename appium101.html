@@ -628,7 +628,6 @@ caps.setCapability("version", "43.0");
 
               <!-- New Sample Script to introduce-->
               <section>
-                <section>
                   <h3>Explicit and Implicit Waits</h3>
 
                   <p>Implicit Waits</p>
@@ -672,7 +671,6 @@ WebElement messageElement = wait.until( ExpectedConditions.presenceOfElementLoca
                     <li>Write an explicit wait for a locator for the "Hello World" until it appears.</li>
                   </ol>
                 </section>
-              </section>
 
 <!-- Introduction to Testing Frameworks-->
                 <section data-background="rgb(226, 35, 26)">
@@ -928,7 +926,6 @@ public void the_feeling_is(String arg1) throws Throwable {
                 </section>
 
                 <section>
-
                   <section>
                      <h3>Types of Testing</h3>
                      <ul>
@@ -981,43 +978,49 @@ public void the_feeling_is(String arg1) throws Throwable {
                     </aside>
                   </section>
 
-                  <section>
-                    <h3>Setup</h3>
-                    <p>Setup initiates <i>prerequisite</i> tasks to be taken care of before your test runs, such as logging in, or dismissing an introductory pop-up.</p>
+                  <h3>Setup</h3>
+                  <p>Setup initiates <i>prerequisite</i> tasks to be taken care of before your test runs, usually setting the capabilities, configuring additional browser parameters, and more.</p>
 
-                    <p>Example:</p>
-                    <pre><code class="java" data-trim contenteditable>
-                        public void setupLogin() {
+                  <p>Example:</p>
+                  <pre><code class="java" data-trim contenteditable>
+                      public void setupLogin() {
 
-    driver.findElement(By.id("loginID")).sendKeys("username");
-    driver.findElement(By.id("password")).sendKeys("password");
-    driver.findElement(By.id("Button")).click();
-}
-                    </code></pre>
+                      DesiredCapabilities caps = new DesiredCapabilities();
+                      caps.setCapability("platform", "Windows XP");
+                      caps.setCapability("browserName", "Chrome");
+                      caps.setCapability("version", "43.0");
+                      }
+                  </code></pre>
 
-                    <aside class="notes">
-                      <p>This can also include the desired capabilities and setting the WebDriver.</p>
-                    </aside>
-                  </section>
-
-                  <section>
-                    <h3>Teardown</h3>
-                    <p>The teardown function includes <i>Post requisite</i> tasks that need to occur, like closing the browser, logging out, or terminating the remote session.</p>
-                    <p>Example:</p>
-                    <pre><code class="java" data-trim contenteditable>
-                        public void tearDown() throws Exception {
-
-    webDriver.get().quit();
-}
-                    </code></pre>
-                    <aside class="notes"></aside>
-                  </section>
+                  <aside class="notes">
+                    <p>This can also include the desired capabilities and setting the WebDriver.</p>
+                  </aside>
                 </section>
 
-                   <section>
-                   <section>
-                     <h3>Object Oriented Testing</h3>
-                     <p>Page Objects</p>
+                <section>
+                  <h3>Teardown</h3>
+                  <p>The teardown function includes <i>Post requisite</i> tasks that need to occur, like closing the browser, logging out, or terminating the remote session.</p>
+                  <p>Example:</p>
+                  <pre><code class="java" data-trim contenteditable>
+                      public void tearDown(boolean testTrue) throws Exception {
+
+    webDriver.get().quit();
+
+    if (testTrue)) {
+        r.jobPassed(id);
+    } else {
+        r.jobFailed(id);
+    }
+}
+                  </code></pre>
+                  <aside class="notes"></aside>
+                </section>
+</section>
+
+                <section>
+                  <section>
+                    <h3>Object Oriented Testing</h3>
+                    <p>Page Objects</p>
                      <ul>
                        <li>Code reuse across tests; reuse common element interactions</li>
                      <li>Abstraction: With product change, only change one piece of code</li>
@@ -1092,7 +1095,7 @@ public void enterCommentText(String text){
                        <p>This is a good example of abstraction. We've made the signin page into it's own object that we can now refer to, and do so on the next line, when we login, passing a username and password value.</p>
                      </aside>
                    </section>
-                   </section>
+                </section>
 
                    <section>
                      <h3>Parallelization</h3>
@@ -1107,55 +1110,54 @@ public void enterCommentText(String text){
                      </aside>
                    </section>
 
-                     <section>
-                       <h3>Label Your Tests</h3>
-                       <p>
-                         <li>ID tests</li>
-                         <li>Name tests</li>
-                         <li>Apply build names to tests</li>
-                       </p>
+                   <section>
+                     <h3>Label Your Tests</h3>
+                     <p>
+                       <li>ID tests</li>
+                       <li>Name tests</li>
+                       <li>Apply build names to tests</li>
+                     </p>
 
-                       <pre><code class="java" data-trim contenteditable>
-                           caps.setCapability("tags","tag_awesome");
+                     <pre><code class="java" data-trim contenteditable>
+                         caps.setCapability("tags","tag_awesome");
 caps.setCapability("build","cool_builds1");
 caps.setCapability("name","Java Remote Sample Test");
-                       </code></pre>
-                       <p style="text-align:center;">Docs: <a href="https://wiki.saucelabs.com/display/DOCS/Test+Configuration+Options" target="_blank">Test Configuration Options</a></p>
-                       <aside class="notes"></aside>
-                     </section>
+                     </code></pre>
+                     <p style="text-align:center;">Docs: <a href="https://wiki.saucelabs.com/display/DOCS/Test+Configuration+Options" target="_blank">Test Configuration Options</a></p>
+                     <aside class="notes"></aside>
+                   </section>
 
-                     <section data-state="lab">
-                       <h3>Lab: Labelling and Naming our Tests</h3>
-                       <ol>
+                   <section data-state="lab">
+                     <h3>Lab: Labelling and Naming our Tests</h3>
+                     <ol>
+                       <li>Add a capability to name your test.</li>
+                       <li>Add a capability to include a build number for your test.</li>
+                       <li>Add a capability to include a tag for your test.</li>
+                       <li>Run the test script.</li>
+                       <li>Open saucelabs.com. How does your test look different on the Automated Tests tab?</li>
+                     </ol>
+                     <aside class="notes">There's also a way to set your own build number as well</aside>
+                   </section>
 
-                         <li>Add a capability to name your test.</li>
-                         <li>Add a capability to include a build number for your test.</li>
-                         <li>Add a capability to include a tag for your test.</li>
-                         <li>Run the test script.</li>
-                         <li>Open saucelabs.com. How does your test look different on the Automated Tests tab?</li>
-                       </ol>
-                       <aside class="notes">There's also a way to set your own build number as well</aside>
-                     </section>
+                   <section data-background="rgb(226, 35, 26)">
+                     <h2>Additional Resources</h2>
+                   </section>
 
-                 <section data-background="rgb(226, 35, 26)">
-                   <h2>Additional Resources</h2>
-                 </section>
+                   <section>
+                     <h3>Further Information</h3>
+                     <li><a href="http://appium.io/slate/en/master/" target="_blank">Appium Documentation</a></li>
+                     <li><a href="https://wiki.saucelabs.com/display/DOCS/The+Sauce+Labs+Cookbook+Home" target="_blank">Sauce Labs Documentation</a></li>
+                     <li><a href="https://github.com/saucelabs-sample-scripts" target="_blank">Sauce Labs Sample Test Scripts</a></li>
+                     <li><a href="https://github.com/saucelabs-sample-test-frameworks" target="_blank">Sauce Labs Sample Test Frameworks</a></li>
+                     <aside class="notes"></aside>
+                   </section>
 
-                 <section>
-                  <h3>Further Information</h3>
-                  <li><a href="http://appium.io/slate/en/master/" target="_blank">Appium Documentation</a></li>
-                  <li><a href="https://wiki.saucelabs.com/display/DOCS/The+Sauce+Labs+Cookbook+Home" target="_blank">Sauce Labs Documentation</a></li>
-                  <li><a href="https://github.com/saucelabs-sample-scripts" target="_blank">Sauce Labs Sample Test Scripts</a></li>
-                  <li><a href="https://github.com/saucelabs-sample-test-frameworks" target="_blank">Sauce Labs Sample Test Frameworks</a></li>
-                  <aside class="notes"></aside>
-                 </section>
-
-                 <section>
-                   <h3>Q&A</h3>
-                   <li><a href="http://bit.ly/28NgER3" target="_blank">Survey!</a></li>
-                   <li>Support: <a href="mailto:help@saucelabs.com" target="_top">help@saucelabs.com</a></li>
-                   <aside class="notes"></aside>
-                 </section>
+                   <section>
+                     <h3>Q&A</h3>
+                     <li><a href="http://bit.ly/28NgER3" target="_blank">Survey!</a></li>
+                     <li>Support: <a href="mailto:help@saucelabs.com" target="_top">help@saucelabs.com</a></li>
+                     <aside class="notes"></aside>
+                   </section>
 
             </div>
 
