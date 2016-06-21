@@ -50,7 +50,11 @@
         <img id="lab_pic" src="assets/images/Laboratory2.png" style="visibility:hidden; border:0; width:200px; height:200px; background:none; position:absolute; right:0; top:0;">
         <img id="darksauce" src="assets/images/eggs/DarkSauce.png" style="visibility:hidden; border:0; width:500px; height:500px; background:none; position:absolute;">
 
-	        <div class="slides">
+        <div class="footer">
+          <font size="1">© Copyright 2016 by ServiceRocket, Inc | Confidential | Prepared for Sauce Labs</font>
+        </div>
+
+	    <div class="slides">
 
               <section data-background="rgb(226, 35, 26)">
                 <h1>Appium 101</h1>
@@ -74,11 +78,7 @@
                       <strong>Jacob Teal</strong>
                       <p>Technology Consultant</p>
                       <p>B.A. Computational Mathematics</p>
-                      <p>Previous (and current) Work:</p>
-                      <li>Atlassian</li>
-                      <li>NGINX</li>
-                      <li>New Relic</li>
-
+                      <p><a href="mailto:jacob.teal@servicerocket.com">jacob.teal@servicerocket.com</a></p>
 					  </p>
                     </div>
 <!-- right column-->
@@ -89,23 +89,17 @@
 
               <section>
                 <h3>Agenda</h3>
-
-                <div style="text-align:left;">
-                    <img src="assets/images/agenda.png" style="border:none; background:none; width:80%">
-                  </div>
-                <!-- <li>DIAGRAM</li>
-                <li>Introduction to Sauce Labs</li>
-                <li>Selenium Script Basics</li>
-                <li>Writing a Selenium Script</li>
-                <li>Running a Selenium Script</li>
-                <li>Best Practices</li>
--->
+                <li>Introduction to Sauce Labs and Appium</li>
+                <li>Appium Test Script Basics</li>
+                <li>Write Appium Test Scripts</li>
+                <li>Appium Testing with Sauce Labs</li>
+                <li>Introduction to Testing Frameworks</li>
+                <li>Automated Testing Best Practices</li>
               </section>
 
               <!-- Intro to SL Module-->
                 <section data-background="rgb(226, 35, 26)">
                   <h2>Introduction to Sauce Labs and Appium</h2>
-                   <aside class="notes">Add some different way to know it's a new module - could do a background</aside>
                 </section>
 
                 <section>
@@ -114,7 +108,6 @@
                   <ul>
                     <li>Understand how Sauce Labs fits into the CI/CD Life Cycle</li>
                     <li>Understand what Appium is and how it is used with Sauce Labs</li>
-                    <li>Use Appium GUI</li>
                   </ul>
                   <aside class="notes"></aside>
                 </section>
@@ -128,7 +121,15 @@
                   </ul>
 
                   <aside class="notes">
-                    
+                    <ul>
+                      <li>Selenium: Desktop and Mobile Browser Testing</li>
+                      <li>Appium: Native Mobile Application Testing</li>
+                    </ul>
+                    <p>So what is this Sauce Labs? They describe themselves as providers and supporters of Web Automated and Mobile Automated testing.</p>
+                    <p>They support two very large open source projects, namely Selenium and Appium. Selenium is used for Desktop and mobile browser testing, while appium is used for native and hybri\
+                      d application testing.</p>
+                    <p>Sauce Labs provides environments that run your Selenium or Appium tests on any browser and OS combination you like - and they have over 500 combinations thereof. (if you includ\
+                      e the different browser versions)</p>
                   </aside>
                 </section>
 
@@ -160,8 +161,10 @@
                     <img src="assets/images/sauceCI2.png" style="border:0; text-align:center; background:none;">
                     <p style="text-align:center;">Continuous Integration/Continuous Development</p>
                     <aside class="notes">
-                      <p>Sauce Labs integreates inteself into the Continuous Delivery/Continuous Integration cycle, seamlessly. Traditionally, testing and QA are bottlenecks for application delivery and release, where any problems found have to start from the beginning of the cycle, and in the end have to bed tested again. The real bottlneck though isn't what happens when a bug is found, it's the time consuming nature of writing tests for a product that is ever changing itself. It's the time it takes to perform each test, it's setting up the infrastructure that allows those tests to be run on a variety of platforms that your application runs on.</p>
-                      <p>Sauce Labs takes away those worries though. With Selenium and Appium testing, we remove the barrier of time consuming test writing, and with Sauce Labs itself, we remove the need to have a propietary infrastructure, just to run our tests. Sauce Labs provides the infrastructure for you, allowing you to test on a variety of platforms in a speedy manner. So you can focus on development, and releases, and leave the testing to Sauce Labs.</p>
+                      <p>Sauce Labs' value as a time saver is apparent even in its role in Continuous Integration and Delivery. </p>
+                      <p>Traditionally, testing and QA are bottlenecks for application delivery and release. Writing automated tests, maintaining testing infrastructure, painful manual testing, all consume huge amounts of time. The work is never done either, because the product is always changing.</p>
+                      <p>Sauce Labs takes away those worries though. With Selenium and Appium testing, we remove the barrier of time consuming test writing, and with Sauce Labs itself, we remove the need to have a propietary infrastructure. Sauce Labs provides the infrastructure for you, allowing you to test on a variety of platforms in a speedy manner. So you can focus on development, and releases,and leave the testing to Sauce Labs.</p>
+                      <p>Sauce Labs reduces the pain of testing, so that instead of traditionally waiting until the end of the development life cycle to test, you can test iteratively, as you go through each step of development.</p>
                     </aside>
                 </section>
 
@@ -201,12 +204,12 @@
                       </ul>
                     </p>
                   </div>
-                  
+
                   <aside class="notes">
                     For iOS mobile testing, the Appium server converts the WebDriver commands from your test script into the UIAutomation JavaScript commands that can be understood by Apple Instruments. These commands are then sent to your iOS mobile application and execute those commands against the application in the simulator or device.
                     <p>Android Appium tests require the Appium Server to convert the test script JSON into UIAutomator Java commands, parse the data when testing it against your mobile emulator of your choice, then convert the response back to JSON, and relay the JSON data to the appium script</p>
                     <p>But that's pretty painful and time consuming to set up and manage all on your own.</p>
-                    <p>Sauce Labs handles all of that stuff for you. They essentially run a appium Server themselves, provide intergration for multiple mobile frameworks, and rent it out to their customers to run their Appium tests on. </p>
+                    <p>Sauce Labs handles all of that stuff for you. They essentially run an Appium Server themselves, provide integration for multiple mobile frameworks, and rent it out to their customers to run their Appium tests on. </p>
                   </aside>
 				</section>
 
@@ -215,7 +218,7 @@
                   <div style="float:left;width:40%;" class="centered">
 				  <ul>
                     <li>Appium Server</li>
-                    <li>interpreter</li>
+                    <li>Interpreter</li>
                     <li>Automation</li>
                   </ul>
                   </div>
@@ -250,39 +253,45 @@
 
                   </aside>
                 </section>
-                <section>
-                  <h3>Installing Appium GUI</h3>
-                </section>
 
-                <section data-state="lab">
-                  <h3>Lab: Install Appium GUI</h3>
-                  <ol>
-                    
+                <section>
+                  <h3>Appium GUI</h3>
 
                   <aside class="notes">
-                    
-                  </aside>
-				</section>
 
-                
-<!--Selenium Scripts Basics Module-->
+                  </aside>
+                </section>
+
+                <section>
+                  <h3>Manual Testing</h3>
+
+                  <aside class="notes">
+                    <p>Manual Test Demo:</p>
+                    <ol>
+                      <li></li>
+                    </ol>
+                  </aside>
+                </section>
+
+<!--Appium Test Scripts Basics Module-->
                 <section data-background="rgb(226, 35, 26)">
-                  <h2>Appium Script Basics</h2>
+                  <h2>Appium Test Script Basics</h2>
                   <aside class="notes"></aside>
                 </section>
 
                 <section>
                   <h3>Module Objectives</h3>
                   <p>This module enables you to:</p>
-                  <ul><li>Understand how Appium works</li>
-                  <li>Understand the basic components of a Appium test scripts</li>
-                  <li>Run a Appium test script on a local emulator</li>
+                  <ul>
+                    <li>Understand how Appium works</li>
+                    <li>Understand the basic components of a Appium test scripts</li>
+                    <li>Run a Appium test script on a local emulator</li>
                   </ul>
                   <aside class="notes"></aside>
                 </section>
 
                 <section>
-				  <h3>Appium Nuts and Bolts/h3>
+				  <h3>Appium Nuts and Bolts</h3>
                   <div style="text-align:center;">
                     <img src="assets/images/Gears.png" style="border:0; background:none; width:50%">
                   </div>
@@ -294,13 +303,11 @@
                       <li>Mobile Simulator/Emulator</li>
                       <li>Appium Server Response Data<li>
                       </ul>
-                    
                   </aside>
 				</section>
 
                 <section>
 				  <h3>How Appium WebDriver Works</h3>
-                 <!-- <div style="float:left;width:50%;" class="centered">-->
                   <p>
                     <ol>
                       <li>Write script</li>
@@ -309,21 +316,8 @@
                       <li>WebDriver Client sends results back</li>
                     </ol>
                   </p>
-
-                  <!--<div style="float:right;width:50%;padding-right:0px;">
-                  <p>
-                    Sauce Labs:
-                    <ol>
-                      <li>Write script</li>
-                      <li>Run script (send commands via API)</li>
-                      <li>WebDriver Client sends commands to browser on remote Selenium Grid (Sauce Labs)</li>
-                      <li>WebDriver Client sends results back</li>
-                      <li>Test Assets Created</li>
-                    </ol>
-                  </p>
-                  </div> -->
                   <aside class="notes">
-                    
+
                   </aside>
 				</section>
 
@@ -336,13 +330,13 @@
                     <div style="text-align:left;float:left;width:80%;">
                       <p>
                         <ol>
-                          <li></li>
-                          <li></li>
-                          <li></li>
-                          <li></li>
-                          <li></li>
-                          <li></li>
-                          <li></li>
+                          <li>Set the Desired Capabilities (or Set the Application Path)</li>
+                          <li>Creating an Instance of the Appium WebDriver Interface</li>
+                          <li>Locating an Element in the Application</li>
+                          <li>Performning an Action on an Application Element</li>
+                          <li>Anticipating Application Response</li>
+                          <li>Running Tests and Recording Test Results</li>
+                          <li>Concluding a Test</li>
                         </ol>
                       </p>
                     </div>
@@ -351,32 +345,32 @@
 				  </section>
 
                   <section>
-				    <h3>Local Webdriver</h3>
+				    <h3>Set the Desired Capabilities</h3>
 
                       <pre><code class="java" data-trim contenteditable>
                           Sample Appium code here
                       </code></pre>
 
                     <aside class="notes">
-                     
+
                     </aside>
 				  </section>
 
                   <section>
-                    <h3>Remote (Sauce Labs) WebDriver</h3>
+                    <h3>Appium WebDriver</h3>
 
                       <pre><code class="java" data-trim contenteditable>
                           Sample remote Appium Code
                       </code></pre>
 
                     <aside class="notes">
-                      
+
                     </aside>
                   </section>
 
 
                   <section>
-                    <h3>One API, Multiple Platforms</h3>
+                    <h3>Locating an Element in the Application</h3>
 			    <p>
                       <pre>
                         <code class="java" data-trim contenteditable>
@@ -390,46 +384,23 @@
                   </section>
 
                   <section>
-				    <h3>Inspecting Elements using Appium GUI</h3>
-				  
-                      
+				    <h3>Performing an Action on an Application Element</h3>
+
+
                     <aside class="notes">
                     </aside>
                   </section>
 
                   <section data-state="lab">
-                    <h3> Create a Sample Test</h3>
-                    
+                    <h3>Anticipating Application Response</h3>
+
                     <aside class="notes">
-                      
+
                     </aside>
                   </section>
 
                   <section>
-                    <h3>Running Appium Tests</h3>
-				    <p>
-                      <pre>
-                        <code class="java" data-trim contenteditable style="text-align:center;">
-                          driver.findElement(By.id("ham")).click();
-                        </code>
-                      </pre>
-                    </p>
-                    <aside class="notes">
-                      <p>Taking the element that we found earlier, we now want to perform an action on it. We're going to go ahead and click on it. On saucelabs.com, the "ham" id points to a drop down, so we want to make sure that drop down works when clicked.</p>
-                    </aside>
-                  </section>
-
-                  <section>
-				    <h3>Anticipate Mobile Responses</h3>
-
-                    
-                    <aside class="notes">
-                     
-                    </aside>
-                  </section>
-
-                  <section>
-				    <h3>Record  Test Results</h3>
+                    <h3>Running Tests and Recording Test Results</h3>
 
                      <div style="float:left;width:50%;" class="centered">
                        <ul>
@@ -450,24 +421,20 @@
                        </ul>
                      </div>
                      <aside class="notes">
-                      
+
                      </aside>
                   </section>
 
                   <section>
-				    <h3>Conclude a Test</h3>
-				    <pre>
-                      <code data-trim contenteditable class="java">
-                        Place code here
-                      </code>
-                    </pre>
+				    <h3>Concluding a Test</h3>
+
+
                     <aside class="notes">
-                      
+
                     </aside>
                   </section>
                 </section>
 
-                <section>
                   <section data-state="lab">
                     <h3>Lab: Running the Sample Appium Script</h3>
 
@@ -480,96 +447,43 @@
                     </ol>
                   </section>
 
-                  <section data-state="lab">
-                    <h3>Lab: Change Platforms</h3>
-                    <ol>
-                      <li>Open the script in your favorite editor.</li>
-                      <li>Run sample test in a different platform: Android or iOS</li>
-                    </aside>
-                  </section>
-                </section>
-<!-- Local Selenium Scripts Module-->
+<!--Writing Appium Scripts Module-->
                 <section data-background="rgb(226, 35, 26)">
-                  <h2>Write an Appium Script</h2>
-                  <aside class="notes">Talk about how this section is basically one big lab - We will analyze what has been written in the script for us already, write our own additional steps, run the script, and then analyze our results</aside>
+                  <h2>Write Appium Test Scripts</h2>
+                  <aside class="notes">
+
+                  </aside>
                 </section>
 
                 <section>
                   <h3>Module Objectives</h3>
                   <p>This module enables you to:</p>
-                  <ul><li>Create portable code to test scripts</li>
-                  <li>Understand the Page Object Model</li>
+                  <ul>
+                    <li>Understand the difference between testing Android and iOS apps locally</li>
+                    <li>Write actions into your Appium test script</li>
+                    <li>Run a local Appium Android test</li>
                   </ul>
                   <aside class="notes">
-                    
+
                   </aside>
                 </section>
 
-                <!--
                 <section>
-                  <h3>Choosing a WebDriver</h3>
+                  <h3>Identifying Elements</h3>
+                  <ul>
+                    <li>GUI Doctor</li>
+                    <li>Inspector Tools<li>
 
-                  <pre><code class="java" data-trim contenteditable>
-                      WebDriver driver = new FirefoxDriver();
-WebDriver driver = new InternetExplorerDriver();
-WebDriver driver = new ChromeDriver();
-                  </pre></code>
-                  <aside class="notes">So now we need to select a webdriver that we actually want to use. Let's try using the Chrome Driver now (default should have used FireFox)</aside>
-                </section>
--->
-                  <section>
-                    <h3>Page Object Model</h3>
-
-                    
-
-                    <aside class="notes">
-                     
-                    </aside>
-                  </section>
-
-                  <section>
-                    <section>
-                      <h3>Inspecting Elements</h3>
-                      <ul>
-                        <li>GUI Doctor</li>
-                        <li>Inspector Tools<li>
-
-                      </aside>
-                    </section>
-
-                    <section style="padding-left:10px;">
-                      <h3>Mobile Specific Commands (Gestures)</h3>
-                      
-                    <aside class="notes">
-                      
-                    </aside>
-                    </section>
-
-                <section>
-                  <h3>BDD</h3>
-                  
-                  
-                    <aside class="notes">
-                     
-                    </aside>
-                </section>
                 </section>
 
-            
-                  <section>
-                    <h3>Assertion and Verification</h3>
+                <section style="padding-left:10px;">
+                  <h3>Mobile Specific Commands (Gestures)</h3>
 
-                   
-                    <aside class="notes"></aside>
-                  </section>
+                  <aside class="notes">
 
-                  <section>
-                    <h3>iOS/Android Web Test</h3>
-                    
-                    <aside class="notes">
-                  </section>
-                  <section>
-                    
+                  </aside>
+                </section>
+
                 <section data-state="lab">
                   <h3>Lab: Writing Actions</h3>
 
@@ -582,32 +496,24 @@ WebDriver driver = new ChromeDriver();
                   </ol>
                 </section>
 
-                <section data-state="lab">
-                  <h3>Lab: Run the Script Locally</h3>
-
-                  <pre style="display:inline">javac -cp ".:./selenium-2.53.0/selenium-java-2.53.0.jar:./selenium-2.53.0/libs/*" SampleSauceTest.java
-java -cp ".:./selenium-2.53.0/selenium-java-2.53.0.jar:./selenium-2.53.0/libs/*" SampleSauceTest
-                  </pre>
-                  <aside class="notes">
-
-                  </aside>
-                </section>
-                </section>
 <!-- Running a Selenium Script with Sauce Labs Module-->
                 <section data-background="rgb(226, 35, 26)">
-                  <h2>Testing with Sauce Labs</h2>
+                  <h2>Appium Testing with Sauce Labs</h2>
                   <aside class="notes"> we will finally run the script on sauce labs, and compare the methods and discuss the benefits of running on sauce labs</aside>
                 </section>
 
                 <section>
                   <h3>Module Objectives</h3>
                   <p>This module enables you to:</p>
-                  <ul><li>Run a Selenium test script on Sauce Labs</li></ul>
+                  <ul>
+                    <li>Run an Appium test script on Sauce Labs</li>
+                  </ul>
                   <aside class="notes"></aside>
                 </section>
 
                 <section>
-                  <h3>Testing Script Requirements</h3>
+                  <h3>Sauce Labs Script Pre-Reqs</h3>
+                  <li>Use Sauce Labs or another online location to host the application</li>
                   <li>Remote WebDriver</li>
                   <li>Sauce Labs Authentication (API)</li>
                   <li>Desired Capabilities</li>
@@ -642,7 +548,6 @@ public static final String ACCESS_KEY = "b89b7205-3aca-4af2-a618-9bab4c7bdebd";
                 </section>
 
                 <section>
-                  <section>
                     <h3>Setting the Remote WebDriver</h3>
                     <p>Sauce Labs API Authentication</p>
                     <ul>
@@ -660,19 +565,6 @@ WebDriver driver = new RemoteWebDriver(new URL(URL), caps);
                     </aside>
                   </section>
 
-                  <section data-state="lab">
-                    <h3>Lab: Remote WebDriver</h3>
-                    <ol>
-                      <li>Open the script in your preferred editor.</li>
-                      <li>Log into <a href="http://saucelabs.com" target="_blank">saucelabs.com</a>, click on "My Account" and copy your Access Key.</li>
-                      <li>Add in the String variables with the values required to authenticate with Sauce Labs.</li>
-                      <li>Add in a String variable with the URL required to access Sauce Labs.</li>
-                      <li>Comment out the old Firefox driver and create a new RemoteWebDriver object.</li>
-                    </ol>
-                  </section>
-                </section>
-
-              <section>
                 <section>
                   <h3>Desired Capabilities</h3> <!-- PLatform Configurator-->
                   <div style="float:left;width:50%;" class="centered">
@@ -698,9 +590,22 @@ caps.setCapability("version", "43.0");
                   <aside class="notes">Lastly, with Sauce Labs, we can set up the script to run the test on several different platforms. We aren't limited to what we have locally. If we want to indicate more platforms combinations to test on, we typically use a framework to enable that for us.</aside>
                 </section>
 
+                  <section data-state="lab">
+                    <h3>Lab: Remote WebDriver</h3>
+                    <ol>
+                      <li>Open the script in your preferred editor.</li>
+                      <li>Log into <a href="http://saucelabs.com" target="_blank">saucelabs.com</a>, click on "My Account" and copy your Access Key.</li>
+                      <li>Add in the String variables with the values required to authenticate with Sauce Labs.</li>
+                      <li>Add in a String variable with the URL required to access Sauce Labs.</li>
+                      <li>Comment out the old Firefox driver and create a new RemoteWebDriver object.</li>
+                    </ol>
+                  </section>
+
                 <section data-state="lab">
                   <h3>Lab: Platform Configurator</h3>
-                  <ol>
+                  <p>Need to set the app path to Sauce Storage location, or another online location</p>
+                  <p>Use same format of copying code from the platform configurator.</p>
+                     <ol>
                     <li>Open the script in your preferred editor.</li>
                     <li>Create a DesiredCapabilities Chrome browser object.</li>
                     <li>Set the platform to "Mac OS X 10.9".</li>
@@ -710,7 +615,6 @@ caps.setCapability("version", "43.0");
                     <p></p>
                   </aside>
                 </section>
-              </section>
 
               <section data-state="lab">
                 <h3>Lab: Running a Script on Sauce Labs</h3>
@@ -750,6 +654,7 @@ WebElement messageElement = wait.until( ExpectedConditions.presenceOfElementLoca
                   </aside>
                 </section>
 
+                <!--
                 <section data-state="lab">
                   <h3>Lab: Testing Waits</h3>
                   <ol>
@@ -780,7 +685,7 @@ WebElement messageElement = wait.until( ExpectedConditions.presenceOfElementLoca
                   <p>This module enables you to:</p>
                   <ul>
                     <li>Understand the use of Testing Frameworks</li>
-                    <li>Understand the difference between an assert and a verification</li>
+                    <li>Understand the use of asserts in Appium scripts</li>
                     <li>Use a framework to record test results in Sauce Labs</li>
                   </ul>
                   <aside class="notes"></aside>
@@ -789,12 +694,17 @@ WebElement messageElement = wait.until( ExpectedConditions.presenceOfElementLoca
                 <section>
                   <h3>What is a Testing Framework?</h3>
                   <p></p>
-                  <p>A test automation framework is a scaffold comprised of libraries, dependecies, drivers, and helper scripts that facilitate the execution of Selenium test scripts.</p>
+                  <p>A test automation framework is a scaffold comprised of libraries, dependecies, drivers, and helper scripts that facilitate the execution of Appium test scripts.</p>
+                  <ul>
+                    <li>Parallelization</li>
+                    <li>Assertions</li>
+                    <li>Reporting</li>
+                  </ul>
                   <aside class="notes">
                     <p>Ok so what does that mean? It's essentially just a bunch of additional libraries we can use in conjunction with our script for several cases:</p>
                     <li>Record your data - Frameworks often have, or can have a way for you to output the results of your test scripts for you, rather than writing them by hand</li>
                     <li>Talk to external applications - you can include external libraries in your framework to talk to and send results to places like Sauce Labs</li>
-
+                    <li>Parallelization - facilitates the running of your script on several different platform configurations at the same time, saving you time overall.</li>
                   </aside>
                 </section>
 
@@ -935,13 +845,12 @@ public void the_feeling_is(String arg1) throws Throwable {
                   </aside>
                 </section>
 
-                <section>
                   <section>
                     <h3>Asserts:</h3>
                     <p>A testing framework directive that assumes a value to be true, and stops the test and/or throws an error if false.</p>
 
                     <pre><code class="java" data-trim contenteditable>
-                         assertEquals(page.getUncheckedCheckBoxState(), true);
+                         Appium assertion example here
                     </code></pre>
 
                     <aside class="notes">
@@ -949,7 +858,6 @@ public void the_feeling_is(String arg1) throws Throwable {
                     </aside>
                   </section>
 
-              <!-- New Script to introduce-->
                   <section data-state="lab">
                     <h3>Lab: Asserting Your Greatness</h3>
                     <ol>
@@ -959,9 +867,7 @@ public void the_feeling_is(String arg1) throws Throwable {
                       <li>Run the script.</li>
                     </ol>
                   </section>
-                </section>
 
-                <section>
                 <section>
                   <h3>Record your Results with Sauce Labs</h3>
                   <ul>
@@ -989,7 +895,7 @@ public void the_feeling_is(String arg1) throws Throwable {
 
                   </aside>
                 </section>
-</section>
+
                  <!--Best Practices Module-->
 
                  <section data-background="rgb(226, 35, 26)">
@@ -1108,7 +1014,6 @@ public void the_feeling_is(String arg1) throws Throwable {
                   </section>
                 </section>
 
-
                    <section>
                    <section>
                      <h3>Object Oriented Testing</h3>
@@ -1202,7 +1107,6 @@ public void enterCommentText(String text){
                      </aside>
                    </section>
 
-                   <section>
                      <section>
                        <h3>Label Your Tests</h3>
                        <p>
@@ -1232,7 +1136,6 @@ caps.setCapability("name","Java Remote Sample Test");
                        </ol>
                        <aside class="notes">There's also a way to set your own build number as well</aside>
                      </section>
-                   </section>
 
                  <section data-background="rgb(226, 35, 26)">
                    <h2>Additional Resources</h2>
@@ -1240,8 +1143,7 @@ caps.setCapability("name","Java Remote Sample Test");
 
                  <section>
                   <h3>Further Information</h3>
-                  <li><a href="http://www.seleniumhq.org/docs" target="_blank">SeleniumHQ: Documentation</a></li>
-                  <li><a href="http://elementalselenium.com/" target="_blank">Dave Haeffner's Selenium Newsletter</a></li>
+                  <li><a href="http://appium.io/slate/en/master/" target="_blank">Appium Documentation</a></li>
                   <li><a href="https://wiki.saucelabs.com/display/DOCS/The+Sauce+Labs+Cookbook+Home" target="_blank">Sauce Labs Documentation</a></li>
                   <li><a href="https://github.com/saucelabs-sample-scripts" target="_blank">Sauce Labs Sample Test Scripts</a></li>
                   <li><a href="https://github.com/saucelabs-sample-test-frameworks" target="_blank">Sauce Labs Sample Test Frameworks</a></li>
@@ -1250,13 +1152,12 @@ caps.setCapability("name","Java Remote Sample Test");
 
                  <section>
                    <h3>Q&A</h3>
-                   <li>Insert link to survey</li>
+                   <li><a href="http://bit.ly/28NgER3" target="_blank">Survey!</a></li>
                    <li>Support: <a href="mailto:help@saucelabs.com" target="_top">help@saucelabs.com</a></li>
                    <aside class="notes"></aside>
                  </section>
 
             </div>
-
 
 		</div>
 
