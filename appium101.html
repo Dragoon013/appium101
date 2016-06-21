@@ -88,6 +88,45 @@
 				</section>
 
               <section>
+                <h3>Course Administration</h3>
+                <ul>
+                  <li>This session is ~3 hours long</li>
+                  <ul><li>10 min. breaks every hour</li></ul>
+                  <li>Slides, demonstrations and exercises</li>
+                  <li>PDF copy of the materials is available</li>
+                  <li>Ask questions at any time</li>
+                  <ul><li>Use the chat window</li></ul>
+                </ul>
+              </section>
+
+              <section>
+                  <h3>The Training Environment</h3>
+
+                  <ul>
+                    <li>ReadyTech virtual machines</li>
+                    <li>Eclipse</li>
+                    <li>Maven</li>
+                  </ul>
+
+                  <aside class="notes">
+                    <p>So before we go into the different parts we need to incldue in a script, let's talk about our training environment.</p>
+                    <p>First off, we'll be working in a VM provided by ReadyTech today. If you have any problems during the course of labs, I will be able to go into your instance and help you out. You can just notify me using the ReadyTech instance to tell me that you need help.</p>
+                    <p>We're also going to be working in Eclipse today. In Eclipse, we have set up the scripts within a framework called TestNG, for Java, that allows us to run the scripts with all of the dependencies it needs very easily.</p>
+                    <p>That within that framework, there is a library, or build tool, called Maven that we are using to grab our dependencies, bundle them together, and then run our script.</p>
+                    <p>Normally, we would have to run a long command that looks like:</p>
+                    <pre><code class="java" data-trim contenteditable>
+                        javac -cp ".:./selenium-2.53.0/selenium-java-2.53.0.jar:./selenium-2.53.0/libs/*" SampleSauceTest.java
+                        java -cp ".:./selenium-2.53.0/selenium-java-2.53.0.jar:./selenium-2.53.0/libs/*" SampleSauceTest
+                    </code></pre>
+                    <p>The first line compiles the code with all of the requisite libraries and jars it needs, and then the second line runs it.</p>
+                    <p>Maven will do all of that for us, so we don't need to run an additional script to start the test script, or have to include the libraries manually in a command.</p>
+                    <p>Throughout the course today, the way we will run our tests is by using the "Maven test" command, which should compile all of our resources and dependencies together, and run it for us.</p>
+                    <p>Lastly, for those of you who may not have used Eclipse before, when you type in a line that does not have the right syntax, it will generally underline the offending line or part of the line that you need to fix, in red. If you simply hover or select that part of the line, Ecplise will give you suggestions on how to fix the problem.</p>
+
+                  </aside>
+                </section>
+
+              <section>
                 <h3>Agenda</h3>
                 <li>Introduction to Sauce Labs and Appium</li>
                 <li>Appium Test Script Basics</li>
@@ -135,10 +174,8 @@
 
                 <section>
 					<h3>Sauce Labs History</h3>
-
-					  <p>Founded in 2008, by Steven Hazel, John Dunham, and Jason Huggins (Co-creator of Selenium).</p>
-
-                      <p>
+					<p>Founded in 2008, by Steven Hazel, John Dunham, and Jason Huggins (Co-creator of Selenium).</p>
+                    <p>
                         <pre><span class="inner-pre" style="font-size: 30px">
   "Our purpose is to revolutionize testing
          so that development teams
@@ -273,7 +310,7 @@
                   </aside>
                 </section>
 
-<!--Appium Test Scripts Basics Module-->
+                <!--Appium Test Scripts Basics Module-->
                 <section data-background="rgb(226, 35, 26)">
                   <h2>Appium Test Script Basics</h2>
                   <aside class="notes"></aside>
@@ -305,6 +342,14 @@
                       </ul>
                   </aside>
 				</section>
+
+                <section>
+                  <h3>Testing on Macintosh Operating Systems</h3>
+                </section>
+
+                <section>
+                  <h3>Testing on Windows Operating Systems</h3>
+                </section>
 
                 <section>
 				  <h3>How Appium WebDriver Works</h3>
