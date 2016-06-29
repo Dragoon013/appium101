@@ -1253,20 +1253,20 @@ public void the_feeling_is(String arg1) throws Throwable {
                     </aside>
                   </section>
 
-                  <h3>Setup</h3>
-                  <p>Setup initiates <i>prerequisite</i> tasks to be taken care of before your test runs, usually setting the capabilities, configuring additional browser parameters, and more.</p>
+                  <section>
+                    <h3>Setup</h3>
+                    <p>Setup initiates <i>prerequisite</i> tasks to be taken care of before your test runs, usually setting the capabilities, configuring additional browser parameters, and more.</p>
 
-                  <p>Example:</p>
-                  <pre><code class="java" data-trim contenteditable>
-                      public void setupLogin() {
+                    <p>Example:</p>
+                    <pre><code class="java" data-trim contenteditable>
+                        public void setupLogin() {
 
-                      DesiredCapabilities caps = new DesiredCapabilities();
-                      caps.setCapability("platform", "Windows XP");
-                      caps.setCapability("browserName", "Chrome");
-                      caps.setCapability("version", "43.0");
-                      }
+    DesiredCapabilities caps = new DesiredCapabilities();
+    caps.setCapability("platform", "Windows XP");
+    caps.setCapability("browserName", "Chrome");
+    caps.setCapability("version", "43.0");
+}
                   </code></pre>
-
                   <aside class="notes">
                     <p>This can also include the desired capabilities and setting the WebDriver.</p>
                   </aside>
