@@ -657,37 +657,106 @@ capabilities.setCapability("app", "/path/to/app/ContactManager.apk");
                     <h3>Identifying Elements</h3>
                     <p style="text-align:center;">Locator Expressions are made in Key:Value pairs</p>
                     <pre><code class="java" data-trim contenteditable>
-                        WebElement linkElement = driver.findElement(By.id("i am a link"));
+                        WebElement newGameBtn = driver.findElement(
+    By.id("com.google.android.divideandconquer:id/newGame"));
                     </code></pre>
                     <aside class="notes">
                       <p>We took a look at locating elements briefly in the pervious module, and now we have some examples on using each of the different locator types.</p>
-                      <p>Generally, we locator expressions are made in Key:Value pairs. In our example here, the key is going to ID, and we are looking for the ID with the value "I am a link"</p>
+                      <p>Generally, our locator expressions are made in Key:Value pairs. In our example here, the key would be the id, specifically, the resource id, which is then followed by the resource id value in parentheses.</p>
                     </aside>
                   </section>
 
                   <section>
                     <h3>Android Locators</h3>
+                    <p>UI Automator class</p>
+                    <pre><code class="java" data-trim contenteditable>
+                        textView = driver.findElementByClassName("android.widget.TextView");
+                    </code></pre>
+                    <p>Acessibility id</p>
+                    <pre><code class="java" data-trim contenteditable>
+                        newGameBtn = driver.findElement(By.
+    id("com.google.android.divideandconquer:id/newGameBtn"));
+                    </code></pre>
+                    <p>-android uiautomator</p>
+                    <pre><code class="java" data-trim contenteditable>
+                        UiDevice device = UiDevice.getInstance(getInstrumentation());
+UiObject cancelButton = device
+    .findObject(new UiSelector()
+    .text("Cancel"))
+    .className("android.widget.Button"));
+                    </code></pre>
+                    <aside class="notes">
+                      <p>In the mobile environment, ids are not, as in WebDriver, CSS ids, but rather some form of native identifier. For Android, the id is the element’s android:id.</p>
+                    </aside>
+                  </section>
 
+                  <section>
+                    <h3>iOS Locators</h3>
+                    <p>UI Automation class</p>
+                    <pre><code class="java" data-trim contenteditable>
+                        MobileElement fieldTwo = (MobileElement) driver.
+    findElementsByClassName("UIATextField").get(1);
+                    </code></pre>
+                    <p>Acessibility id</p>
+                    <pre><code class="java" data-trim contenteditable>
+                        MobileElement fieldOne = (MobileElement) driver.
+    findElementByAccessibilityId("TextField1");
+                    </code></pre>
+                    <p>-ios uiautomation</p>
+                    <pre><code class="java" data-trim contenteditable>
+                        var textField = UIATarget.localTarget().
+    frontMostApp().mainWindow().textFields()["User Text"];
+                    </code></pre>
+                    <aside class="notes">
+                      <p>
+                        For iOS the IDs are a little complicated. Appium will first search for an accessibility id that matches. If there is none found, a string match will be attempted on the element labels. Finally, if the id passed in is a localization key, it will search the localized string. For Android, the id is the element’s android:id.</p>
+                    </aside>
+                  </section>
+                </section>
+
+                <section>
+                  <section style="padding-left:10px;">
+                    <h3>Mobile Specific Actions (Gestures)</h3>
+                    <ul>
+                      <li>Once you locate an element, you can perform an action on it.</li>
+                      <p></p>
+                      <li>Perform actions by invoking the driver, and then a gesture action that is performed on an element.</li>
+                    </ul>
                     <aside class="notes">
 
                     </aside>
                   </section>
 
                   <section>
-                    <h3>iOS Locators</h3>
+                    <h3>Touch Actions</h3>
+                    <p>There is a TouchAction class in the appium client libraries, which contain the different actions you can perform on a mobile device.</p>
+                    <pre><code class="java" data-trim contenteditable>
+                        TouchAction touch = new TouchAction(driver);
+                    </code></pre>
 
                     <aside class="notes">
-
+                      <p>The TouchAction object requires the driver object to be passed into it.</p>
                     </aside>
                   </section>
-                </section>
 
-                <section style="padding-left:10px;">
-                  <h3>Mobile Specific Actions (Gestures)</h3>
+                  <section>
+                    <h3>General Gestures</h3>
+                    <p></p>
+                    <pre><code class="java" data-trim contenteditable>
 
-                  <aside class="notes">
+                    </code></pre>
 
-                  </aside>
+                    <p></p>
+                    <pre><code class="java" data-trim contenteditable>
+
+                    </code></pre>
+
+                    <p></p>
+                    <pre><code class="java" data-trim contenteditable>
+
+                    </code></pre>
+
+                  </section>
                 </section>
 
                 <section data-state="lab">
