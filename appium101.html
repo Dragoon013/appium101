@@ -805,35 +805,42 @@ UiObject cancelButton = device
                 </section>
 
                 <section>
-                  <h3>Sauce Labs Script Pre-Reqs</h3>
-                  <li>Use Sauce Labs or another online location to host the application</li>
-                  <li>Remote WebDriver</li>
-                  <li>Sauce Labs Authentication (API)</li>
-                  <li>Desired Capabilities</li>
+                  <h3>Sauce Labs Appium Script Pre-Reqs</h3>
+                  <ul>
+                    <li>Use Sauce Labs storage or another online location to host the application</li>
+                    <li>Sauce Labs Authentication (API)</li>
+                    <li>Desired Capabilities</li>
+                  </ul>
+                  <pre><code class="java" data-trim contenteditable>
+                      capabilities.setCapability("platformName", "Android");
+capabilities.setCapability("deviceName", "Android Emulator");
+capabilities.setCapability("platformVersion", "4.4");
+capabilities.setCapability("app", "https://github.com/appium/app.apk");
+capabilities.setCapability("appiumVersion", "1.4.16");
+                    </code></pre>
+
                   <aside class="notes">
-                    <p>If your script is going to talk to Sauce Labs, then it needs a couple of things set first. One is the remote webdriver. This is the selenium webdriver object that facilitates commands sent to a remote browser on a selenium grid. Second, we'll need to authenticate with Sauce Labs. And lastly, we'll need to set the desired capabilities, which defines what browser and OS combination we will use.</p>
+                    <p>Technically, all Appium scripts call out to a server. So you can think of them as all being remote, even if you are hosting the server on your own local machine. But if your script is going to talk to Sauce Labs, then it needs a couple of other additional items to be setup. First, we'll need to edit the "app" desired cap to point to where the application is hosted which can pretty uch be anywhere. You can host it on a digitalocean or aws webserver, you can host it locally and then use Sacue Connect, or you can upload it to Sauce storage. Second, we'll need to authenticate with Sauce Labs. And lastly, we'll need to set additional desired capabilities, which defines what device and OS combination we will use, as well as the version of the OS and appium itself.</p>
                   </aside>
                 </section>
 
                 <section>
-                  <h3>Sauce Labs Identification</h3>
+                <section>
+                  <h3>Sauce Labs Authentication</h3>
                   <p>The script uses the Sauce Labs API to authenticate the user and record results against that user's profile</p>
 
-                  <div style="float:left;width:50%;" class="centered">
                     <li>Environment Variables</li>
                     <pre><code class="zsh" data-trim contenteditable>
                         export SAUCE_USERNAME=dragoon013
-export SAUCE_ACCESS_KEY=b89b7205-3aca-4af2-a618-9bab4c7bdebd
+export SAUCE_ACCESS_KEY=b89b7205-3aca-4af2-9c7bded
                     </code></pre>
-                  </div>
 
-                  <div style="float:right;width:50%;padding-right:0px;">
                     <li>Explicit Variables</li>
                     <pre><code class="java" data-trim contenteditable>
                         public static final String USERNAME = "dragoon013";
-public static final String ACCESS_KEY = "b89b7205-3aca-4af2-a618-9bab4c7bdebd";
+public static final String ACCESS_KEY = "b89b7205-3aca-4af2-9c7bded";
                     </code></pre>
-                  </div>
+
                   <aside class="notes">
                     <p>One thing to consider when setting up your testing environment or suite, is to use Environment Variables for your credentials or explicitly state them in your script.</p>
                     <p>Having environment variables with your credentials makes tests more re-usable among other team members. For example, they may be using their own credentials to log in and it doesn't run the risk of potential exposure of credentials.</p>
@@ -841,22 +848,32 @@ public static final String ACCESS_KEY = "b89b7205-3aca-4af2-a618-9bab4c7bdebd";
                 </section>
 
                 <section>
-                    <h3>Setting the Remote WebDriver</h3>
+                    <h3>Sauce Labs Authentication</h3>
                     <p>Sauce Labs API Authentication</p>
                     <ul>
                       <li>Username</li>
-                      <li>Access Code</li>
+                      <li>Access Key</li>
+                      <li>API URL</li>
                     </ul>
+                    <div style="width:103%;">
                     <pre><code class="java" data-trim contenteditable>
-                        USERNAME = "dragoon013";
-KEY = "b89b7205-3aca-4af2-a618-9bab4c7bdebd";
-URL = "http://" + USERNAME + ":" + KEY + "@ondemand.saucelabs.com:80/wd/hub";
-WebDriver driver = new RemoteWebDriver(new URL(URL), caps);
+                        public static final USERNAME = "dragoon013";
+public static final KEY = "b89b7205-3aca-4af2-a618-9bab4c7bdebd";
+public static final URL = "http://" + USERNAME
+                        + ":" + KEY + "@ondemand.saucelabs.com:80/wd/hub";
+
+@Test
+public static void main(){
+    DesiredCapabilities capabilities = new DesiredCapabilities();
+    AndroidDriver&#60;MobileElement&#62; driver = new AndroidDriver&#60;MobileElement&#62;
+                                        (new URL(URL), capabilities);
                     </code></pre>
+                    </div>
                     <aside class="notes">
-                      <p>So let's go ahead and set up a RemoteWebDriver now. This is different, as the remotewebdriver calls out to a selenium grid somewhere - whether that is sauce labs or your own selenium grid, and runs the test on the remote browser/machine</p>
+
                     </aside>
                   </section>
+                </section>
 
                 <section>
                   <h3>Desired Capabilities</h3> <!-- PLatform Configurator-->
