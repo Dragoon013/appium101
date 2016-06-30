@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+ <html lang="en">
 
 	<head>
 		<meta charset="utf-8">
@@ -81,7 +81,7 @@
                       <p><a href="mailto:jacob.teal@servicerocket.com">jacob.teal@servicerocket.com</a></p>
 					  </p>
                     </div>
-<!-- right column-->
+<!-- right column--><div style="float:left;width:50%;" class="centered">
                     <div style="float:right;width:40%;padding-right:0px;">
                       <img src="assets/images/starfish.png" style="border:0;background:none; left:0; top:0;">
                     </div>
@@ -121,13 +121,7 @@
                     <p>First off, we'll be working in a VM provided by ReadyTech today. If you have any problems during the course of labs, I will be able to go into your instance and help you out. You can just notify me using the ReadyTech instance to tell me that you need help.</p>
                     <p>We're also going to be working in Eclipse today. In Eclipse, we have set up the scripts within a framework called TestNG, for Java, that allows us to run the scripts with all of the dependencies it needs very easily.</p>
                     <p>That within that framework, there is a library, or build tool, called Maven that we are using to grab our dependencies, bundle them together, and then run our script.</p>
-                    <p>Normally, we would have to run a long command that looks like:</p>
-                    <pre><code class="java" data-trim contenteditable>
-                        javac -cp ".:./selenium-2.53.0/selenium-java-2.53.0.jar:./selenium-2.53.0/libs/*" SampleSauceTest.java
-                        java -cp ".:./selenium-2.53.0/selenium-java-2.53.0.jar:./selenium-2.53.0/libs/*" SampleSauceTest
-                    </code></pre>
-                    <p>The first line compiles the code with all of the requisite libraries and jars it needs, and then the second line runs it.</p>
-                    <p>Maven will do all of that for us, so we don't need to run an additional script to start the test script, or have to include the libraries manually in a command.</p>
+
                     <p>Throughout the course today, the way we will run our tests is by using the "Maven test" command, which should compile all of our resources and dependencies together, and run it for us.</p>
                     <p>Lastly, for those of you who may not have used Eclipse before, when you type in a line that does not have the right syntax, it will generally underline the offending line or part of the line that you need to fix, in red. If you simply hover or select that part of the line, Ecplise will give you suggestions on how to fix the problem.</p>
 
@@ -789,7 +783,7 @@ UiObject cancelButton = device
                   </ol>
                 </section>
 
-<!-- Running a Selenium Script with Sauce Labs Module-->
+<!-- Running an Appium Script with Sauce Labs Module-->
                 <section data-background="rgb(226, 35, 26)">
                   <h2>Appium Testing with Sauce Labs</h2>
                   <aside class="notes"> we will finally run the script on sauce labs, and compare the methods and discuss the benefits of running on sauce labs</aside>
@@ -813,11 +807,10 @@ UiObject cancelButton = device
                   </ul>
                   <pre><code class="java" data-trim contenteditable>
                       capabilities.setCapability("platformName", "Android");
-capabilities.setCapability("deviceName", "Android Emulator");
 capabilities.setCapability("platformVersion", "4.4");
+capabilities.setCapability("deviceName", "Android Emulator");
 capabilities.setCapability("app", "https://github.com/appium/app.apk");
-capabilities.setCapability("appiumVersion", "1.4.16");
-                    </code></pre>
+                  </code></pre>
 
                   <aside class="notes">
                     <p>Technically, all Appium scripts call out to a server. So you can think of them as all being remote, even if you are hosting the server on your own local machine. But if your script is going to talk to Sauce Labs, then it needs a couple of other additional items to be setup. First, we'll need to edit the "app" desired cap to point to where the application is hosted which can pretty uch be anywhere. You can host it on a digitalocean or aws webserver, you can host it locally and then use Sacue Connect, or you can upload it to Sauce storage. Second, we'll need to authenticate with Sauce Labs. And lastly, we'll need to set additional desired capabilities, which defines what device and OS combination we will use, as well as the version of the OS and appium itself.</p>
@@ -865,6 +858,7 @@ public static final URL = "http://" + USERNAME
 @Test
 public static void main(){
     DesiredCapabilities capabilities = new DesiredCapabilities();
+    //additional capabilities
     AndroidDriver&#60;MobileElement&#62; driver = new AndroidDriver&#60;MobileElement&#62;
                                         (new URL(URL), capabilities);
                     </code></pre>
@@ -879,22 +873,26 @@ public static void main(){
                   <h3>Desired Capabilities</h3> <!-- PLatform Configurator-->
                   <div style="float:left;width:50%;" class="centered">
                     <p>Required:</p>
-                    <li>Browser</li>
-                    <li>Platform</li>
-                    <li>Version</li>
+                    <li>platformName</li>
+                    <li>platformVersion</li>
+                    <li>deviceName</li>
+                    <li>app</li>
                     <p></p>
                   </div>
                   <div style="float:right;width:50%;padding-right:0px;">
                     <p>Optional:</p>
-                    <li>Selenium Driver Version</li>
-                    <li>Chrome Driver Version</li>
-                    <li>IE Driver Version</li>
+                    <li>browserName</li>
+                    <li>deviceOrientation</li>
+                    <li>appiumVersion</li>
+                    <li>appActivity</li>
                     <p></p>
                   </div>
                   <pre style="box-shadow:none;"><code class="java" data-trim contenteditable>
-                      DesiredCapabilities caps = DesiredCapabilities.chrome();
-caps.setCapability("platform", "Windows XP");
-caps.setCapability("version", "43.0");
+                      DesiredCapabilities caps = new DesiredCapabilities();
+capabilities.setCapability("platformName", "Android");
+capabilities.setCapability("platformVersion", "4.4");
+capabilities.setCapability("deviceName", "Android Emulator");
+capabilities.setCapability("app", "https://github.com/appium/app.apk");
                   </code></pre>
 
                   <aside class="notes">Lastly, with Sauce Labs, we can set up the script to run the test on several different platforms. We aren't limited to what we have locally. If we want to indicate more platforms combinations to test on, we typically use a framework to enable that for us.</aside>
@@ -950,10 +948,14 @@ caps.setCapability("version", "43.0");
                   <p>Explicit Waits</p>
                   <pre>
                     <code class="java" data-trim contenteditable>
-                      import org.openqa.selenium.support.ui.ExpectedConditions;
+//additional libs required
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+//usage
 WebDriverWait wait = new WebDriverWait(driver, 10);
-WebElement messageElement = wait.until( ExpectedConditions.presenceOfElementLocated(By.id("loginResponse")) );
+WebElement messageElement = wait.until(ExpectedConditions.
+        presenceOfElementLocated(By.id("loginResponse")));
                     </code>
                   </pre>
 
@@ -963,7 +965,7 @@ WebElement messageElement = wait.until( ExpectedConditions.presenceOfElementLoca
                   </aside>
                 </section>
 
-                <!--
+
                 <section data-state="lab">
                   <h3>Lab: Testing Waits</h3>
                   <ol>
@@ -1160,18 +1162,43 @@ public void the_feeling_is(String arg1) throws Throwable {
                   </aside>
                 </section>
 
+                <section>
                   <section>
                     <h3>Asserts:</h3>
                     <p>A testing framework directive that assumes a value to be true, and stops the test and/or throws an error if false.</p>
 
                     <pre><code class="java" data-trim contenteditable>
-                         Appium assertion example here
+                        assertTrue(compassBtn.clickable.value, true);
                     </code></pre>
 
                     <aside class="notes">
-                      <p>A common element of Selenium scripts are Asserts. Asserts come with whichever testing framwork that you have decided to work with. They generally check whether a particular value is true or not. For example, if the uncheckedboxed state returns true, then that means the assert will pass. It's basically the test itself. If an assert fails, that generally means the test has failed as well. We're going to try using asserts ourselves.</p>
+                      <p>A common element of Appium scripts are Asserts. Asserts come with whichever testing framwork that you have decided to work with. They generally check whether a particular value is true or not. For example, if the uncheckedboxed state returns true, then that means the assert will pass. It's basically the test itself. If an assert fails, that generally means the test has failed as well. We're going to try using asserts ourselves.</p>
                     </aside>
                   </section>
+
+                  <section>
+                    <h3>Assert Functions</h3>
+                    <div style="float:left;width:50%;" class="centered">
+                      <ul>
+                      <li>assertEquals</li>
+                      <li>assertNull</li>
+                      <li>assertSame</li>
+                      </ul>
+                    </div>
+
+                    <div style="float:right;width:40%;padding-right:0px;">
+                      <ul>
+                        <li>assertThrows</li>
+                        <li>assertTrue</li>
+                        <li>assertEqualsNoOrder</li>
+                      </ul>
+                    </div>
+                    <aside class="notes">
+                      <p>There are a lot of different kinds of assertion checks that you can make. All asserts will cause a test to fail, if the check or comparison returns false. Assert equals will compare two object's values. assertNull will assert the value of an object is null. assertSame will assert two objects are the same object. and so on.</p>
+                      <p>You find the full information on using asserts (with the testNG java framework) here: <a href="http://testng.org/javadocs/org/testng/Assert.html" target="_blank">assertion class details</a></p>
+                    </aside>
+                  </section>
+                </section>
 
                   <section data-state="lab">
                     <h3>Lab: Asserting Your Greatness</h3>
@@ -1405,7 +1432,7 @@ public void enterCommentText(String text){
                          public class TestLogin {
 
     public void testLogin() {
-        SignInPage signInPage = new SignInPage(selenium);
+        SignInPage signInPage = new SignInPage(driver);
         HomePage homePage = signInPage.loginValidUser("userName", "password");
         Assert.assertTrue(driver.isElementPresent("compose button"),
         "Login was unsuccessful");
