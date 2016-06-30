@@ -261,7 +261,7 @@
                   <h3>Using Sauce Labs</h3>
                   <div style="float:right;width:50%;padding-right:25%;"><img src="assets/images/UsingSauceLabs.png" style="border:0; text-align:center; background:none;">
                   </div>
-               
+
                   <aside class="notes">
                     <p>If tbe hosting Mobile Application testing infrastructure itself isn't enough, Sauce Labs provides a whole slew of other additional features, such as security, recorded tests and integration with other tools. Sauce Labs provides security through it's Sauce Connect technology, which allows you to run tests on your locally hosted application. It sends your Selenium or appium commands through an encrypted tunnel, ensuring that your information is protected.</p>
                     <p>Seamless integration refers the multitude of pltforms that Sauce integrates with, such as Jenkins, Bamboo, JIRA, and more.</p>
@@ -729,22 +729,51 @@ UiObject cancelButton = device
                   </section>
 
                   <section>
-                    <h3>General Gestures</h3>
-                    <p></p>
+                    <h3>Gesture Actions</h3>
+                    <p>press(x, y)</p>
                     <pre><code class="java" data-trim contenteditable>
-
+                        touch.press(150, 100).perform();
                     </code></pre>
 
-                    <p></p>
+                    <p>moveTo(+x, +y)</p>
                     <pre><code class="java" data-trim contenteditable>
-
+                        touch.press(10, 200).moveTo(1, 1).perform();
                     </code></pre>
 
-                    <p></p>
+                    <p>tap(element)</p>
                     <pre><code class="java" data-trim contenteditable>
-
+                        touch.tap(buttonElem).perform();
                     </code></pre>
 
+                    <aside class="notes">
+                      <p></p>
+                      <p></p>
+                      <p></p>
+                    </aside>
+                  </section>
+
+                  <section>
+                    <h3>Other Gesture Actions</h3>
+                    <p>waitAction(int ms)</p>
+                    <pre><code class="java" data-trim contenteditable>
+                        action1.press(el1).waitAction(300).moveTo(10, 0).release();
+                    </code></pre>
+
+                    <p>longPress(x, y, duration)</p>
+                    <pre><code class="java" data-trim contenteditable>
+                        action.longPress(ele1).moveTo(x1,580).release().perform();
+                    </code></pre>
+
+                    <p>perform()</p>
+                    <pre><code class="java" data-trim contenteditable>
+                        action.longPress(ele1).moveTo(x1,580).release().perform();
+                    </code></pre>
+
+                    <aside class="notes">
+                      <p>Appium performs the events in sequence. You can add a wait event to control the timing of the gesture.</p>
+                      <p></p>
+                      <p></p>
+                    </aside>
                   </section>
                 </section>
 
@@ -985,7 +1014,7 @@ WebElement messageElement = wait.until( ExpectedConditions.presenceOfElementLoca
                     <p><strong>Ruby:</strong></p>
                     <li>RSpec</li>
                     <li>Cucumber</li>
-                  
+
 
                   <div style="float:right;width:50%;padding-right:0px;">
                     <p><strong>Python:</strong></p>
