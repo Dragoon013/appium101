@@ -229,25 +229,24 @@
 				</section>
 
                 <section>
-				  <h3>Appium + Sauce Labs Testing</h3>
-          <p>One API for multiple mobile Platforms</p>
-                  <div style="float:left;width:40%;" class="centered">
-                    iOS
-                    <p>
+				  <h3>Local vs. Remote Appium Tests</h3>
+
+                  <div style="float:left;width:50%;" class="centered">
+                    <p>Local:</p>
                       <ul>
-                      <li>JSON test script converison</li>
-                      <li>UIAutomation commands sent to iOS app</li>
-                      <li>Commands test against mobile application</li>
-                    </ul></p>
+                        <li>Requires Appium Server</li>
+                        <li>iOS development requires Xcode tools</li>
+                        <li>Need all the libraries and images to run device simulators/emulators</li>
+                    </ul>
                   </div>
                   <div style="float:right;width:50%;padding-right:0px;">
-                    Android
-                    <p>
-                      <ul>
-                        <li>JSON test script converted to UIAutomator Java commands</li>
-                        <li>Responses are relayed to Appium server and converted back to JSON</li>
-                      </ul>
-                    </p>
+                    <p>Remote:</p>
+                    <ul>
+                      <li>Appium server is remote</li>
+                      <li>Device images and virtualization</li>
+                      <li>Parallelization</li>
+                      <li>Record Results</li>
+                    </ul>
                   </div>
 
                   <aside class="notes">
