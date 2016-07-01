@@ -296,6 +296,7 @@
                     <li>Sauce Labs Manual Tests</li>
                   </ul>
                   <aside class="notes">
+                    <p>Do the demo on Android!!! It will go faster than iOS.</p>
                     <p>Traditionally, once your app was ready to be tested, you would load it onto a physical device, and then test it with your own fingers. There are a few problems with that, namely, it takes a lot of time to do and you're limited to the devices you have. So then you can run your test manually on an emulator or simulator to take care of the device problem. But the issue of time, of someone physically clicking on the device emulator or phyiscally touching the device is a huge time suck.</p>
                     <p>With sauce labs, you can run manual tests without having to set up the infrastructure locally. This can help you with memory issues you may run into running simulators and emulators on your own local machine, and can give you a good way test out the app on more devices than you could easily do locally.</p>
                     <p>Manual Test Demo:</p>
@@ -476,9 +477,15 @@ capabilities.setCapability("app", "/path/to/app/ContactManager.apk");
 
                   <section>
                     <h3>2. Appium WebDriver</h3>
-
+                    <p>Android</p>
                       <pre><code class="java" data-trim contenteditable>
-                          AndroidDriver&#60;WebElement&#62; driver = new AndroidDriver&#60;WebElement&#62;(
+                          AndroidDriver&#60;MobileElement&#62; driver = new AndroidDriver&#60;MobileElement&#62;(
+    new URL("http://localhost:4723/wd/hub"),
+    capabilities);
+                      </code></pre>
+                      <p>iOS</p>
+                      <pre><code class="java" data-trim contenteditable>
+                          IOSDriver driver&#60;MobileElement&#62; = new IOSDriver&#60;MobileElement&#62;(
     new URL("http://localhost:4723/wd/hub"),
     capabilities);
                       </code></pre>
@@ -491,7 +498,8 @@ capabilities.setCapability("app", "/path/to/app/ContactManager.apk");
                     <h3>3. Locating an Element in the Application</h3>
                     <pre style="width:92%;">
                         <code class="java" data-trim contenteditable>
-                          WebElement addContactButton = driver.findElement(By.name("Add Contact"));
+                          newGameBtn = driver.findElement(By.
+                              id("com.google.android.divideandconquer:id/newGameBtn"));
                         </code>
                     </pre>
                     <p>Identifiers:</p>
@@ -499,7 +507,6 @@ capabilities.setCapability("app", "/path/to/app/ContactManager.apk");
                       <li>ID</li>
                         <li>Class Name</li>
                         <li>Tag Name</li>
-                        <li>Name</li>
                     </div>
                     <div style="float:right;width:50%;padding-right:0px;">
                       <li>Link Text</li>
@@ -545,7 +552,9 @@ capabilities.setCapability("app", "/path/to/app/ContactManager.apk");
 
                     <pre>
                       <code class="java" data-trim contenteditable>
-                        WebElement addContactButton = driver.findElement(By.name("Add Contact"));
+                        newGameBtn = driver.findElement(By.
+                            id("com.google.android.divideandconquer:id/newGameBtn"));
+                        touch.tap(newGameBtn).perform();
                       </code>
                     </pre>
                     <aside class="notes">
