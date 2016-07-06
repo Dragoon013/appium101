@@ -409,6 +409,21 @@
                 </section>
 
                 <section>
+                  <h3>Types of Mobile Testing</h3>
+                  <ul>
+                    <li>Mobile Web Browser Testing</li>
+                    <li>Native App Testing</li>
+                    <li>Hybrid App Testing</li>
+                  </ul>
+
+                  <aside class="notes">
+                    <p>Mobile WEb browser - these types of tests simply pull up your application on a mobile browser</p>
+                    <p>native app - native app testing goes into the application itself, and works with the native or inherent application elements, rather than using a browser or webview to access your application site.</p>
+                    <p>hybrid app - Native app that has a bar on the top, bottom, and then pulls up/uses a webview. </p>
+                  </aside>
+                </section>
+
+                <section>
                   <h3>Appium GUI</h3>
                   <div style="text-align:center">
                     <img src="assets/images/app_inspector.png" style="border:0; background:none; width:100%">
@@ -496,10 +511,38 @@ capabilities.setCapability("app", "/path/to/app/ContactManager.apk");
 
                   <section>
                     <h3>3. Locating an Element in the Application</h3>
-                    <pre style="width:92%;">
+
+                    <div style="float:left;width:70%;" class="centered">
+                    <pre syle="width:100%;">
+                      <code class="java" data-trim contenteditable>
+                        &#60;android.widget.TextView
+content-desc="Text"
+class="android.widget.TextView" text="Text"
+index="9" enabled="true" checkable="false"
+checked="false" clickable="true" focusable="false"
+location="[0, 702]" size="[800, 64]"
+package="io.appium.android.apis"
+password="false" resource-id="android:id/text1"
+scrollable="false" selected="false"
+xpath="//android.view.ViewGroup[1]/
+android.widget.FrameLayout[2]/
+android.widget.ListView[1]/
+android.widget.TextView[10]"/&#62;
+                      </code>
+                    </pre>
+                    </div>
+                    <div style="float:right;width:30%;padding-right:0px;">
+                      <div style="text-align:center;">
+                        <img src="assets/images/app_elems.png" style="border:0; background:none;">
+                      </div>
+                    </div>
+                  </section>
+
+                  <section>
+                    <h3>Identifying an Element</h3>
+                    <pre style="width:94%;">
                         <code class="java" data-trim contenteditable>
-                          newGameBtn = driver.findElement(By.
-                              id("com.google.android.divideandconquer:id/newGameBtn"));
+                          textBox = driver.findElement(By.id("com.saucelabs.guineapig:id/fbemail"));
                         </code>
                     </pre>
                     <p>Identifiers:</p>
@@ -518,7 +561,6 @@ capabilities.setCapability("app", "/path/to/app/ContactManager.apk");
 
                     </aside>
                   </section>
-
 
                   <section>
                     <h3>OS Specific Identifiers</h3>
@@ -553,8 +595,8 @@ capabilities.setCapability("app", "/path/to/app/ContactManager.apk");
                     <pre>
                       <code class="java" data-trim contenteditable>
                         newGameBtn = driver.findElement(By.
-                            id("com.google.android.divideandconquer:id/newGameBtn"));
-                        touch.tap(newGameBtn).perform();
+    id("com.google.android.divideandconquer:id/newGameBtn"));
+touch.tap(newGameBtn).perform();
                       </code>
                     </pre>
                     <aside class="notes">
@@ -618,15 +660,15 @@ capabilities.setCapability("app", "/path/to/app/ContactManager.apk");
                 </section>
 
                   <section data-state="lab">
-                    <h3>Lab: Running the Sample Appium Script</h3>
+                    <h3>Lab 1: Running the Sample Appium Script</h3>
 
-                    <ol>
+<!--                    <ol>
                       <li>Navigate to the sample script.</li>
                       <li>Open the script in your favorite emulator.</li>
-                      <li>Make a note of the device/platform we are going to.</li>
+                      <li>Make a note of the device/platform we are going to use.</li>
                       <li>Run</li>
                       <li>What did you see happen? How did it happen?</li>
-                    </ol>
+                    </ol>-->
                   </section>
 
 <!--Writing Appium Scripts Module-->
@@ -672,8 +714,8 @@ capabilities.setCapability("app", "/path/to/app/ContactManager.apk");
                     </code></pre>
                     <p>Acessibility id</p>
                     <pre><code class="java" data-trim contenteditable>
-                        newGameBtn = driver.findElement(By.
-    id("com.google.android.divideandconquer:id/newGameBtn"));
+                        newGameBtn = findElementByAccessibilityId(
+    "com.google.android.divideandconquer:id/newGameBtn");
                     </code></pre>
                     <p>-android uiautomator</p>
                     <pre><code class="java" data-trim contenteditable>
@@ -784,18 +826,53 @@ UiObject cancelButton = device
                       <p></p>
                     </aside>
                   </section>
+
+                  <section>
+                    <h3>MultiTouch</h3>
+                    <pre><code class="java" data-trim contenteditable>
+                        MultiTouchAction multiAction = new MultiTouchAction(driver);
+    TouchAction finger1 = new TouchAction(driver);
+    TouchAction finger2 = new TouchAction(driver;
+
+    finger1.longPress(x1,y1).waitAction(1500);
+    finger2.longPress(x2,y2).waitAction(1500);
+    multiAction.add(finger1).add(finger2).perform();
+                    </code></pre>
+                    <aside class="notes">
+                      <p>Multitouches require the MultiTouchAction class. The MultiTouchAction class takes in different touchaction objects, and then performs their actions.</p>
+                    </aside>
+                  </section>
+                </section>
+
+                <section>
+                  <h3>Switching Contexts</h3>
+
+                  <pre style="width:50%;"><code class="java" data-trim contenteditable>
+                        driver.switchTo().window("NATIVE_APP");
+driver.switchTo().window("WEBVIEW");
+                    </code></pre>
+                  <aside class="notes">
+                    <p>If you are working on hybrid testing, or if you are a testing a functionality of your native app that requires switching contexts, then you will need to know the swtichTo() function.</p>
+                    <p>A context is generally going to be either a webview or your native application.</p>
+                  </aside>
                 </section>
 
                 <section data-state="lab">
-                  <h3>Lab: Writing Actions</h3>
-
+                  <h3>Lab 2: Writing Actions</h3>
+                  <p>Lab needs to:</p>
+                  <ul>
+                    <li>locate elems</li>
+                    <li>perform gestures (at least two, maybe a multitouch and a normal touch)</li>
+                    <li>switch contexts? maybe</li>
+                  </ul>
+                  <!--
                   <ol>
                     <li>Open the script in your preferred text editor.</li>
                     <li>If you have not done so, change the <pre style="display:inline">driver.get("URL")</pre> to <pre style="display:inline">driver.get("http://saucelabs.github.io/training-test-page/")</pre>.</li>
                     <li>Locate the Comments textbox on the page, and send it some string values.</li>
                     <li>Locate the send button, and click it to send your comment.</li>
                     <li>Uncomment and fill the while loop with commands that locate and toggle the checkboxes on the page.</li>
-                  </ol>
+                  </ol>-->
                 </section>
 
 <!-- Running an Appium Script with Sauce Labs Module-->
@@ -823,6 +900,7 @@ UiObject cancelButton = device
                   <pre><code class="java" data-trim contenteditable>
                       capabilities.setCapability("platformName", "Android");
 capabilities.setCapability("platformVersion", "4.4");
+capabilities.setCapability("browserName", "");
 capabilities.setCapability("deviceName", "Android Emulator");
 capabilities.setCapability("app", "https://github.com/appium/app.apk");
                   </code></pre>
@@ -888,40 +966,57 @@ public static void main(){
                   <h3>Desired Capabilities</h3> <!-- PLatform Configurator-->
                   <div style="float:left;width:50%;" class="centered">
                     <p>Required:</p>
+                    <ul>
                     <li>platformName</li>
                     <li>platformVersion</li>
                     <li>deviceName</li>
                     <li>app</li>
-                    <p></p>
+                    <li>browserName</li>
+                    </ul>
                   </div>
                   <div style="float:right;width:50%;padding-right:0px;">
                     <p>Optional:</p>
-                    <li>browserName</li>
+                    <ul>
                     <li>deviceOrientation</li>
                     <li>appiumVersion</li>
                     <li>appActivity</li>
-                    <p></p>
+                    </ul>
                   </div>
-                  <pre style="box-shadow:none;"><code class="java" data-trim contenteditable>
+                  <div style="float:left;">
+                  <pre style="box-shadow:none; width:100%;"><code class="java" data-trim contenteditable>
                       DesiredCapabilities caps = new DesiredCapabilities();
 capabilities.setCapability("platformName", "Android");
 capabilities.setCapability("platformVersion", "4.4");
+capabilities.setCapability("browserName", "");
 capabilities.setCapability("deviceName", "Android Emulator");
 capabilities.setCapability("app", "https://github.com/appium/app.apk");
                   </code></pre>
+                  </div>
+                  <aside class="notes">Lastly, with Sauce Labs, we can set up the script to run the test on several different platforms. We aren't limited to what we have locally. If we want to indicate more platforms combinations to test on, at the same time, we typically use a framework to enable that for us.</aside>
+                </section>
 
-                  <aside class="notes">Lastly, with Sauce Labs, we can set up the script to run the test on several different platforms. We aren't limited to what we have locally. If we want to indicate more platforms combinations to test on, we typically use a framework to enable that for us.</aside>
+                <section>
+                    <h3>Application Hosting</h3>
+                    <ul>
+                      <li>Sauce Storage</li>
+                      <li>Locally hosted webserver</li>
+                      <li>Remote host: AWS, DigitalOcean, Github, etc</li>
+                    </ul>
+
+                    <aside class="notes">
+                      <p>DEMO or Labs here. Maybe incorporate into the general lab that comes after this?</p>
+                    </aside>
                 </section>
 
                   <section data-state="lab">
-                    <h3>Lab: Remote WebDriver</h3>
-                    <ol>
-                      <li>Open the script in your preferred editor.</li>
-                      <li>Log into <a href="http://saucelabs.com" target="_blank">saucelabs.com</a>, click on "My Account" and copy your Access Key.</li>
-                      <li>Add in the String variables with the values required to authenticate with Sauce Labs.</li>
-                      <li>Add in a String variable with the URL required to access Sauce Labs.</li>
-                      <li>Comment out the old Firefox driver and create a new RemoteWebDriver object.</li>
-                    </ol>
+                    <h3>Lab 3: Testing on Sauce Labs</h3>
+                    <p>Lab needs to:</p>
+                    <ul>
+                      <li>upload app to sauce storage</li>
+                      <li>Use the platform configurator</li>
+                      <li>add desired caps to initial sample script</li>
+                    </ul>
+
                   </section>
 
                 <section data-state="lab">
@@ -982,7 +1077,14 @@ WebElement messageElement = wait.until(ExpectedConditions.
 
 
                 <section data-state="lab">
-                  <h3>Lab: Testing Waits</h3>
+                  <h3>Lab 4: Testing Waits</h3>
+
+                  <p>The lab needs to:</p>
+                  <ul>
+                    <li>go to this site and experience mobile browser testing</li>
+                    <li>or apply this in the native app test script we'v been working in.</li>
+                  </ul>
+                  <p>----------------------------------------</p>
                   <ol>
                     <li>Open a browser and go to <a href="http://the-internet.herokuapp.com/dynamic_loading" target="_blank">http://the-internet.herokuapp.com/dynamic_loading</a>.</li>
                     <li>Click on each example.</li>
@@ -1327,6 +1429,23 @@ public void the_feeling_is(String arg1) throws Throwable {
 
                      </aside>
                    </section>
+                </section>
+
+                <section>
+                  <h3>Real vs. Virtual Testing</h3>
+
+                  <div style="float:left;width:50%;" class="centered">
+                    <p>Real</p>
+
+                  </div>
+
+                  <div style="float:right; width:50%; padding-right:0px;">
+                    <p>Virtual</p>
+
+                  </div>
+                  <aside class="notes">
+                    <p></p>
+                  </aside>
                 </section>
 
                 <section>
