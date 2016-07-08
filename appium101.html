@@ -119,7 +119,7 @@
                   </div>
 
                   <aside class="notes">
-                    <p>So before we go into the different parts we need to incldue in a script, let's talk about our training environment.</p>
+                    <p>Before we go into the different parts we need to include in a script, let's talk about our training environment.</p>
                     <p>First off, we'll be working in a VM provided by ReadyTech today. If you have any problems during the course of labs, I will be able to go into your instance and help you out. You can just notify me using the ReadyTech instance to tell me that you need help.</p>
                     <p>We're also going to be working in Eclipse today. In Eclipse, we have set up the scripts within a framework called TestNG, for Java, that allows us to run the scripts with all of the dependencies it needs very easily.</p>
                     <p>That within that framework, there is a library, or build tool, called Maven that we are using to grab our dependencies, bundle them together, and then run our script.</p>
@@ -173,7 +173,7 @@
                       <li>Selenium: Desktop and Mobile Browser Testing</li>
                       <li>Appium: Native Mobile Application Testing</li>
                     </ul>
-                    <p>So what is this Sauce Labs? They describe themselves as providers and supporters of Web Automated and Mobile Automated testing.</p>
+                    <p>What is  Sauce Labs? They describe themselves as providers and supporters of Web Automated and Mobile Automated testing.</p>
                     <p>They support two very large open source projects, namely Selenium and Appium. Selenium is used for Desktop and mobile browser testing, while appium is used for native and hybrid application testing.</p>
                     <p>Sauce Labs provides environments that run your Selenium or Appium tests on any browser and OS combination you like - and they have over 500 combinations thereof. (if you include the different browser versions)</p>
                   </aside>
@@ -223,7 +223,7 @@
                   <aside class="notes">
                     <p>History: Was developed in 2011 when Dan Cuellar wasn't satisfied with the current landscape of mobile testing tools. Dan came up with the idea of running Apple's UIAutomation framework as a real time interperter and used Apple utilities to execute shell commands, ordered text files to recieve commands, evalutate the output, execute said commands, and write them to disc using Python.</p>
                     <p>Then he created a C# version of the program, which mimicked Selenium-style syntax to sequentially order javascript commands and the first iteration of Appium was born.</p>
-                    <p>Dan then presented his project at the Selenium Conference in 2012 and caught the attention of Jason Huggins. Jason and Dan workded together to release the source code and then present the project at the Mobile Testing Summit of 2013. Not long after, Sauce Lab fully backed Dan's project, changed the name to Appium and the rest is history.</p>
+                    <p>Dan then presented his project at the Selenium Conference in 2012 and caught the attention of Jason Huggins. Jason and Dan worked together to release the source code and then present the project at the Mobile Testing Summit of 2013. Not long after, Sauce Lab fully backed Dan's project, changed the name to Appium and the rest is history.</p>
 
                   </aside>
 				</section>
@@ -263,8 +263,8 @@
                   </div>
 
                   <aside class="notes">
-                    <p>If tbe hosting Mobile Application testing infrastructure itself isn't enough, Sauce Labs provides a whole slew of other additional features, such as security, recorded tests and integration with other tools. Sauce Labs provides security through it's Sauce Connect technology, which allows you to run tests on your locally hosted application. It sends your Selenium or appium commands through an encrypted tunnel, ensuring that your information is protected.</p>
-                    <p>Seamless integration refers the multitude of pltforms that Sauce integrates with, such as Jenkins, Bamboo, JIRA, and more.</p>
+                    <p>If the hosting Mobile Application testing infrastructure itself isn't enough, Sauce Labs provides a whole slew of other additional features, such as security, recorded tests and integration with other tools. Sauce Labs provides security through it's Sauce Connect technology, which allows you to run tests on your locally hosted application. It sends your Selenium or appium commands through an encrypted tunnel, ensuring that your information is protected.</p>
+                    <p>Seamless integration refers the multitude of platforms that Sauce integrates with, such as Jenkins, Bamboo, JIRA, and more.</p>
                     <p>And each test you run is recorded by default. This includes screenshots, a video recording of the entire test, as well as log files.</p>
                     <p>Record your tests</p>
                     <ul>
@@ -298,7 +298,7 @@
                   <aside class="notes">
                     <p>Do the demo on Android!!! It will go faster than iOS.</p>
                     <p>Traditionally, once your app was ready to be tested, you would load it onto a physical device, and then test it with your own fingers. There are a few problems with that, namely, it takes a lot of time to do and you're limited to the devices you have. So then you can run your test manually on an emulator or simulator to take care of the device problem. But the issue of time, of someone physically clicking on the device emulator or phyiscally touching the device is a huge time suck.</p>
-                    <p>With sauce labs, you can run manual tests without having to set up the infrastructure locally. This can help you with memory issues you may run into running simulators and emulators on your own local machine, and can give you a good way test out the app on more devices than you could easily do locally.</p>
+                    <p>With Sauce Labs, you can run manual tests without having to set up the infrastructure locally. This can help you with memory issues you may run into running simulators and emulators on your own local machine, and can give you a good way test out the app on more devices than you could easily do locally.</p>
                     <p>Manual Test Demo:</p>
                     <ol>
                       <li></li>
@@ -318,8 +318,8 @@
                   <p>This module enables you to:</p>
                   <ul>
                     <li>Understand how Appium works</li>
-                    <li>Understand the basic components of a Appium test scripts</li>
-                    <li>Run a Appium test script on a local emulator</li>
+                    <li>Understand the basic components of Appium test scripts</li>
+                    <li>Run an Appium test script on a local emulator</li>
                   </ul>
                   <aside class="notes"></aside>
                 </section>
@@ -328,10 +328,10 @@
                   <h3>4 Pillars of Appium Philosophy</h3>
                   <p>Appium was designed to meet mobile automation needs according to a philosophy outlined by the following four tenets:</p>
                   <ol>
-                    <li>You shouldn't have to recompile or modify your app to automate it.</li>
-                    <li>You shouldn't be restricted to a specific language or framework to write and run your tests.</li>
-                    <li>Appium shouldn't reinvent the wheel when it comes to automation APIs.</li>
-                    <li>Appium should be open source.</li>
+                    <li>You shouldn't have to recompile or modify your app to automate it</li>
+                    <li>You shouldn't be restricted to a specific language or framework to write and run your tests</li>
+                    <li>Appium shouldn't reinvent the wheel when it comes to automation APIs</li>
+                    <li>Appium should be open source</li>
                   </ol>
                   <aside class="notes">
                    <p>Appium is a bundle of all of the specific language bindings that allow a client to send information to automation libraries that have been developed by Google and Apple. The appium library converts language specific commands to the commands that those automation libraries understand, which then performs acions on mobile devices.</p>
@@ -460,10 +460,10 @@
                     </ol>
                   </p>
                   <aside class="notes">
-                    <p>So first, we need to actually write our test script. When we go to run it, the Appium Client library that we used to will connect and send the commands to the local or remote appium server. Our script and the commands we write in it all talk to the REST API on the Appium server, via HTTP requests.</p>
+                    <p>First, we need to actually write our test script. When we go to run it, the Appium Client library that we used to will connect and send the commands to the local or remote appium server. Our script and the commands we write in it all talk to the REST API on the Appium server, via HTTP requests.</p>
                     <p>The appium server then sends those commands to the device, and then collects and sends the results back via and HTTP response.</p>
                     <p>Our script then takes those results, and it's up to us to pass those results onto Sauce Labs, or deal with them locally.</p>
-                    <p>If we run this test using sauce labs, then one more additional step will be done, which is to create the test records, so the video recoridng, screenshots, and logs.</p>
+                    <p>If we run this test using Sauce Labs, then one more additional step will be done, which is to create the test records, so the video recording, screenshots, and logs.</p>
                   </aside>
 				</section>
 
@@ -477,12 +477,12 @@
                       <p>
                         <ol>
                           <li>Set the Desired Capabilities (or Set the Application Path)</li>
-                          <li>Starting an Appium Session</li>
-                          <li>Locating an Element in the Application</li>
-                          <li>Performing an Action on an Application Element</li>
-                          <li>Anticipating Application Response</li>
-                          <li>Validating Responses and Reporting Test Results</li>
-                          <li>Concluding a Test</li>
+                          <li>Start an Appium Session</li>
+                          <li>Locate an Element in the Application</li>
+                          <li>Perform an Action on an Application Element</li>
+                          <li>Anticipate Application Response</li>
+                          <li>Validate Responses and Reporting Test Results</li>
+                          <li>Conclude a Test</li>
                         </ol>
                       </p>
                     </div>
@@ -510,13 +510,13 @@ capabilities.setCapability("app", "https://github.com/appium/app.apk");
                       </code></pre>
 
                     <aside class="notes">
-                      <p>So for those of you who may have done local Selenium testing, these Desired Capabilities may look unfamiliar. One key difference between selenium and Appium is that Appium requires an Appium webserver, even for local tests. So we need to set these desired capabilties so the client can tell the server what settings we want to test with.</p>
+                      <p>For those of you who may have done local Selenium testing, these Desired Capabilities may look unfamiliar. One key difference between selenium and Appium is that Appium requires an Appium webserver, even for local tests. We need to set these desired capabilties so the client can tell the server what settings we want to test with.</p>
                       <p>In our case, we are going to be testing on this Nexus device, and we're going to load up our app, Contactmanager.apk onto that device and run our test on it.</p>
                     </aside>
 				  </section>
 
                   <section>
-                    <h3>2. Starting an Appium Session</h3>
+                    <h3>2. Start an Appium Session</h3>
                     <p>Android</p>
                       <pre><code class="java" data-trim contenteditable>
                           AndroidDriver&#60;MobileElement&#62; driver = new AndroidDriver&#60;MobileElement&#62;(
@@ -535,7 +535,7 @@ capabilities.setCapability("app", "https://github.com/appium/app.apk");
                   </section>
 
                   <section>
-                    <h3>3. Locating an Element in the Application</h3>
+                    <h3>3. Locate an Element in the Application</h3>
 
                     <div style="float:left;width:70%;" class="centered">
                     <pre syle="width:100%;">
@@ -569,7 +569,7 @@ android.widget.TextView[10]"/&#62;
                   </section>
 
                   <section>
-                    <h3>Identifying an Element</h3>
+                    <h3>Identify an Element</h3>
                     <pre style="width:94%;">
                         <code class="java" data-trim contenteditable>
                           textBox = driver.findElement(By.id("com.saucelabs.guineapig:id/fbemail"));
@@ -626,7 +626,7 @@ android.widget.TextView[10]"/&#62;
                   </section>
 
                   <section>
-				    <h3>4. Performing an Action on an Application Element</h3>
+				    <h3>4. Perform an Action on an Application Element</h3>
 
                     <pre>
                       <code class="java" data-trim contenteditable>
@@ -641,7 +641,7 @@ touch.tap(newGameBtn).perform();
                   </section>
 
                   <section>
-                    <h3>5. Anticipating Application Response</h3>
+                    <h3>5. Anticipate Application Response</h3>
                     <p>Implicit Waits</p>
                     <ul>
                       <li>A blanket wait time that applies to each findElement search (findElement(By.id())).</li>
@@ -658,7 +658,7 @@ touch.tap(newGameBtn).perform();
                   </section>
 
                   <section>
-                    <h3>6. Validating Responses and Reporting Test Results</h3>
+                    <h3>6. Validate Responses and Reporting Test Results</h3>
 
                      <div style="float:left;width:50%;" class="centered">
                        <ul>
@@ -684,7 +684,7 @@ touch.tap(newGameBtn).perform();
                   </section>
 
                   <section>
-				    <h3>7. Concluding a Test</h3>
+				    <h3>7. Conclude a Test</h3>
                     <pre>
                       <code class="java" data-trim contenteditable>
                         driver.quit();
@@ -710,7 +710,7 @@ touch.tap(newGameBtn).perform();
 
 <!--Writing Appium Scripts Module-->
                 <section data-background="rgb(226, 35, 26)">
-                  <h2>Write Appium Test Scripts</h2>
+                  <h2>Write an Appium Test Script</h2>
                   <aside class="notes">
 
                   </aside>
@@ -824,9 +824,9 @@ driver.executeScript(uiautoFind + ".scrollToVisible();");
                   <section style="padding-left:10px;">
                     <h3>Mobile Specific Actions (Gestures)</h3>
                     <ul>
-                      <li>Once you locate an element, you can perform an action on it.</li>
+                      <li>Once you locate an element, you can perform an action on it</li>
                       <p></p>
-                      <li>Perform actions by invoking the driver, and then a gesture action that is performed on an element.</li>
+                      <li>Perform actions by invoking the driver, and then a gesture action that is performed on an element</li>
                     </ul>
                     <aside class="notes">
 
@@ -927,7 +927,7 @@ for (String contextName : contextNames){
                   <aside class="notes">
                     <p>If you are working on hybrid testing, or if you are a testing a functionality of your native app that requires switching contexts, then you will need to know the swtichTo() function.</p>
                     <p>A context is generally going to be either a webview or your native application.</p>
-                    <p>When working with a hybrid app, you can work with more than 1 webview. Gernerally, best practice is to get a list of the webviews that you have available, and then switch to the proper webview context by name.</p>
+                    <p>When working with a hybrid app, you can work with more than 1 webview. Generally, best practice is to get a list of the webviews that you have available, and then switch to the proper webview context by name.</p>
                   </aside>
                 </section>
 
@@ -952,7 +952,7 @@ for (String contextName : contextNames){
 <!-- Running an Appium Script with Sauce Labs Module-->
                 <section data-background="rgb(226, 35, 26)">
                   <h2>Appium Testing with Sauce Labs</h2>
-                  <aside class="notes"> we will finally run the script on sauce labs, and compare the methods and discuss the benefits of running on sauce labs</aside>
+                  <aside class="notes"> Finally, we run the script on Sauce Labs, and compare the methods and discuss the benefits of running on Sauce Labs</aside>
                 </section>
 
                 <section>
@@ -980,7 +980,7 @@ capabilities.setCapability("app", "https://github.com/appium/app.apk");
                   </code></pre>
 
                   <aside class="notes">
-                    <p>Technically, all Appium scripts call out to a server. So you can think of them as all being remote, even if you are hosting the server on your own local machine. But if your script is going to talk to Sauce Labs, then it needs a couple of other additional items to be setup. First, we'll need to edit the "app" desired cap to point to where the application is hosted which can pretty uch be anywhere. You can host it on a digitalocean or aws webserver, you can host it locally and then use Sacue Connect, or you can upload it to Sauce storage. Second, we'll need to authenticate with Sauce Labs. And lastly, we'll need to set additional desired capabilities, which defines what device and OS combination we will use, as well as the version of the OS and appium itself.</p>
+                    <p>Technically, all Appium scripts call out to a server. So you can think of them as all being remote, even if you are hosting the server on your own local machine. But if your script is going to talk to Sauce Labs, then it needs a couple of other additional items to be setup. First, we'll need to edit the "app" desired cap to point to where the application is hosted which can pretty much be anywhere. You can host it on a digitalocean or aws webserver, you can host it locally and then use Sacue Connect, or you can upload it to Sauce storage. Second, we'll need to authenticate with Sauce Labs. And lastly, we'll need to set additional desired capabilities, which defines what device and OS combination we will use, as well as the version of the OS and appium itself.</p>
                   </aside>
                 </section>
 
@@ -1008,7 +1008,7 @@ public static final String ACCESS_KEY = "b89b7205-3aca-4af2-9c7bded";
                 </section>
 
                 <section>
-                    <h3>Sauce Labs Authentication cont.</h3>
+                    <h3>Sauce Labs Authentication, con't.</h3>
                     <p>Sauce Labs Authentication</p>
                     <ul>
                       <li>Username</li>
@@ -1121,7 +1121,7 @@ https://saucelabs.com/rest/v1/storage/&#60;sauce_username&#62;/&#60;upload_filen
                 <h3>Lab: Running a Script on Sauce Labs</h3>
                 <ol>
                   <li>Run the script.</li>
-                  <li>Open the "Automated Tests" tab on saucelabs.com.</li>
+                  <li>Open the Automated Tests tab on saucelabs.com.</li>
                   <li>What do you notice?</li>
                   <li>What after-test options are available?</li>
                 </ol>
@@ -1156,7 +1156,7 @@ WebElement messageElement = wait.until(ExpectedConditions.
 
                     <p> There are many situations in which your test script may run ahead of the website or application you're testing, resulting in timeouts and a failing test. For example, you may have a dynamic content element that, after a user clicks on it, a loading appears for five seconds. If your script isn't written in such a way as to account for that five second load time, it may fail because the next interactive element isn't available yet. The general recommended solution for this is to use explicit waits.</p>
 
-                    <p>Implicit and Explicit waits shouldn't be confused with TouchAction waits. the TouchAction waitAction() is actually waiting whil doing an action, rather than waiting for an element to appear. It is for the touch, not the test.</p>
+                    <p>Implicit and Explicit waits shouldn't be confused with TouchAction waits. the TouchAction waitAction() is actually waiting while doing an action, rather than waiting for an element to appear. It is for the touch, not the test.</p>
                   </aside>
                 </section>
 
@@ -1167,22 +1167,22 @@ WebElement messageElement = wait.until(ExpectedConditions.
                   <p>The lab needs to:</p>
                   <ul>
                     <li>go to this site and experience mobile browser testing</li>
-                    <li>or apply this in the native app test script we'v been working in.</li>
+                    <li>or apply this in the native app test script we'v been working in</li>
                   </ul>
                   <p>----------------------------------------</p>
                   <ol>
-                    <li>Open a browser and go to <a href="http://the-internet.herokuapp.com/dynamic_loading" target="_blank">http://the-internet.herokuapp.com/dynamic_loading</a>.</li>
-                    <li>Click on each example.</li>
+                    <li>Open a browser and go to <a href="http://the-internet.herokuapp.com/dynamic_loading" target="_blank">http://the-internet.herokuapp.com/dynamic_loading</a></li>
+                    <li>Click on each example</li>
                     <li>What's going to happen with our test if we don't set a wait for these elements?</li>
                   </ol>
                 </section>
 
                 <section data-state="lab">
-                  <h3>Lab: Testing Waits (cont.)</h3>
+                  <h3>Lab: Testing Waits, con't</h3>
                   <ol>
                     <li>Open the script in your preferred editor.</li>
-                    <li>Change the script driver.get URL to <a href="http://the-internet.herokuapp.com/dynamic_loading/2" target="_blank">http://the-internet.herokuapp.com/dynamic_loading/2</a>.</li>
-                    <li>Write an explicit wait for a locator for the "Hello World" until it appears.</li>
+                    <li>Change the script driver.get URL to <a href="http://the-internet.herokuapp.com/dynamic_loading/2" target="_blank">http://the-internet.herokuapp.com/dynamic_loading/2</a></li>
+                    <li>Write an explicit wait for a locator for the "Hello World" until it appears</li>
                   </ol>
                 </section>
 
@@ -1213,7 +1213,7 @@ WebElement messageElement = wait.until(ExpectedConditions.
                     <li>Reporting</li>
                   </ul>
                   <aside class="notes">
-                    <p>Ok so what does that mean? It's essentially just a bunch of additional libraries we can use in conjunction with our script for several cases:</p>
+                    <p>It's essentially just a bunch of additional libraries we can use in conjunction with our script for several cases:</p>
                     <li>Record your data - Frameworks often have, or can have a way for you to output the results of your test scripts for you, rather than writing them by hand</li>
                     <li>Talk to external applications - you can include external libraries in your framework to talk to and send results to places like Sauce Labs</li>
                     <li>Parallelization - facilitates the running of your script on several different platform configurations at the same time, saving you time overall.</li>
@@ -1366,7 +1366,7 @@ public void the_feeling_is(String arg1) throws Throwable {
 
                 <section>
                   <section>
-                    <h3>Asserts:</h3>
+                    <h3>Asserts</h3>
                     <p>A testing framework directive that assumes a value to be true, and stops the test and/or throws an error if false.</p>
 
                     <pre><code class="java" data-trim contenteditable>
@@ -1405,17 +1405,17 @@ public void the_feeling_is(String arg1) throws Throwable {
                   <section data-state="lab">
                     <h3>Lab: Asserting Your Greatness</h3>
                     <ol>
-                      <li>Open the assert script in your preferred text editor.</li>
-                      <li>Add an assert that makes sure that the title of the guinea pig page is "I am a page title - Sauce Labs".</li>
-                      <li>Add an assert that makes sure that the checkbox is checked (true).</li>
-                      <li>Run the script.</li>
+                      <li>Open the assert script in your preferred text editor</li>
+                      <li>Add an assert that makes sure that the title of the guinea pig page is "I am a page title - Sauce Labs"</li>
+                      <li>Add an assert that makes sure that the checkbox is checked (true)</li>
+                      <li>Run the script</li>
                     </ol>
                   </section>
 
                 <section>
                   <h3>Record your Results with Sauce Labs</h3>
                   <ul>
-                  <li>Use the update_job method in the Sauce Labs REST API after the test has run.</li>
+                  <li>Use the update_job method in the Sauce Labs REST API after the test runs</li>
                   <p></p>
                   <li>Use the Java Helper library; it will automatically send pass/fail results to Sauce Labs</li>
                   <p></p>
@@ -1433,7 +1433,7 @@ public void the_feeling_is(String arg1) throws Throwable {
                   <ol>
                     <li>Add the appropriate library or dependency to the imports or POM</li>
                     <li>Write the lines that will send the right feedback to Sauce Labs</li>
-                    <li>Look in saucelabs.com.</li>
+                    <li>Look in saucelabs.com</li>
                   </ol>
                   <aside class="notes">
 
@@ -1490,7 +1490,7 @@ public void the_feeling_is(String arg1) throws Throwable {
 
                    <section>
                      <h3>Unit Testing</h3>
-                     <p>Unit tests are written from a developer persepective to ensure a menthod or function performs a set of tasks.</p>
+                     <p>Unit tests are written from a developer persepective to ensure a method or function performs a set of tasks.</p>
 
                      <aside class="notes">
                        <p>Unit testing focuses on testing very small parts of the application, going down to the basic functions and methods</p>
@@ -1607,7 +1607,7 @@ public void the_feeling_is(String arg1) throws Throwable {
                      <ul>
                        <li>Code reuse across tests; reuse common element interactions</li>
                        <li>Abstraction: With product change, only change one piece of code</li>
-                       <li>Cross-platform tests: abstract your application element objects that exist across iOS and Android.</li>
+                       <li>Cross-platform tests: abstract your application element objects that exist across iOS and Android</li>
                      </ul>
                      <aside class="notes">
                        <p>
@@ -1636,7 +1636,7 @@ public void enterCommentText(String text){
 }
                      </code></pre>
                      <aside class="notes">
-                       <p>So in this example here, we are abtracting the locating, of the textbox, and the insertion of text into it. We're making the locating and sending it inputs all in one go, all in one object.</p>
+                       <p>In this example, we are abtracting the locating, of the textbox, and the insertion of text into it. We're making the locating and sending it inputs all in one go, all in one object.</p>
                      </aside>
                    </section>
 
@@ -1677,7 +1677,7 @@ public void enterCommentText(String text){
 }
                      </code></pre>
                      <aside class="notes">
-                       <p>This is a good example of abstraction. We've made the signin page into it's own object that we can now refer to, and do so on the next line, when we login, passing a username and password value.</p>
+                       <p>This is a good example of abstraction. We've made the signin page into its own object that we can now refer to, and do so on the next line, when we login, passing a username and password value.</p>
                      </aside>
                    </section>
                 </section>
@@ -1685,13 +1685,13 @@ public void enterCommentText(String text){
                    <section>
                      <h3>Parallelization</h3>
                      <p>Avoid dependencies between tests</p>
-                     <ul><li>If you chain tests together, when one at the top fails, then they will all fail.</li></ul>
+                     <ul><li>If you chain tests together, when one at the top fails, then they will all fail</li></ul>
                      <p>Use Frameworks</p>
-                     <ul><li>Frameworks include helpful libraries and functionality that can help you make the most of parallelization.</li></ul>
+                     <ul><li>Frameworks include helpful libraries and functionality that can help you make the most of parallelization</li></ul>
                      <aside class="notes">
-                       <p>Running tests in parallel is the secret Sauce for accelerating your development process and creating a continuous integration/continuous delivery pipeline.</p>
+                       <p>Running tests in parallel is the secret Sauce for accelerating your development process and creating a continuous integration/continuous delivery pipeline</p>
                        <p>One of the main features that Sauce Labs offers is parallelization, the ability to run serveral scripts at once on a variety of platforms. Since tests and commands are sent remotely, these tests take longer to run individually, but with parallelization, we can run them all at once. That is, we can start them all at the same time, which cuts down on the total time tests would normally take, saving time and money for your teams and business.</p>
-                       <p>It's good to avoid dependencies between tests. This goes along with the atomic testing strategy, where we want to create autonomous tests, so that they don't depend on each other, and when one fails, then we know exactly what failed.</p>
+                       <p>It's good to avoid dependencies between tests. This goes along with the atomic testing strategy, where we want to create autonomous tests, so that they don't depend on each other, and when one fails, then we know exactly what failed</p>
                      </aside>
                    </section>
 
@@ -1723,12 +1723,12 @@ caps.setCapability("name","Java Remote Sample Test");
                    </section>
 
                    <section data-state="lab">
-                     <h3>Lab: Labelling and Naming our Tests</h3>
+                     <h3>Lab: Labeling and Naming our Tests</h3>
                      <ol>
-                       <li>Add a capability to name your test.</li>
-                       <li>Add a capability to include a build number for your test.</li>
-                       <li>Add a capability to include a tag for your test.</li>
-                       <li>Run the test script.</li>
+                       <li>Add a capability to name your test</li>
+                       <li>Add a capability to include a build number for your test</li>
+                       <li>Add a capability to include a tag for your test</li>
+                       <li>Run the test script</li>
                        <li>Open saucelabs.com. How does your test look different on the Automated Tests tab?</li>
                      </ol>
                      <aside class="notes">There's also a way to set your own build number as well</aside>
