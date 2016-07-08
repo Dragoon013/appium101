@@ -62,10 +62,10 @@
                 <h1>Appium 101</h1>
 
                 <p style="text-align:center">
-	              <small>Created by Jacob Teal</small>
+	              <small><i>Testing at the speed of awesome</i></small>
                 </p>
 
-                <p style="text-align:center">
+                <p style="text-align:center;">
                   <small>
                     <small>Using Reveal.js</small>
                   </small>
@@ -213,7 +213,7 @@
 
                 <section>
 				  <h3>What is Appium?</h3>
-                  <p>Developed in 2011 by Dan Cuellar, the Test Manager at Zoosk.</p>
+                  <p>Open source mobile application automation framework developed in 2011 by Dan Cuellar, the Test Manager at Zoosk.</p>
 				  <p>Uses UIAutomation Framework to run in real time like an interpreter.</p>
                   <ul>
                     <li>Simulate mobile gestures</li>
@@ -229,20 +229,20 @@
 				</section>
 
                 <section>
-				  <h3>Local vs. Remote Appium Tests</h3>
+				  <h3>Local vs. Sauce Labs Appium Tests</h3>
 
                   <div style="float:left;width:50%;" class="centered">
                     <p>Local:</p>
                       <ul>
-                        <li>Requires Appium Server</li>
+                        <li>Requires Appium Server running locally or remotely</li>
                         <li>iOS development requires Xcode tools</li>
                         <li>Need all the libraries and images to run device simulators/emulators</li>
                     </ul>
                   </div>
                   <div style="float:right;width:50%;padding-right:0px;">
-                    <p>Remote:</p>
+                    <p>Sauce Labs:</p>
                     <ul>
-                      <li>Appium server is remote</li>
+                      <li>Appium server is remote and provisioned for you</li>
                       <li>Device images and virtualization</li>
                       <li>Parallelization</li>
                       <li>Record Results</li>
@@ -325,6 +325,21 @@
                 </section>
 
                 <section>
+                  <h3>4 Pillars of Appium Philosophy</h3>
+                  <p>Appium was designed to meet mobile automation needs according to a philosophy outlined by the following four tenets:</p>
+                  <ol>
+                    <li>You shouldn't have to recompile or modify your app to automate it.</li>
+                    <li>You shouldn't be restricted to a specific language or framework to write and run your tests.</li>
+                    <li>Appium shouldn't reinvent the wheel when it comes to automation APIs.</li>
+                    <li>Appium should be open source.</li>
+                  </ol>
+                  <aside class="notes">
+                   <p>Appium is a bundle of all of the specific language bindings that allow a client to send information to automation libraries that have been developed by Google and Apple. The appium library converts language specific commands to the commands that those automation libraries understand, which then performs acions on mobile devices.</p>
+                   <p>Since Selenium was already created, and had a client webdriver and api, appium didn't want to reinvent the wheel and create what would essentially be the same thing. So that's why Appium is built on top of Selenium.</p>
+                  </aside>
+                </section>
+
+                <section>
 				  <h3>Appium Nuts and Bolts</h3>
                  <div style="text-align:center;">
                     <img src="assets/images/AppiumGears.png" style="border:0; background:none; width:50%">
@@ -389,7 +404,7 @@
                   <h3>Testing on Mac OS X Operating Systems</h3>
                   <p>Requirements:</p>
                   <ul>
-                    <li>Requires Max OS X >= 10.7</li>
+                    <li>Requires Mac OS X</li>
                     <li>Xcode >= 7.1 recommended</li>
                     <li>iOS SDK(s)</li>
                     <li>Authorize iOS</li>
@@ -434,19 +449,19 @@
                 </section>
 
                 <section>
-				  <h3>How Appium WebDriver Works</h3>
+				  <h3>How Appium Works</h3>
                   <p>
                     <ol>
                       <li>Write script</li>
-                      <li>Run script - Sends commands to Appium Webserver via Appium Client library</li>
+                      <li>Run script - Sends commands to Appium Server via Appium Client library</li>
                       <li>Appium Server sends commands to mobile simulator/emulator</li>
                       <li>Appium Server sends results back</li>
                       <li>(On Sauce Labs) Test Assets are created</li>
                     </ol>
                   </p>
                   <aside class="notes">
-                    <p>So first, we need to actually write our test script. When we go to run it, the Appium Client library that we used to will connect and send the commands to the local or remote appium webserver. Our script and the commands we write in it all talk to the REST API on the Appium server, via HTTP requests.</p>
-                    <p>The webserver then sends those commands to the device, and then collects and sends the results back via and HTTP response.</p>
+                    <p>So first, we need to actually write our test script. When we go to run it, the Appium Client library that we used to will connect and send the commands to the local or remote appium server. Our script and the commands we write in it all talk to the REST API on the Appium server, via HTTP requests.</p>
+                    <p>The appium server then sends those commands to the device, and then collects and sends the results back via and HTTP response.</p>
                     <p>Our script then takes those results, and it's up to us to pass those results onto Sauce Labs, or deal with them locally.</p>
                     <p>If we run this test using sauce labs, then one more additional step will be done, which is to create the test records, so the video recoridng, screenshots, and logs.</p>
                   </aside>
@@ -454,7 +469,7 @@
 
                 <section>
                   <section>
-				    <h3>Basic Steps of a Appium Script</h3>
+				    <h3>Basic Steps of an Appium Script</h3>
 				    <div style="position:left;float:left;">
                       <img src="assets/images/7Steps.png" style="border:none; background:none; width:50%">
                     </div>
@@ -462,11 +477,11 @@
                       <p>
                         <ol>
                           <li>Set the Desired Capabilities (or Set the Application Path)</li>
-                          <li>Creating an Instance of the Appium WebDriver Interface</li>
+                          <li>Starting an Appium Session</li>
                           <li>Locating an Element in the Application</li>
-                          <li>Performning an Action on an Application Element</li>
+                          <li>Performing an Action on an Application Element</li>
                           <li>Anticipating Application Response</li>
-                          <li>Running Tests and Recording Test Results</li>
+                          <li>Validating Responses and Reporting Test Results</li>
                           <li>Concluding a Test</li>
                         </ol>
                       </p>
@@ -479,9 +494,19 @@
                   <section>
 				    <h3>1. Set the Desired Capabilities</h3>
 
+                    <p>Web Browser</p>
+                    <pre><code class="java" data-trim contenteditable>
+                    capabilities.setCapability("platformName", "Android");
+capabilities.setCapability("platformVersion", "4.4");
+capabilities.setCapability("deviceName", "Android Emulator");
+capabilities.setCapability("browserName", "Chrome");
+                    </code></pre>
+                    <p>Native/Hybrid</p>
                       <pre><code class="java" data-trim contenteditable>
-                          capabilities.setCapability("deviceName", "Nexus_5X_API_23");
-capabilities.setCapability("app", "/path/to/app/ContactManager.apk");
+                          capabilities.setCapability("platformName", "Android");
+capabilities.setCapability("platformVersion", "4.4");
+capabilities.setCapability("deviceName", "Android Emulator");
+capabilities.setCapability("app", "https://github.com/appium/app.apk");
                       </code></pre>
 
                     <aside class="notes">
@@ -491,7 +516,7 @@ capabilities.setCapability("app", "/path/to/app/ContactManager.apk");
 				  </section>
 
                   <section>
-                    <h3>2. Appium WebDriver</h3>
+                    <h3>2. Starting an Appium Session</h3>
                     <p>Android</p>
                       <pre><code class="java" data-trim contenteditable>
                           AndroidDriver&#60;MobileElement&#62; driver = new AndroidDriver&#60;MobileElement&#62;(
@@ -500,7 +525,7 @@ capabilities.setCapability("app", "/path/to/app/ContactManager.apk");
                       </code></pre>
                       <p>iOS</p>
                       <pre><code class="java" data-trim contenteditable>
-                          IOSDriver driver&#60;MobileElement&#62; = new IOSDriver&#60;MobileElement&#62;(
+                          IOSDriver&#60;MobileElement&#62; driver = new IOSDriver&#60;MobileElement&#62;(
     new URL("http://localhost:4723/wd/hub"),
     capabilities);
                       </code></pre>
@@ -536,6 +561,11 @@ android.widget.TextView[10]"/&#62;
                         <img src="assets/images/app_elems.png" style="border:0; background:none;">
                       </div>
                     </div>
+
+                    <aside class="notes">
+                      <p>DEMO: Show how to get the xml by using the getPageSource() in a println().</p>
+                      <p>May want to use this to grab the structure of a page without the GUI, or if you want to know what it is like at a certain point if something isn't working as correctly.</p>
+                    </aside>
                   </section>
 
                   <section>
@@ -549,16 +579,17 @@ android.widget.TextView[10]"/&#62;
                     <div style="float:left;width:50%;" class="centered">
                       <li>ID</li>
                         <li>Class Name</li>
-                        <li>Tag Name</li>
+                        <li><s>Tag Name</s></li>
                     </div>
                     <div style="float:right;width:50%;padding-right:0px;">
-                      <li>Link Text</li>
-                        <li>Partial Linktext</li>
-                        <li>CSS</li>
+                      <li><s>Link Text</s></li>
+                        <li><s>Partial Linktext</s></li>
+                        <li><s>CSS</s></li>
                         <li>XPath</li>
                     </div>
                     <aside class="notes">
-
+                      <p>All of the identifiers listed hear are from selenium. When testing mobile browser or hybrid applications, they can still be used.</p>
+                      <p>But for native application testing, the crossed out identifiers can't be used.</p>
                     </aside>
                   </section>
 
@@ -567,20 +598,25 @@ android.widget.TextView[10]"/&#62;
 
                     <div style="float:left;width:50%;" class="centered">
                       <p>Android: </p>
-                      <li>UI Automator class</li>
-                      <li>-android uiautomator</li>
-                      <li>Accessibility id</li>
-                      <ul><li>content-description</li></ul>
+                      <ul>
+                        <li>UI Automator element class name</li>
+                        <li>-android uiautomator</li>
+                        <li>Accessibility id</li>
+                        <ul><li>content-description</li></ul>
+                      </ul>
                     </div>
 
                     <div style="float:right;width:50%;padding-right:0px;">
                       <p>iOS:</p>
-                      <li>UI Automation class</li>
-                      <li>-ios uiautomation</li>
-                      <li>Accessibility identifier</li>
+                      <ul>
+                        <li>UI Automation element class name</li>
+                        <li>-ios uiautomation</li>
+                        <li>Accessibility identifier</li>
+                      </ul
                     </div>
 
                     <aside class="notes">
+                      <p>Instead, we can use the OS specific Identifiers.</p>
                       <p>The automation classes provide a way to collect or search for particular elements through the UI class.</p>
                       <p>Appium exposes two methods of using the underlying device automation technology directly, in order to find elements. This is especially useful when a test needs some fine-grained control over finding elements. These are the android automator and ios automation frameworks.</p>
                       <p>content-description: <pre style="display:inline;">android:contentDescription=”@string/pause”/></pre></p>
@@ -600,6 +636,7 @@ touch.tap(newGameBtn).perform();
                       </code>
                     </pre>
                     <aside class="notes">
+                      <p>click() and tap() are pretty  much the same. In fact, when using the appium client library, the click() uses the underlying touch software to perform what is equivalent to a tap() touch.</p>
                     </aside>
                   </section>
 
@@ -621,7 +658,7 @@ touch.tap(newGameBtn).perform();
                   </section>
 
                   <section>
-                    <h3>6. Running Tests and Recording Test Results</h3>
+                    <h3>6. Validating Responses and Reporting Test Results</h3>
 
                      <div style="float:left;width:50%;" class="centered">
                        <ul>
@@ -632,7 +669,7 @@ touch.tap(newGameBtn).perform();
                      </div>
                      <div style="float:right;width:50%;padding-right:0px;">
                        <ul style="list-style-position: outside; margin-left= 1em">
-                         <li>Record test results with Sauce Labs</li>
+                         <li>Test results automatically recorded with Sauce Labs</li>
                          <ul>
                            <li>Logs</li>
                            <li>Screencasts</li>
@@ -708,22 +745,13 @@ touch.tap(newGameBtn).perform();
 
                   <section>
                     <h3>Android Locators</h3>
-                    <p>UI Automator class</p>
+                    <p>UI Automator class name</p>
                     <pre><code class="java" data-trim contenteditable>
                         textView = driver.findElementByClassName("android.widget.TextView");
                     </code></pre>
                     <p>Acessibility id</p>
                     <pre><code class="java" data-trim contenteditable>
-                        newGameBtn = findElementByAccessibilityId(
-    "com.google.android.divideandconquer:id/newGameBtn");
-                    </code></pre>
-                    <p>-android uiautomator</p>
-                    <pre><code class="java" data-trim contenteditable>
-                        UiDevice device = UiDevice.getInstance(getInstrumentation());
-UiObject cancelButton = device
-    .findObject(new UiSelector()
-    .text("Cancel"))
-    .className("android.widget.Button"));
+                        newGameBtn = findElementByAccessibilityId("New Game");
                     </code></pre>
                     <aside class="notes">
                       <p>In the mobile environment, ids are not, as in WebDriver, CSS ids, but rather some form of native identifier. For Android, the id is the element’s android:id.</p>
@@ -731,8 +759,29 @@ UiObject cancelButton = device
                   </section>
 
                   <section>
+                    <h3>Android Locators cont.</h3>
+
+                    <p>-android uiautomator</p>
+
+                    <li>UIAutomator language</li>
+                    <pre><code class="java" data-trim contenteditable>
+                        UiDevice device = UiDevice.getInstance(getInstrumentation());
+UiObject cancelButton = device
+    .findObject(new UiSelector()
+    .text("Cancel"))
+    .className("android.widget.Button"));
+                    </code></pre>
+
+                    <li>Appium script</li>
+                    <pre style="width:95%"><code class="java" data-trim contenteditable>
+                        WebElement cancelButton = driver.findElementsByAndroidUIAutomator(
+     "new UiSelector().text("Cancel").className("android.widget.Button")");
+                    </code></pre>
+                  </section>
+
+                  <section>
                     <h3>iOS Locators</h3>
-                    <p>UI Automation class</p>
+                    <p>UI Automation class name</p>
                     <pre><code class="java" data-trim contenteditable>
                         MobileElement fieldTwo = (MobileElement) driver.
     findElementsByClassName("UIATextField").get(1);
@@ -742,16 +791,33 @@ UiObject cancelButton = device
                         MobileElement fieldOne = (MobileElement) driver.
     findElementByAccessibilityId("TextField1");
                     </code></pre>
-                    <p>-ios uiautomation</p>
-                    <pre><code class="java" data-trim contenteditable>
-                        var textField = UIATarget.localTarget().
-    frontMostApp().mainWindow().textFields()["User Text"];
-                    </code></pre>
+
                     <aside class="notes">
                       <p>
                         For iOS the IDs are a little complicated. Appium will first search for an accessibility id that matches. If there is none found, a string match will be attempted on the element labels. Finally, if the id passed in is a localization key, it will search the localized string. For Android, the id is the element’s android:id.</p>
                     </aside>
                   </section>
+
+                <section>
+                  <h3>iOS Locators cont.</h3>
+                  <p>-ios uiautomation</p>
+                  <li>UIAutomation JavaScript API script</li>
+                  <pre><code class="java" data-trim contenteditable>
+                      UIATarget.localTarget().frontMostApp().mainWindow()" +
+    ".scrollViews()[0].cells()
+    .firstWithPredicate(\"name matches 'Sign In'\");
+                  </code></pre>
+
+                  <li>Appium script (Java)</li>
+                  <pre><code class="java" data-trim contenteditable>
+                      String uiautoFind = "UIATarget.localTarget().frontMostApp().mainWindow()" +
+    ".scrollViews()[0].cells()
+    .firstWithPredicate(\"name matches 'Sign In'\")";
+driver.findElementByIosUIAutomation(uiautoFind);
+
+driver.executeScript(uiautoFind + ".scrollToVisible();");
+                  </code></pre>
+                </section>
                 </section>
 
                 <section>
@@ -847,13 +913,21 @@ UiObject cancelButton = device
                 <section>
                   <h3>Switching Contexts</h3>
 
-                  <pre style="width:50%;"><code class="java" data-trim contenteditable>
-                        driver.switchTo().window("NATIVE_APP");
-driver.switchTo().window("WEBVIEW");
+                  <pre><code class="java" data-trim contenteditable>
+                      Set&#60;String&#62; contextNames = driver.getContextHandles();
+
+for (String contextName : contextNames){
+    if (context == "NATIVE_APP")
+        driver.switchTo().window("WEBVIEW_1");
+    }else if(context == "WEBVIEW_1"){
+        driver.switchTo().window("NATIVE_APP");
+    }
+}
                     </code></pre>
                   <aside class="notes">
                     <p>If you are working on hybrid testing, or if you are a testing a functionality of your native app that requires switching contexts, then you will need to know the swtichTo() function.</p>
                     <p>A context is generally going to be either a webview or your native application.</p>
+                    <p>When working with a hybrid app, you can work with more than 1 webview. Gernerally, best practice is to get a list of the webviews that you have available, and then switch to the proper webview context by name.</p>
                   </aside>
                 </section>
 
@@ -894,7 +968,7 @@ driver.switchTo().window("WEBVIEW");
                   <h3>Sauce Labs Appium Script Pre-Reqs</h3>
                   <ul>
                     <li>Use Sauce Labs storage or another online location to host the application</li>
-                    <li>Sauce Labs Authentication (API)</li>
+                    <li>Sauce Labs Authentication</li>
                     <li>Desired Capabilities</li>
                   </ul>
                   <pre><code class="java" data-trim contenteditable>
@@ -913,7 +987,7 @@ capabilities.setCapability("app", "https://github.com/appium/app.apk");
                 <section>
                 <section>
                   <h3>Sauce Labs Authentication</h3>
-                  <p>The script uses the Sauce Labs API to authenticate the user and record results against that user's profile</p>
+                  <p>Sauce labs authentication in your test script verifies the user and records test results against that user's profile</p>
 
                     <li>Environment Variables</li>
                     <pre><code class="zsh" data-trim contenteditable>
@@ -934,8 +1008,8 @@ public static final String ACCESS_KEY = "b89b7205-3aca-4af2-9c7bded";
                 </section>
 
                 <section>
-                    <h3>Sauce Labs Authentication</h3>
-                    <p>Sauce Labs API Authentication</p>
+                    <h3>Sauce Labs Authentication cont.</h3>
+                    <p>Sauce Labs Authentication</p>
                     <ul>
                       <li>Username</li>
                       <li>Access Key</li>
@@ -957,7 +1031,7 @@ public static void main(){
                     </code></pre>
                     </div>
                     <aside class="notes">
-
+                      <p>Sauce labs authenticates with the ondemand URL, which includes your user name and access key, to start an appium test session using sauce labs.</p>
                     </aside>
                   </section>
                 </section>
@@ -972,13 +1046,13 @@ public static void main(){
                     <li>deviceName</li>
                     <li>app</li>
                     <li>browserName</li>
+                    <li>appiumVersion</li>
                     </ul>
                   </div>
                   <div style="float:right;width:50%;padding-right:0px;">
                     <p>Optional:</p>
                     <ul>
                     <li>deviceOrientation</li>
-                    <li>appiumVersion</li>
                     <li>appActivity</li>
                     </ul>
                   </div>
@@ -988,6 +1062,7 @@ public static void main(){
 capabilities.setCapability("platformName", "Android");
 capabilities.setCapability("platformVersion", "4.4");
 capabilities.setCapability("browserName", "");
+capabilities.setCapability("appiumVersion", "1.5.3");
 capabilities.setCapability("deviceName", "Android Emulator");
 capabilities.setCapability("app", "https://github.com/appium/app.apk");
                   </code></pre>
@@ -1002,6 +1077,14 @@ capabilities.setCapability("app", "https://github.com/appium/app.apk");
                       <li>Locally hosted webserver</li>
                       <li>Remote host: AWS, DigitalOcean, Github, etc</li>
                     </ul>
+
+                    <pre style="width:110%"><code class="zsh" data-trim contenteditable>
+                        curl -u &#60;sauce_username&#62;:&#60;sauce_access_key&#62;
+-X POST -H "Content-Type: application/octet-stream"
+https://saucelabs.com/rest/v1/storage/&#60;sauce_username&#62;/&#60;upload_filename&#62;?overwrite=true
+--data-binary @&#60;path/to/your_file_name&#62;
+
+                    </code></pre>
 
                     <aside class="notes">
                       <p>DEMO or Labs here. Maybe incorporate into the general lab that comes after this?</p>
@@ -1071,7 +1154,9 @@ WebElement messageElement = wait.until(ExpectedConditions.
 
                   <aside class="notes">
 
-                    There are many situations in which your test script may run ahead of the website or application you're testing, resulting in timeouts and a failing test. For example, you may have a dynamic content element that, after a user clicks on it, a loading appears for five seconds. If your script isn't written in such a way as to account for that five second load time, it may fail because the next interactive element isn't available yet. The general recommended solution for this is to use explicit waits.
+                    <p> There are many situations in which your test script may run ahead of the website or application you're testing, resulting in timeouts and a failing test. For example, you may have a dynamic content element that, after a user clicks on it, a loading appears for five seconds. If your script isn't written in such a way as to account for that five second load time, it may fail because the next interactive element isn't available yet. The general recommended solution for this is to use explicit waits.</p>
+
+                    <p>Implicit and Explicit waits shouldn't be confused with TouchAction waits. the TouchAction waitAction() is actually waiting whil doing an action, rather than waiting for an element to appear. It is for the touch, not the test.</p>
                   </aside>
                 </section>
 
@@ -1151,17 +1236,17 @@ WebElement messageElement = wait.until(ExpectedConditions.
                     <li>RSpec</li>
                     <li>Cucumber</li>
 
-
+                  </div>
                   <div style="float:right;width:50%;padding-right:0px;">
                     <p><strong>Python:</strong></p>
                     <li>Robot</li>
                     <li>UnitTest</li>
+                    <li>Nose</li>
 
                     <p><strong>JavaScript:</strong></p>
                     <li>Protractor</li>
                     <li>Nightwatch</li>
-
-                  </div>
+                    <li>Mocha</li>
                   </div>-->
                   <aside class="notes">
 
@@ -1285,7 +1370,7 @@ public void the_feeling_is(String arg1) throws Throwable {
                     <p>A testing framework directive that assumes a value to be true, and stops the test and/or throws an error if false.</p>
 
                     <pre><code class="java" data-trim contenteditable>
-                        assertTrue(compassBtn.clickable.value, true);
+                        assertTrue(compassBtn.clickable.value);
                     </code></pre>
 
                     <aside class="notes">
@@ -1432,19 +1517,35 @@ public void the_feeling_is(String arg1) throws Throwable {
                 </section>
 
                 <section>
-                  <h3>Real vs. Virtual Testing</h3>
+                  <h3>Real vs. Simulator/Emulator Testing</h3>
 
                   <div style="float:left;width:50%;" class="centered">
                     <p>Real</p>
-
+                    <ul>
+                      <li>Test hardware</li>
+                      <li>Test speed fluctuates</li>
+                      <li>Expensive</li>
+                      <li>Testing on real device</li>
+                      <li>Difficult to set up</li>
+                    </ul>
                   </div>
 
                   <div style="float:right; width:50%; padding-right:0px;">
-                    <p>Virtual</p>
-
+                    <p>Simulator/Emulator</p>
+                    <ul>
+                      <li>Consistently reproducible</li>
+                      <li>Parallelization</li>
+                      <li>Less expensive</li>
+                      <li>Easier to set up and do on your own</li>
+                      <li>Setting language, location, turn off popup blocking, etc.</li>
+                    </ul>
                   </div>
                   <aside class="notes">
-                    <p></p>
+                    <p>Beyond the highlevel testing types, theres what you're actually testing on. Should you test on real devices, or use a simulator/emulator?</p>
+                    <p>There's a lot to be said for both!</p>
+                    <p>You're going to find that your real device testing will be more expensive that testing on a simulator or emulator, whether you set it up yourself or not. It's also more difficult to set up for yourself. Of course, that can be mitigated by testing with Sauce Labs real devices. If you need to test how hardware responds or test hardware capabilities that your app uses, then real device testing is the way to go.</p>
+                    <p>Testing on a Simulator or emulator is going to be easier to set up on your own though. With Sauce Labs, there's no set up at all, but also, your tests will be more reproducible. Sauce Labs spins up a completely new and clean emulator/simulator for every test you run. So you know you are starting from the same baseline everytime. With real devices, it's harder to get that clean slate every time you run a test.</p>
+                    <p>There are a plethora of additional pros as well, including parallelization, cheaper cost to set up and buy, and setting particular options on a simulated device that isn't possible when testing on a real one.</p>
                   </aside>
                 </section>
 
@@ -1505,12 +1606,14 @@ public void the_feeling_is(String arg1) throws Throwable {
                     <p>Page Objects</p>
                      <ul>
                        <li>Code reuse across tests; reuse common element interactions</li>
-                     <li>Abstraction: With product change, only change one piece of code</li>
+                       <li>Abstraction: With product change, only change one piece of code</li>
+                       <li>Cross-platform tests: abstract your application element objects that exist across iOS and Android.</li>
                      </ul>
                      <aside class="notes">
                        <p>
                          Sometimes we interact with particular elements in our application repeatedly. The nature of applications is that they change over time as well. Instead of writing the same code for the same interacctions, we can add a level of abstraction with page objects.
                        </p>
+                       <p>Cross-platform: allows you to use the same tests when you have an app in both ios and android.</p>
                      </aside>
                    </section>
 
@@ -1593,6 +1696,16 @@ public void enterCommentText(String text){
                    </section>
 
                    <section>
+                     <h3>Debugging</h3>
+                     <p>What to look for:</p>
+                     <ul>
+                       <li>Errors in your app, Sauce Labs UI, Appium Server</li>
+                       <li>Look at the test output, Appium logs, logcat, Android or iOS logs</li>
+                       <li>Use the pageGetSource() command to see struture of app at that moment of error</li>
+                     </ul>
+                   </section>
+
+                   <section>
                      <h3>Label Your Tests</h3>
                      <p>
                        <li>ID tests</li>
@@ -1628,6 +1741,8 @@ caps.setCapability("name","Java Remote Sample Test");
                    <section>
                      <h3>Further Information</h3>
                      <li><a href="http://appium.io/slate/en/master/" target="_blank">Appium Documentation</a></li>
+                     <li><a href="https://github.com/appium/appium/issues" target="_blank">Appium Issue Tracker</a></li>
+                     <li><a href="https://github.com/appium/sample-code/tree/master/sample-code/examples" target="_blank">Appium Sample Test Scripts</a></li>
                      <li><a href="https://wiki.saucelabs.com/display/DOCS/The+Sauce+Labs+Cookbook+Home" target="_blank">Sauce Labs Documentation</a></li>
                      <li><a href="https://github.com/saucelabs-sample-scripts" target="_blank">Sauce Labs Sample Test Scripts</a></li>
                      <li><a href="https://github.com/saucelabs-sample-test-frameworks" target="_blank">Sauce Labs Sample Test Frameworks</a></li>
