@@ -696,17 +696,29 @@ touch.tap(newGameBtn).perform();
                   </section>
                 </section>
 
+                <section>
+                  <section data-state="lab">
+                    <h3>Lab 1: Set-up</h3>
+                    <ol>
+                      <li>Double-click on the Android_virtual_device.bat file on the desktop to start the AVD.</li>
+                      <li>Double-click on the Appium desktop icon.</li>
+                      <li>After the device has loaded, press the play button on the Appium GUI.</li>
+                      <li>Open Eclipse from the desktop shortcut.</li>
+                    </ol>
+                  </section>
+
                   <section data-state="lab">
                     <h3>Lab 1: Running the Sample Appium Script</h3>
 
-<!--                    <ol>
-                      <li>Navigate to the sample script.</li>
-                      <li>Open the script in your favorite emulator.</li>
-                      <li>Make a note of the device/platform we are going to use.</li>
-                      <li>Run</li>
+                    <ol>
+                      <li>In the Eclipse package explorer left hand side panel, local-java-testng-appium-android > src/test/java > com.yourcompany > Local_SampleSauceTest.java.</li>
+                      <li>Note the identified WebElement, and the we are enacting upon it..</li>
+                      <li>Right click on java-testng-simple and select Run As > 9 Maven test.</li>
+                      <li>Click on the device and Appium icons on the toolbar.</li>
                       <li>What did you see happen? How did it happen?</li>
-                    </ol>-->
+                    </ol>
                   </section>
+                </section>
 
 <!--Writing Appium Scripts Module-->
                 <section data-background="rgb(226, 35, 26)">
@@ -720,7 +732,7 @@ touch.tap(newGameBtn).perform();
                   <h3>Module Objectives</h3>
                   <p>This module enables you to:</p>
                   <ul>
-                    <li>Understand the difference between testing Android and iOS apps locally</li>
+                    <li>Identify elements in your application structure</li>
                     <li>Write actions into your Appium test script</li>
                     <li>Run a local Appium Android test</li>
                   </ul>
@@ -817,7 +829,40 @@ driver.findElementByIosUIAutomation(uiautoFind);
 
 driver.executeScript(uiautoFind + ".scrollToVisible();");
                   </code></pre>
+
+                  <aside class="notes">
+                    <p>DEMO: show how you can find elements using the Inpspector. It won't work on their windows instance (only stays up for 60secs). So we demo on our local comp. But show correlation between getPageSource() XML and the inspector.</p>
+                  </aside>
                 </section>
+                </section>
+
+                <section>
+                <section data-state="lab">
+                  <h3>Lab 2. Getting the Page Source</h3>
+                  <ol>
+                    <li>Restart the Appium Server.</li>
+                    <li>Bring Eclipse to the foreground.</li>
+                    <li>In Local_SampleSauceTest.java, write in the following line of code in the line after the button tap.</li>
+                    <pre style="width:58%;"><code class="java" data-trim contenteditable>
+                        System.out.println(driver.getPageSource);
+                    </code></pre>
+                    <li>Run the test.</li>
+                    <li>Note the XML that apears in the Eclipse console.</li>
+                  </ol>
+                  <aside class="notes">
+                    <p>As part of this lab, manually go through the app and show where we are trying to navigate to: Touch Paint. When we take a look at the xml before any scrolling we can see that it is not in the view, and we will need to scroll down before we can find the element.</p>
+                    <p></p>
+                  </aside>
+                </section>
+
+                  <section data-state="lab">
+                    <h3>Lab 2. Analyzing the Page Source</h3>
+                    <ol>
+                      <li>Go to your desktop and open the folder called "XML Inspector Examples".</li>
+                      <li>Double-click on the file called "beforeScrollTo".</li>
+                      <li>Note the formatted XML. Can you recognize elements in the XML that appear in the application?</li>
+                    </ol>
+                  </section>
                 </section>
 
                 <section>
@@ -931,23 +976,97 @@ for (String contextName : contextNames){
                   </aside>
                 </section>
 
-                <section data-state="lab">
-                  <h3>Lab 2: Writing Actions</h3>
-                  <p>Lab needs to:</p>
-                  <ul>
-                    <li>locate elems</li>
-                    <li>perform gestures (at least two, maybe a multitouch and a normal touch)</li>
-                    <li>switch contexts? maybe</li>
-                  </ul>
-                  <!--
-                  <ol>
-                    <li>Open the script in your preferred text editor.</li>
-                    <li>If you have not done so, change the <pre style="display:inline">driver.get("URL")</pre> to <pre style="display:inline">driver.get("http://saucelabs.github.io/training-test-page/")</pre>.</li>
-                    <li>Locate the Comments textbox on the page, and send it some string values.</li>
-                    <li>Locate the send button, and click it to send your comment.</li>
-                    <li>Uncomment and fill the while loop with commands that locate and toggle the checkboxes on the page.</li>
-                  </ol>-->
+
+              <section>
+                  <h3>Explicit and Implicit Waits</h3>
+
+                  <p>Implicit Waits</p>
+                  <pre>
+                    <code data-trim contenteditable class="java">
+                      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+                    </code>
+                  </pre>
+
+                  <p>Explicit Waits</p>
+                  <pre>
+                    <code class="java" data-trim contenteditable>
+//additional libs required
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+//usage
+WebDriverWait wait = new WebDriverWait(driver, 10);
+WebElement messageElement = wait.until(ExpectedConditions.
+        presenceOfElementLocated(By.id("loginResponse")));
+                    </code>
+                  </pre>
+
+                  <aside class="notes">
+
+                    <p> There are many situations in which your test script may run ahead of the website or application you're testing, resulting in timeouts and a failing test. For example, you may have a dynamic content element that, after a user clicks on it, a loading appears for five seconds. If your script isn't written in such a way as to account for that five second load time, it may fail because the next interactive element isn't available yet. The general recommended solution for this is to use explicit waits.</p>
+
+                    <p>Implicit and Explicit waits shouldn't be confused with TouchAction waits. the TouchAction waitAction() is actually waiting while doing an action, rather than waiting for an element to appear. It is for the touch, not the test.</p>
+                  </aside>
                 </section>
+
+              <section>
+                <section data-state="lab">
+                  <h3>Lab 3: Action!</h3>
+                  <ol>
+                    <li>Restart the Appium Server.</li>
+                    <li>In the application, we need to <pre style="display:inline;">click()</pre> or <pre style="display:inline;">tap()</pre> on the "Touch Paint" option.</li>
+                    <li>In Local_SampleSauceTest.java, add in a <pre style="display:inline;">scrollTo()</pre> below our <pre style="display:inline;">println</pre>.</li>
+                    <pre style="width:54%;"><code class="java" data-trim contenteditable>
+                        driver.scrollTo("Touch Paint").click();
+                    </code></pre>
+                  </ol>
+                  <aside class="notes">
+                    <p>scrollTo() is a WebDriver action - that is, it comes from the Selenium library, and will scroll down on the apge until it finds an item that has the text string that is the argument.</p>
+                    <p>If you wanted to use tap, what would we have to change or add to our script?</p>
+                    <p>In this lab, our goal is to bring up the Touch Paint activity in the application, and then proceed to perform actions on the app.</p>
+                  </aside>
+                </section>
+
+                <section data-state="lab">
+                  <h3>Lab 3: Actions! cont.</h3>
+                  <ol>
+                    <li>Uncomment the three TouchAction objects (eye1, eye2, smile).</li>
+                    <li>Uncomment the <pre style="display:inline;">smile.press()</pre> column of <pre style="display:inline;">moveTo()</pre> actions.</li>
+                    <li>Below the TouchAction objects, insert a line that will initiate a press at x=150 and y=100 (150,100).</li>
+                    <li>Add an action to release the touch at the end of the press.</li>
+                    <li>Add a <pre style="display:inline;">perform()</pre> action to the end of the press and release sequence.</li>
+                    <li>Repeat steps 3-5 at x=250 and y=100.</li>
+                    <li>Save the script and run the test.</li>
+                  </ol>
+                  <aside class="notes">
+                    <pre><code class="java" data-trim contenteditable>
+                        eye1.press(150, 100).release().perform().waitAction(500);
+eye2.press(250, 100).release().perform().waitAction(500);
+                    </code></pre>
+
+                    <p>The test should fail after the "Touch Paint" option has been clicked.</p>
+                  </aside>
+                </section>
+
+                <section data-state="lab">
+                  <h3>Lab 3: Waiting...</h3>
+                  <ol>
+                    <li>Restart the Appium Server.</li>
+                    <li>We need to implement a wait to give the Touch Paint activity time to load.</li>
+                    <li>Below the AndroidDriver object, write an explicit WebDriver wait, that will wait for 10 seconds.</li>
+                    <li>Uncomment the <pre style="display:inline;">wait.until()</pre> line.</li>
+                    <li>Save the script and rerun the test.</li>
+                    <li>What do you see on your application screen?</li>
+                  </ol>
+                  <aside class="notes">
+                    <p>Show where they could find the id "title" that they can use to identify the view screen that needs to load before they do the touch actions.</p>
+                    <p></p>
+                    <pre><code class="java" data-trim contenteditable>
+                        wait.until(ExpectedConditions.visibilityOf(driver.findElementById("title")));
+                    </code></pre>
+                  </aside>
+                </section>
+              </section>
 
 <!-- Running an Appium Script with Sauce Labs Module-->
                 <section data-background="rgb(226, 35, 26)">
@@ -1082,35 +1201,47 @@ capabilities.setCapability("app", "https://github.com/appium/app.apk");
                         curl -u &#60;sauce_username&#62;:&#60;sauce_access_key&#62;
 -X POST -H "Content-Type: application/octet-stream"
 https://saucelabs.com/rest/v1/storage/&#60;sauce_username&#62;/&#60;upload_filename&#62;?overwrite=true
---data-binary @&#60;path/to/your_file_name&#62;
+--data-binary @&#60;path/to/myApp.apk&#62;
+                    </code></pre>
 
+                    <pre style="width:110%"><code class="zsh" data-trim contenteditable>
+                        capabilities.setCapability("app", "sauce-storage:myApp.apk");
                     </code></pre>
 
                     <aside class="notes">
                       <p>DEMO or Labs here. Maybe incorporate into the general lab that comes after this?</p>
+                      <p><mark>After seven days, all assets are cleared from your Sauce Storage.</mark></p>
                     </aside>
                 </section>
 
-                  <section data-state="lab">
-                    <h3>Lab 3: Testing on Sauce Labs</h3>
-                    <p>Lab needs to:</p>
-                    <ul>
-                      <li>upload app to sauce storage</li>
-                      <li>Use the platform configurator</li>
-                      <li>add desired caps to initial sample script</li>
-                    </ul>
+                <section>
+                <section data-state="lab">
+                  <h3>Lab 4: Testing Sauce Labs</h3>
+                  <ol>
+                    <li>Open a browser and log into <a href="https://saucelabs.com" target="_blank">saucelabs.com</a>.</li>
+                    <li>Go to "My Account" from the lower left drop-up menu and copy your access key.</li>
+                    <li>In the Eclipse package explorer left hand side panel, open remote-java-testng-appium-android > src/test/java > com.yourcompany > Remote_SampleSauceTest.java</li>
+                    <li>Copy your access key into the script for the ACCESS_KEY variable.</li>
+                    <li>Fill out the USERNAME variable with the correct value for your account.</li>
+                  </ol>
+                  <aside class="notes">
+                    <p>We aren't going to use sauce storage in this course, so for now we are going to just point to an apk that we will grab directly from the github repository.</p>
+                    <p>note that we have about the same script that we had before, but just a few more desired capabilities and additional variables and parts that we will be working with for the rest of the course.</p>
 
-                  </section>
+                  </aside>
+                </section>
 
                 <section data-state="lab">
-                  <h3>Lab: Platform Configurator</h3>
-                  <p>Need to set the app path to Sauce Storage location, or another online location</p>
-                  <p>Use same format of copying code from the platform configurator.</p>
-                     <ol>
-                    <li>Open the script in your preferred editor.</li>
-                    <li>Create a DesiredCapabilities Chrome browser object.</li>
-                    <li>Set the platform to "Mac OS X 10.9".</li>
-                    <li>Set the version (for the Chrome browser) to 43.0.</li>
+                  <h3>Lab 4: The Platform Configurator</h3>
+                  <ol>
+                    <li>Note the DesiredCapabilities object in Remote_sampleSauceTest.java.</li>
+                    <li>Open a browser to the <a href="https://wiki.saucelabs.com/display/DOCS/Platform+Configurator#/" target="_blank">Platform Configurator</a> shortcut.</li>
+                    <li>Set the API to "Appium".</li>
+                    <li>Set the Device to "Android Emulator Phone"</li>
+                    <li>Set the Operating System to "Android 4.4".</li>
+                    <li>Set the Appium Version to "1.4.16".</li>
+                    <li>Set the Web or App Testing to "App Testing"</li>
+                    <li>Copy and paste the missing required lines into your script.</li>
                   </ol>
                   <aside class="notes">
                     <p></p>
@@ -1118,73 +1249,15 @@ https://saucelabs.com/rest/v1/storage/&#60;sauce_username&#62;/&#60;upload_filen
                 </section>
 
               <section data-state="lab">
-                <h3>Lab: Running a Script on Sauce Labs</h3>
+                <h3>Lab 4: Running the Script on Sauce Labs</h3>
                 <ol>
-                  <li>Run the script.</li>
-                  <li>Open the Automated Tests tab on saucelabs.com.</li>
+                  <li>Save and run the script.</li>
+                  <li>Open the Automated Tests tab on <a href="https://saucelabs.com" target="_blank">saucelabs.com</a>.</li>
                   <li>What do you notice?</li>
                   <li>What after-test options are available?</li>
                 </ol>
               </section>
-
-              <!-- New Sample Script to introduce-->
-              <section>
-                  <h3>Explicit and Implicit Waits</h3>
-
-                  <p>Implicit Waits</p>
-                  <pre>
-                    <code data-trim contenteditable class="java">
-                      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-                    </code>
-                  </pre>
-
-                  <p>Explicit Waits</p>
-                  <pre>
-                    <code class="java" data-trim contenteditable>
-//additional libs required
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-//usage
-WebDriverWait wait = new WebDriverWait(driver, 10);
-WebElement messageElement = wait.until(ExpectedConditions.
-        presenceOfElementLocated(By.id("loginResponse")));
-                    </code>
-                  </pre>
-
-                  <aside class="notes">
-
-                    <p> There are many situations in which your test script may run ahead of the website or application you're testing, resulting in timeouts and a failing test. For example, you may have a dynamic content element that, after a user clicks on it, a loading appears for five seconds. If your script isn't written in such a way as to account for that five second load time, it may fail because the next interactive element isn't available yet. The general recommended solution for this is to use explicit waits.</p>
-
-                    <p>Implicit and Explicit waits shouldn't be confused with TouchAction waits. the TouchAction waitAction() is actually waiting while doing an action, rather than waiting for an element to appear. It is for the touch, not the test.</p>
-                  </aside>
-                </section>
-
-
-                <section data-state="lab">
-                  <h3>Lab 4: Testing Waits</h3>
-
-                  <p>The lab needs to:</p>
-                  <ul>
-                    <li>go to this site and experience mobile browser testing</li>
-                    <li>or apply this in the native app test script we'v been working in</li>
-                  </ul>
-                  <p>----------------------------------------</p>
-                  <ol>
-                    <li>Open a browser and go to <a href="http://the-internet.herokuapp.com/dynamic_loading" target="_blank">http://the-internet.herokuapp.com/dynamic_loading</a></li>
-                    <li>Click on each example</li>
-                    <li>What's going to happen with our test if we don't set a wait for these elements?</li>
-                  </ol>
-                </section>
-
-                <section data-state="lab">
-                  <h3>Lab: Testing Waits, con't</h3>
-                  <ol>
-                    <li>Open the script in your preferred editor.</li>
-                    <li>Change the script driver.get URL to <a href="http://the-internet.herokuapp.com/dynamic_loading/2" target="_blank">http://the-internet.herokuapp.com/dynamic_loading/2</a></li>
-                    <li>Write an explicit wait for a locator for the "Hello World" until it appears</li>
-                  </ol>
-                </section>
+</section>
 
 <!-- Introduction to Testing Frameworks-->
                 <section data-background="rgb(226, 35, 26)">
@@ -1222,32 +1295,38 @@ WebElement messageElement = wait.until(ExpectedConditions.
 
                 <section>
                   <h3>Popular Frameworks</h3>
-
+<!--
                     <div style="float:right;width:50%;padding-right:25%;"><img src="assets/images/PopularFrameworks.png" style="border:0; text-align:center; background:none;">
-                  </div>
 
+              </div>
+-->
 
-                  <!--<div style="float:left;width:50%;" class="centered">
+                  <div style="float:left;width:50%;" class="centered">
                     <p><strong>Java:</strong></p>
+                    <ul>
                     <li>TestNG</li>
                     <li>JUnit</li>
-
+                    </ul>
                     <p><strong>Ruby:</strong></p>
+                    <ul>
                     <li>RSpec</li>
                     <li>Cucumber</li>
-
+                    </ul>
                   </div>
                   <div style="float:right;width:50%;padding-right:0px;">
                     <p><strong>Python:</strong></p>
+                    <ul>
                     <li>Robot</li>
                     <li>UnitTest</li>
                     <li>Nose</li>
-
+                    </ul>
                     <p><strong>JavaScript:</strong></p>
+                    <ul>
                     <li>Protractor</li>
                     <li>Nightwatch</li>
                     <li>Mocha</li>
-                  </div>-->
+                    </ul>
+                  </div>
                   <aside class="notes">
 
                     <p>JavaScript:</p>
@@ -1332,25 +1411,34 @@ public void the_feeling_is(String arg1) throws Throwable {
 
                 <section>
                   <h3>BDD Frameworks</h3>
-                  <!--<div style="float:left;width:50%;" class="centered">
+                  <div style="float:left;width:50%;" class="centered">
                     <p>Python:</p>
+                    <ul>
                     <li>Behave</li>
                     <li>Lettuce</li>
-
+                      </ul>
                     <p>JavaScript:</p>
+                    <ul>
                     <li>CucumberJS</li>
+                    </ul>
                   </div>
 
                   <div style="float:right;width:50%;padding-right:0px;">
                     <p>Java:</p>
+                    <ul>
                     <li>CucumberJVM</li>
-
+                    </ul>
                     <p>Ruby:</p>
+                    <ul>
                     <li>Cucumber</li>
-                  </div>-->
-                   <div style="float:right;width:50%;padding-right:25%;"><img src="assets/images/BDDFrameworks.png" style="border:0; text-align:center; background:none;">
+                    </ul>
                   </div>
-                  <aside class="notes">
+
+<!--
+                  <div style="float:right;width:50%;padding-right:25%;"><img src="assets/images/BDDFrameworks.png" style="border:0; text-align:center; background:none;">
+                  </div>
+                  -->
+              <aside class="notes">
 
                     <p>JavaScript:</p>
                     <li>CucumberJS</li>
@@ -1402,15 +1490,33 @@ public void the_feeling_is(String arg1) throws Throwable {
                   </section>
                 </section>
 
+                <section>
                   <section data-state="lab">
-                    <h3>Lab: Asserting Your Greatness</h3>
+                    <h3>Lab 5: Assertions</h3>
                     <ol>
-                      <li>Open the assert script in your preferred text editor</li>
-                      <li>Add an assert that makes sure that the title of the guinea pig page is "I am a page title - Sauce Labs"</li>
-                      <li>Add an assert that makes sure that the checkbox is checked (true)</li>
-                      <li>Run the script</li>
+                      <li>In the remote script, write in a line to print out the page source after the WebElement title variable.</li>
+                      <li>Save the script and run the test.</li>
+                      <li>Copy and paste the resulting line of XML into a formatter. <a href="www.freeformatter.com/xml-formatter.html" target="_blank">www.freeformatter.com/xml-formatter.html</a></li>
+                      <li>Find the widget with a resource-id of "title".</li>
+                      <li>Note that element has a text field value equal to "Graphics/Touch Paint".</li>
                     </ol>
+                    <aside class="notes">
+                      <p>We want to make sure that our script ends up where it needs to go. In order to do so, we are going search for the text descriptor for the touch Paint activity we are performing actions on.</p>
+                    </aside>
                   </section>
+
+                  <section data-state="lab">
+                    <h3>Lab 5: Assertions cont.</h3>
+                    <ol>
+                      <li>Write an assertEquals assertion that uses the <pre style="display:inline;">getText()</pre> function on the title WebElement object.</li>
+                      <li>The assertEquals assertion should compare the value of <pre style="display:inline;">title.getText()</pre> to the expected value, namely "Graphics/Touch Paint"</li>
+                      <li>Save the script and run the test.</li>
+                    </ol>
+                    <aside class="notes">
+                      <p>What's the most likely reason an assert like this one would fail? A: the expected string value is misspelled.</p>
+                    </aside>
+                  </section>
+                </section>
 
                 <section>
                   <h3>Record your Results with Sauce Labs</h3>
@@ -1429,11 +1535,16 @@ public void the_feeling_is(String arg1) throws Throwable {
                 </section>
 
                 <section data-state="lab">
-                  <h3>Lab: Record Keeping</h3>
+                  <h3>Lab 6: Record Keeping</h3>
                   <ol>
-                    <li>Add the appropriate library or dependency to the imports or POM</li>
-                    <li>Write the lines that will send the right feedback to Sauce Labs</li>
-                    <li>Look in saucelabs.com</li>
+                    <li>Open the Remote script for editing.</li>
+                    <li>Uncomment the <pre style="display:inline;">id</pre> variable under the AndroidDriver line.</li>
+                    <li>Uncomment the AfterMethod function at the bottom of the script.</li>
+                    <li>Save the script and run the test.</li>
+                    <li>Open the Remote script for editing.</li>
+                    <li>Change the expected string in the assertEquals to "Graphics/Touch Banana".</li>
+                    <li>Save the script and run the test.>
+                    <li>Open the saucelabs.com UI. What has changed about the test results?</li>
                   </ol>
                   <aside class="notes">
 
@@ -1723,13 +1834,13 @@ caps.setCapability("name","Java Remote Sample Test");
                    </section>
 
                    <section data-state="lab">
-                     <h3>Lab: Labeling and Naming our Tests</h3>
+                     <h3>Lab 7: Labeling and Naming our Tests</h3>
                      <ol>
-                       <li>Add a capability to name your test</li>
-                       <li>Add a capability to include a build number for your test</li>
-                       <li>Add a capability to include a tag for your test</li>
-                       <li>Run the test script</li>
-                       <li>Open saucelabs.com. How does your test look different on the Automated Tests tab?</li>
+                       <li>Open the Remote script for editing.</li>
+                       <li>Add a capability to name your test.</li>
+                       <li>Add a capability to include a build number for your test.</li>
+                       <li>Run the test script.</li>
+                       <li>Open saucelabs.com. How does your test look different on the Automated Tests tab? The builds tab?</li>
                      </ol>
                      <aside class="notes">There's also a way to set your own build number as well</aside>
                    </section>
