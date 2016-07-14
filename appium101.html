@@ -541,8 +541,37 @@ capabilities.setCapability("app", "https://github.com/appium/app.apk");
     capabilities);
                       </code></pre>
                     <aside class="notes">
+
+                      <p>These two drivers both inherit from the general Appium driver class, and add in functions that are useful for testing in the context of their operating systems, such as the UIAutomation and UIAutomator classes, for iOS and Android, respectively.</p>
                       <p>These two examples we have here are both for starting tests with a local Appium Server and emulator/simulator.</p>
                       <p>Note that the URL goes to localhost:4723, which is the default address for a local appium server. The driver object stores the URL to pass along commands to, and also passes along the capabilities the test needs.</p>
+                    </aside>
+                  </section>
+
+                  <section>
+                    <h3>Different Drivers</h3>
+                    <div style="float:left;width:50%;" class="centered">
+                      <ul>
+                        <li>RemoteWebDriver</li>
+                        <li>AppiumDriver</li>
+                      </ul>
+                    </div>
+                    <div style="float:right;width:50%;padding-right:0px;">
+                      <ul>
+                        <li>AndroidDriver</li>
+                        <li>IOSDriver</li>
+                      </ul>
+                    </div>
+                    <aside class="notes">
+                      <p>These are the different kinds of drivers that are generally available, when testing with Appium or even Selenium. It's important to know the differences between them.</p>
+                      <p>RemoteWebDriver: This driver class comes directly from the upstream Selenium project. This where initializing the driver means making network requests to a Selenium hub to start a driver session. Since Appium operates on the client-server model, Appium uses this to initialize a driver session. However, since we are doing mobile testing, using the RemoteWebDriver is not recommended since there are other drivers available that offer additional features or convenience functions.</p>
+
+                      <p>AppiumDriver: This driver class inherits from the RemoteWebDriver class, but it adds in additional functions that are useful in the context of a mobile automation test through the Appium server.</p>
+
+                      <p>AndroidDriver: This driver class inherits from AppiumDriver, but it adds in additional functions that are useful in the context of a mobile automation test on Android devices through Appium. Only use this driver class if you want to start a test on an Android device or Android emulator.</p>
+
+                      <p>IOSDriver: This driver class inherits from AppiumDriver, but it adds in additional functions that are useful in the context of a mobile automation test on iOS devices through Appium. Only use this driver class if you want to start a test on an iOS device or iOS emulator.</p>
+                      <p>All over these Appium or mobile drivers build on the original Selenium RemoteWebDriver, and then add in their own additional functionalities.</p>
                     </aside>
                   </section>
 
@@ -779,6 +808,7 @@ touch.tap(newGameBtn).perform();
                         newGameBtn = driver.findElementByAccessibilityId("New Game");
                     </code></pre>
                     <aside class="notes">
+                      <p>Android has an automation framework called UI Automator. We can identify elements by their UI Automator framework class names.</p>
                       <p>In the mobile environment, ids are not, as in WebDriver, CSS ids, but rather a kind of native identifier. For Android, the accessbility id is one of the easiest ways to identify an element. findElementByAccessibilityId() maps to the "content-desc" value of an android element.</p>
                     </aside>
                   </section>
@@ -825,8 +855,8 @@ UiObject cancelButton = device
                     </code></pre>
 
                     <aside class="notes">
-                      <p>
-                        For iOS the IDs are a little complicated. Appium will first search for an accessibility id that matches. If there is none found, a string match will be attempted on the element labels. Finally, if the id passed in is a localization key, it will search the localized string. For Android, the id is the element’s android:id.</p>
+                      <p>Similar to android, one way we can find an element or set of elements in iOS is through the UIAutomation class name. In our example here, we are selecting the the elements with the class name UIATextField, and then selecting the second element in the resulting list. Hence, that is why fieldTwo is the name of our MobileElement variable.</p>
+                        <p>For iOS the IDs are a little complicated. Appium will first search for an accessibility id that matches. If there is none found, a string match will be attempted on the element labels. Finally, if the id passed in is a localization key, it will search the localized string.</p>
                     </aside>
                   </section>
 
@@ -846,19 +876,18 @@ UiObject cancelButton = device
     ".scrollViews()[0].cells()
     .firstWithPredicate(\"name matches 'Sign In'\")";
 driver.findElementByIosUIAutomation(uiautoFind);
-
-driver.executeScript(uiautoFind + ".scrollToVisible();");
                   </code></pre>
 
                   <aside class="notes">
                     <p>DEMO: show how you can find elements using the Inpspector. It won't work on their windows instance (only stays up for 60secs). So we demo on our local comp. But show correlation between getPageSource() XML and the inspector.</p>
+                    <p>Similar to the Android UI Automator framework iOS has one called UIautomation. And it's purpose is the same - to automate iOS apps. So appium takes in the native uiautomation syntax as a string and then takes that string as an arugment in driver.findElementbyiosuiautomation.</p>
                   </aside>
                 </section>
                 </section>
 
                 <section>
                 <section data-state="lab">
-                  <h3>Lab 2. Getting the Page Source</h3>
+                  <h3>Lab 2: Getting the Page Source</h3>
                   <ol>
                     <li>Restart the Appium Server.</li>
                     <li>Bring Eclipse to the foreground.</li>
@@ -876,7 +905,7 @@ driver.executeScript(uiautoFind + ".scrollToVisible();");
                 </section>
 
                   <section data-state="lab">
-                    <h3>Lab 2. Analyzing the Page Source</h3>
+                    <h3>Lab 2: Analyzing the Page Source</h3>
                     <ol>
                       <li>Go to your desktop and open the folder called "XML Inspector Examples".</li>
                       <li>Double-click on the file called "beforeScrollTo".</li>
@@ -894,7 +923,7 @@ driver.executeScript(uiautoFind + ".scrollToVisible();");
                       <li>Perform actions by invoking the driver, and then a gesture action that is performed on an element</li>
                     </ul>
                     <aside class="notes">
-
+                      <p>So once we locate our elements, there are a couple of different ways we can go about performing actions on them. You can use a lot of the standard actions like click() and scrollTo() that come with the Selenium WebDriver libraries, but we're going to focus on how you can use some Touch, or mobile specific gestures.</p>
                     </aside>
                   </section>
 
@@ -906,7 +935,8 @@ driver.executeScript(uiautoFind + ".scrollToVisible();");
                     </code></pre>
 
                     <aside class="notes">
-                      <p>The TouchAction object requires the driver object to be passed into it.</p>
+                      <p>The main class that we will use today to implement touch gestures or actions on our elements is the Touch Action class.</p>
+                      <p>A new TouchAction object requires the driver object to be passed into it. Let's take a look at some specific actions we can use.</p>
                     </aside>
                   </section>
 
@@ -914,23 +944,28 @@ driver.executeScript(uiautoFind + ".scrollToVisible();");
                     <h3>Gesture Actions</h3>
                     <p>press(x, y)</p>
                     <pre><code class="java" data-trim contenteditable>
-                        touch.press(150, 100).perform();
+                        //press(org.openqa.selenium.WebElement el, int x, int y)
+touch.press(btnElem, 150, 100).perform();
                     </code></pre>
 
                     <p>moveTo(+x, +y)</p>
                     <pre><code class="java" data-trim contenteditable>
-                        touch.press(10, 200).moveTo(1, 1).perform();
+                        //moveTo(org.openqa.selenium.WebElement el, int x, int y)
+touch.press(10, 200).moveTo( 1, 1).perform();
                     </code></pre>
 
                     <p>tap(element)</p>
                     <pre><code class="java" data-trim contenteditable>
-                        touch.tap(buttonElem).perform();
+                        //tap(org.openqa.selenium.WebElement el, int x, int y)
+touch.tap(btnElem).perform();
                     </code></pre>
 
                     <aside class="notes">
-                      <p></p>
-                      <p></p>
-                      <p></p>
+                      <p>So first, we have a press(), which places a "finger" on the screen. In this particular case, we are giving it specific coordinates to press. But we could also pass it a webelement. Typically, we see these followed by a release(), which will withdraw the touch. I've inclduded the formal definition here, and it's important to note that you can use the element, and coordinates, or just coordinates or just an element. They can be used seperately. This will be true of the actions below this one as well.</p>
+                      <p>The moveTo() works differently depending on what arguments it has. If it has just coordinates, then it will move the touch to a new position relative to the current position. So if we moved starting from (10,200), and did a moveTo(1,1), we would end up where?</p>
+                      <p>Let them answer.</p>
+                      <p>Good! If moveTois just given an element, it will move the current touch to the center of the given element. And lastly if it has an element and coordinates, then it will move to that element, but the coordinate reference is set from the top left corner.</p>
+                      <p>Another action we have is tap, which is pretty straightforward. It's essentially a combination of a press() and a release(), just a quick tap on your screen.</p>
                     </aside>
                   </section>
 
@@ -938,12 +973,14 @@ driver.executeScript(uiautoFind + ".scrollToVisible();");
                     <h3>Other Gesture Actions</h3>
                     <p>waitAction(int ms)</p>
                     <pre><code class="java" data-trim contenteditable>
-                        action1.press(el1).waitAction(300).moveTo(10, 0).release();
+                        //waitAction(int ms)
+action1.press(el1).waitAction(300).moveTo(10, 0).release().perform();
                     </code></pre>
 
                     <p>longPress(x, y, duration)</p>
-                    <pre><code class="java" data-trim contenteditable>
-                        action.longPress(ele1).moveTo(x1,580).release().perform();
+                    <pre style="width:93%;"><code class="java" data-trim contenteditable>
+                        //longPress(org.openqa.selenium.WebElement el, int x, int y, int duration)
+action.longPress(ele1).moveTo(x1,580).release().perform();
                     </code></pre>
 
                     <p>perform()</p>
@@ -952,9 +989,11 @@ driver.executeScript(uiautoFind + ".scrollToVisible();");
                     </code></pre>
 
                     <aside class="notes">
-                      <p>Appium performs the events in sequence. You can add a wait event to control the timing of the gesture.</p>
-                      <p></p>
-                      <p></p>
+                      <p>Appium performs the touchaction events in sequence. It's also referred to as "chaining". You can add a wait event to control the timing of the gesture.</p>
+                      <p>The longPress works similarly to the other actions we've already seen, but unlike the regular press(), we can include a time argument. </p>
+                      <p>And lastly, we have the perform() function. This is what starts the long chain that is defined in front of it. Which is why all of my actions have performs on the end of them!</p>
+                      <p>It's generally best practice to create a new touch object for each touch sequence you make. So for every perform() you have, it should be done on a unique touchAction object.</p>
+                      <p>There are few more additional ones that you can use, but these are some the more important ones you should keep in mind when starting to write your appium tests.</p>
                     </aside>
                   </section>
 
@@ -970,7 +1009,9 @@ driver.executeScript(uiautoFind + ".scrollToVisible();");
     multiAction.add(finger1).add(finger2).perform();
                     </code></pre>
                     <aside class="notes">
+                      <p>And lastly for actions, we have Multitouches.</p>
                       <p>Multitouches require the MultiTouchAction class. The MultiTouchAction class takes in different touchaction objects, and then performs their actions.</p>
+                      <p>You can see that multitouches work very similarly to touchactions, as multitouches are made up of touchaction objects! But you can see the same chaining we used before is also implemented here.</p>
                     </aside>
                   </section>
                 </section>
@@ -995,7 +1036,6 @@ for (String contextName : contextNames){
                     <p>When working with a hybrid app, you can work with more than 1 webview. Generally, best practice is to get a list of the webviews that you have available, and then switch to the proper webview context by name.</p>
                   </aside>
                 </section>
-
 
               <section>
                   <h3>Explicit and Implicit Waits</h3>
@@ -1206,7 +1246,7 @@ capabilities.setCapability("deviceName", "Android Emulator");
 capabilities.setCapability("app", "https://github.com/appium/app.apk");
                   </code></pre>
                   </div>
-                  <aside class="notes">Lastly, with Sauce Labs, we can set up the script to run the test on several different platforms. We aren't limited to what we have locally. If we want to indicate more platforms combinations to test on, at the same time, we typically use a framework to enable that for us.</aside>
+                  <aside class="notes">With Sauce Labs, we can set up the script to run the test on several different platforms. We aren't limited to what we have locally. If we want to indicate more platforms combinations to test on, at the same time, we typically use a framework to enable that for us.</aside>
                 </section>
 
                 <section>
@@ -1306,10 +1346,9 @@ https://saucelabs.com/rest/v1/storage/&#60;sauce_username&#62;/&#60;upload_filen
                     <li>Reporting</li>
                   </ul>
                   <aside class="notes">
-                    <p>It's essentially just a bunch of additional libraries we can use in conjunction with our script for several cases:</p>
-                    <li>Record your data - Frameworks often have, or can have a way for you to output the results of your test scripts for you, rather than writing them by hand</li>
-                    <li>Talk to external applications - you can include external libraries in your framework to talk to and send results to places like Sauce Labs</li>
-                    <li>Parallelization - facilitates the running of your script on several different platform configurations at the same time, saving you time overall.</li>
+                    <p>Ok, what does that mean? It's essentially just a bunch of additional libraries we can use in conjunction with our script for several cases:</p>
+                    <li>Record your data: Frameworks often have, or can have a way for you to output the results of your test scripts for you, rather than writing them by hand</li>
+                    <li>Talk to external applications: you can include external libraries in your framework to talk to and send results to places like Sauce Labs</li>
                   </aside>
                 </section>
 
@@ -1424,7 +1463,7 @@ public void the_feeling_is(String arg1) throws Throwable {
 }
                   </code></pre>
                   <aside class="notes">
-                    <p>This is an example of using CucumberJVM, a BDD testing and code writing framework. We can see how we may write out functions for the Given, When, Then, example we filled out.</p>
+                    <p>This is an example of BDD using CucumberJVM, a BDD testing and code writing framework. We can see how we may write out functions for the Given, When, Then, example we filled out.</p>
                   </aside>
                 </section>
                 </section>
@@ -1482,7 +1521,7 @@ public void the_feeling_is(String arg1) throws Throwable {
                     </code></pre>
 
                     <aside class="notes">
-                      <p>A common element of Appium scripts are Asserts. Asserts come with whichever testing framwork that you have decided to work with. They generally check whether a particular value is true or not. For example, if the uncheckedboxed state returns true, then that means the assert will pass. It's basically the test itself. If an assert fails, that generally means the test has failed as well. We're going to try using asserts ourselves.</p>
+                      <p>A common element of Appium scripts are Asserts. Asserts come with whichever testing framwork that you have decided to work with. They generally check whether a particular value is true or not. For example, if the compassBtn is not clickable, then that means the assert will fail, and the test will fail as well. It's basically the test itself. If an assert fails, that generally means the test has failed as well.</p>
                     </aside>
                   </section>
 
@@ -1585,7 +1624,6 @@ public void the_feeling_is(String arg1) throws Throwable {
                     <li>Understand testing strategies for setting up automated testing</li>
                     <li>Label, name, and tag your tests to faciliate searching for past tests on Sauce Labs</li>
                   </ul>
-                  <aside class="notes"></aside>
                 </section>
 
                 <section>
