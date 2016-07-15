@@ -295,9 +295,10 @@
                   </ul>
                   <aside class="notes">
                     <p>Do the demo on Android!!! It will go faster than iOS.</p>
-                    <p>One thing to note about manual testing with Sauce Labs - you can't start a manual test with an application preloaded. There are a couple ways to get around this though. If you start a normal automated test, you can interrupt it, and take control of the app. And if you use Sauce Connect Proxy, then you can interact with a local emulator you may be running, that can have your app installed on it.</p>
+
                     <p>Traditionally, once your mobile browser application was ready to be tested, you would load it onto a physical device, and then test it with your own fingers. There are a few problems with that, namely, it takes a lot of time to do and you're limited to the devices you have. So then you can run your test manually on an emulator or simulator to take care of the device problem. But the issue of time, of someone physically clicking on the device emulator or phyiscally touching the device is a huge time suck.</p>
                     <p>With Sauce Labs, you can run manual tests without having to set up the infrastructure locally. This can help you with memory issues you may run into running simulators and emulators on your own local machine, and can give you a good way test out a mobile browser application on more devices than you could easily do locally.</p>
+                    <p>One thing to note about manual testing with Sauce Labs - you can't start a manual test with an application preloaded. There are a couple ways to get around this though. If you start a normal automated test, you can interrupt it, and take control of the app. And if you use Sauce Connect Proxy, then you can interact with a local emulator you may be running, that can have your app installed on it.</p>
                     <p>Manual Test Demo: </p>
                     <ol>
                       <li>Go to saucelabs.com</li>
@@ -360,7 +361,7 @@
                    <p>The Appium server is a Node.js webserver, that has an exposed REST API. It connects with the client, accepts commands, executes those commands on a mobile device, and then passes the results of those commands back in an HTTP response. The client/server architecture gives us a lot of freedom. It allows us to run the the server on a different machines than where we run our tests. This also allows Sauce Labs to run tests for you on their cloud service.</p>
                    <p>The Appium GUI is wrapped around an appium server, which means we don't have to worry about having Node installed on our system. It will come bundled with everything it needs to start up the server itself.</p>
                    <p>But most importantly, the Appium GUI comes with the Inspector, which allows you to look through the element hierarchy of your app. This can help when you are writing your tests, so you know exactly what sequence of actions, on the correct elements, to perform on the app.</p>
-                   <p>Today, we'll be using the GUI to run a local appium server, but the inspector on the GUI doesn't work very well on Windoes. I'll show you how useful it is in a module later on.</p>
+                   <p>Today, we'll be using the GUI to run a local appium server, but the inspector on the GUI doesn't work very well on Windoes. I'll show you how useful it is in a later module.</p>
                     <ul>
                       <li>Appium Server</li>
                       <li>WebDriver JSON wire protocol</li>
@@ -370,6 +371,16 @@
                       </ul>
                   </aside>
 				</section>
+
+                <section>
+                  <h3>UI Automator (Android)</h3>
+
+                </section>
+
+                <section>
+                  <h3>UI Automation (iOS)</h3>
+
+                </section>
 
                 <section>
                   <h3>Testing on Windows Operating Systems</h3>
@@ -564,7 +575,7 @@ capabilities.setCapability("app", "https://github.com/appium/app.apk");
                     </div>
                     <aside class="notes">
                       <p>These are the different kinds of drivers that are generally available, when testing with Appium or even Selenium. It's important to know the differences between them.</p>
-                      <p>RemoteWebDriver: This driver class comes directly from the upstream Selenium project. This where initializing the driver means making network requests to a Selenium hub to start a driver session. Since Appium operates on the client-server model, Appium uses this to initialize a driver session. However, since we are doing mobile testing, using the RemoteWebDriver is not recommended since there are other drivers available that offer additional features or convenience functions.</p>
+                      <p>RemoteWebDriver: This driver class comes directly from Selenium. Since Appium operates on the client-server model, Appium uses this to initialize a driver session. However, since we are doing mobile testing, using the RemoteWebDriver is not recommended since there are other drivers available that offer additional features or convenience functions.</p>
 
                       <p>AppiumDriver: This driver class inherits from the RemoteWebDriver class, but it adds in additional functions that are useful in the context of a mobile automation test through the Appium server.</p>
 
@@ -1092,16 +1103,16 @@ WebElement messageElement = wait.until(ExpectedConditions.
                   <ol>
                     <li>Uncomment the three TouchAction objects (eye1, eye2, smile).</li>
                     <li>Uncomment the <pre style="display:inline;">smile.press()</pre> column of <pre style="display:inline;">moveTo()</pre> actions.</li>
-                    <li>Below the TouchAction objects, insert a line that will initiate a press at x=150 and y=100 (150,100).</li>
+                    <li>Below the TouchAction objects, insert a line that will initiate a press at x=150 and y=100 (150,200).</li>
                     <li>Add an action to release the touch at the end of the press.</li>
                     <li>Add a <pre style="display:inline;">perform()</pre> action to the end of the press and release sequence.</li>
-                    <li>Repeat steps 3-5 at x=250 and y=100.</li>
+                    <li>Repeat steps 3-5 at x=250 and y=200.</li>
                     <li>Save the script and run the test.</li>
                   </ol>
                   <aside class="notes">
                     <pre><code class="java" data-trim contenteditable>
-                        eye1.press(150, 100).release().perform().waitAction(500);
-eye2.press(250, 100).release().perform().waitAction(500);
+                        eye1.press(150, 200).release().perform();
+eye2.press(250, 200).release().perform();
                     </code></pre>
 
                     <p>The test should fail after the "Touch Paint" option has been clicked.</p>
@@ -1150,16 +1161,9 @@ eye2.press(250, 100).release().perform().waitAction(500);
                     <li>Sauce Labs Authentication</li>
                     <li>Desired Capabilities</li>
                   </ul>
-                  <pre><code class="java" data-trim contenteditable>
-                      capabilities.setCapability("platformName", "Android");
-capabilities.setCapability("platformVersion", "4.4");
-capabilities.setCapability("browserName", "");
-capabilities.setCapability("deviceName", "Android Emulator");
-capabilities.setCapability("app", "https://github.com/appium/app.apk");
-                  </code></pre>
 
                   <aside class="notes">
-                    <p>Technically, all Appium scripts call out to a server. So you can think of them as all being remote, even if you are hosting the server on your own local machine. But if your script is going to talk to Sauce Labs, then it needs a couple of other additional items to be setup. First, we'll need to edit the "app" desired cap to point to where the application is hosted which can pretty much be anywhere. You can host it on a digitalocean or aws webserver, you can host it locally and then use Sacue Connect, or you can upload it to Sauce storage. Second, we'll need to authenticate with Sauce Labs. And lastly, we'll need to set additional desired capabilities, which defines what device and OS combination we will use, as well as the version of the OS and appium itself.</p>
+                    <p>Technically, all Appium scripts call out to a server. So you can think of them as all being remote, even if you are hosting the server on your own local machine. But if your script is going to talk to Sauce Labs, then it needs a couple of other additional items to be setup. First, we'll need to edit the "app" desired cap to point to where the application is hosted. Second, we'll need to authenticate with Sauce Labs. And lastly, we'll need to set additional desired capabilities, which defines what device and OS combination we will use, as well as the version of the OS and appium itself.</p>
                   </aside>
                 </section>
 
@@ -1549,33 +1553,20 @@ public void the_feeling_is(String arg1) throws Throwable {
                   </section>
                 </section>
 
-                <section>
-                  <section data-state="lab">
+                <section data-state="lab">
                     <h3>Lab 5: Assertions</h3>
                     <ol>
-                      <li>In the remote script, write in a line to print out the page source after the WebElement title variable.</li>
-                      <li>Save the script and run the test.</li>
-                      <li>Copy and paste the resulting line of XML into a formatter. <a href="www.freeformatter.com/xml-formatter.html" target="_blank">www.freeformatter.com/xml-formatter.html</a></li>
-                      <li>Find the widget with a resource-id of "title".</li>
-                      <li>Note that element has a text field value equal to "Graphics/Touch Paint".</li>
-                    </ol>
-                    <aside class="notes">
-                      <p>We want to make sure that our script ends up where it needs to go. In order to do so, we are going search for the text descriptor for the touch Paint activity we are performing actions on.</p>
-                    </aside>
-                  </section>
-
-                  <section data-state="lab">
-                    <h3>Lab 5: Assertions cont.</h3>
-                    <ol>
+                      <li>Note that the title of the Touch Paint activity is "Graphics/Touch Paint".</li>
                       <li>Write an assertEquals assertion that uses the <pre style="display:inline;">getText()</pre> function on the title WebElement object.</li>
                       <li>The assertEquals assertion should compare the value of <pre style="display:inline;">title.getText()</pre> to the expected value, namely "Graphics/Touch Paint"</li>
                       <li>Save the script and run the test.</li>
+
                     </ol>
                     <aside class="notes">
-                      <p>What's the most likely reason an assert like this one would fail? A: the expected string value is misspelled.</p>
+                      <p>We want to make sure that our script ends up where it needs to go. In order to do so, we are going search for the text descriptor for the touch Paint activity we are performing actions on.</p>
+                      <p>Demo the title as it appears in the applicaition. It should say Graphics/Touch Paint. Say that the getText() will get the text value of the title. If you feel inspired, you can open the inspector on your local machine to show the them the value of text is indeed what appears as the title.</p>
                     </aside>
                   </section>
-                </section>
 
                 <section>
                   <h3>Record your Results with Sauce Labs</h3>
