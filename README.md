@@ -25,3 +25,6 @@ server {
 
 * nginx -s reload
 * access the presentation at localhost:8000/appium101.html
+
+### Labs
+Labs are meant to be done first by the instructor, and then the students. Instead of running the script though, let the students complete the lab up to that point, then run the scripts together. This way they don't wait forever for your script to finish running before they even start on theirs.
