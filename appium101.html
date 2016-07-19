@@ -1317,11 +1317,11 @@ https://saucelabs.com/rest/v1/storage/&#60;sauce_username&#62;/&#60;upload_filen
                   <ol>
                     <li>Note the DesiredCapabilities object in Remote_sampleSauceTest.java.</li>
                     <li>Open a browser to the <a href="https://wiki.saucelabs.com/display/DOCS/Platform+Configurator#/" target="_blank">Platform Configurator</a> shortcut.</li>
-                    <li>Set the API to "Appium".</li>
-                    <li>Set the Device to "Android Emulator Phone"</li>
-                    <li>Set the Operating System to "Android 4.4".</li>
-                    <li>Set the Appium Version to "1.4.16".</li>
-                    <li>Set the Web or App Testing to "App Testing"</li>
+                    <li>Set the API to <b>Appium</b>.</li>
+                    <li>Set the Device to <b>Android Emulator Phone</b>.</li>
+                    <li>Set the Operating System to <b>Android 4.4</b>.</li>
+                    <li>Set the Appium Version to <b>1.4.16</b>.</li>
+                    <li>Set the Web or App Testing to <b>App Testing</b></li>
                     <li>Copy and paste the missing required lines into your script.</li>
                   </ol>
                   <aside class="notes">
@@ -1573,14 +1573,14 @@ public void the_feeling_is(String arg1) throws Throwable {
                 <section data-state="lab">
                     <h3>Lab 5: Assertions</h3>
                     <ol>
-                      <li>Note that the title of the Touch Paint activity is "Graphics/Touch Paint".</li>
+                      <li>Note that the title of the Touch Paint activity is <b>Graphics/Touch Paint</b>.</li>
                       <li>Write an assertEquals assertion that uses the <pre style="display:inline;">getText()</pre> function on the title WebElement object.</li>
                       <li>The assertEquals assertion should compare the value of <pre style="display:inline;">title.getText()</pre> to the expected value, namely "Graphics/Touch Paint"</li>
                       <li>Save the script and run the test.</li>
 
                     </ol>
                     <aside class="notes">
-                      <p>We want to make sure that our script ends up where it needs to go. In order to do so, we are going search for the text descriptor for the touch Paint activity we are performing actions on.</p>
+                      <p>We want to make sure that our script ends up where it needs to go. In order to do so, we search for the text descriptor for the touch Paint activity we are performing actions on.</p>
                       <p>Demo the title as it appears in the applicaition. It should say Graphics/Touch Paint. Say that the getText() will get the text value of the title. If you feel inspired, you can open the inspector on your local machine to show the them the value of text is indeed what appears as the title.</p>
                     </aside>
                   </section>
@@ -1596,7 +1596,7 @@ public void the_feeling_is(String arg1) throws Throwable {
 
                   </ul>
                   <aside class="notes">
-                    <p>So locally it's not an issue to record results, you can just print results to a file or on the console. But if we want to send details to Sauce Labs on whether a test has passed or failed, rather than just complete or not, we will have to use the Sauce Labs API or a test framework.
+                    <p>Locally it's not an issue to record results, you can just print results to a file or on the console. But if we want to send details to Sauce Labs on whether a test has passed or failed, rather than just complete or not, we will have to use the Sauce Labs API or a test framework.
                     </p>
                   </aside>
                 </section>
@@ -1609,7 +1609,7 @@ public void the_feeling_is(String arg1) throws Throwable {
                     <li>Uncomment the AfterMethod function at the bottom of the script.</li>
                     <li>Save the script and run the test.</li>
                     <li>Open the Remote script for editing.</li>
-                    <li>Change the expected string in the assertEquals to "Graphics/Touch Banana".</li>
+                    <li>Change the expected string in the assertEquals to <b>Graphics/Touch Banana/<b>.</li>
                     <li>Save the script and run the test.</li>
                     <li>Open the saucelabs.com UI. What has changed about the test results?</li>
                   </ol>
@@ -1813,7 +1813,7 @@ public void enterCommentText(String text){
 }
                      </code></pre>
                      <aside class="notes">
-                       <p>In this example, we are abtracting the locating, of the textbox, and the insertion of text into it. We're making the locating and sending it inputs all in one go, all in one object.</p>
+                       <p>In this example, we abstract the locating, of the textbox, and the insertion of text into it. We make the locating and sending it inputs all in one go, all in one object.</p>
                      </aside>
                    </section>
 
@@ -1900,7 +1900,7 @@ caps.setCapability("name","Java Remote Sample Test");
                    </section>
 
                    <section data-state="lab">
-                     <h3>Lab 7: Labeling and Naming our Tests</h3>
+                     <h3>Lab 7: Labeling and Naming Your Tests</h3>
                      <ol>
                        <li>Open the Remote script for editing.</li>
                        <li>Add a capability to name your test.</li>
