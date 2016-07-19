@@ -64,16 +64,10 @@
                 <p style="text-align:center">
 	              <small><i>Testing at the speed of awesome</i></small>
                 </p>
-
-                <p style="text-align:center;">
-                  <small>
-                    <small>Using Reveal.js</small>
-                  </small>
-                </p>
               </section>
 
               <section>
-					<h3>Trainer Intro</h3>
+					<h3>Trainer Introduction</h3>
 <!-- left column-->
                     <div style="float:left;width:50%;" class="centered">
                       <p>
@@ -1072,7 +1066,7 @@ for (String contextName : contextNames){
                   <p>Explicit Waits</p>
                   <pre>
                     <code class="java" data-trim contenteditable>
-//additional libs required
+//additional libraries required
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -1387,18 +1381,18 @@ https://saucelabs.com/rest/v1/storage/&#60;sauce_username&#62;/&#60;upload_filen
                     <li>TestNG</li>
                     <li>JUnit</li>
                     </ul>
-                    <p><strong>Ruby:</strong></p>
-                    <ul>
-                    <li>RSpec</li>
-                    <li>Cucumber</li>
-                    </ul>
-                  </div>
-                  <div style="float:right;width:50%;padding-right:0px;">
                     <p><strong>Python:</strong></p>
                     <ul>
                     <li>Robot</li>
                     <li>UnitTest</li>
                     <li>Nose</li>
+                    </ul>
+                  </div>
+                  <div style="float:right;width:50%;padding-right:0px;">
+                    <p><strong>Ruby:</strong></p>
+                    <ul>
+                    <li>RSpec</li>
+                    <li>Cucumber</li>
                     </ul>
                     <p><strong>JavaScript:</strong></p>
                     <ul>
@@ -1492,25 +1486,26 @@ public void the_feeling_is(String arg1) throws Throwable {
                 <section>
                   <h3>BDD Frameworks</h3>
                   <div style="float:left;width:50%;" class="centered">
+
+                    <p>Java:</p>
+                    <ul>
+                      <li>CucumberJVM</li>
+                    </ul>
                     <p>Python:</p>
                     <ul>
-                    <li>Behave</li>
-                    <li>Lettuce</li>
-                      </ul>
-                    <p>JavaScript:</p>
-                    <ul>
-                    <li>CucumberJS</li>
+                      <li>Behave</li>
+                      <li>Lettuce</li>
                     </ul>
                   </div>
 
                   <div style="float:right;width:50%;padding-right:0px;">
-                    <p>Java:</p>
-                    <ul>
-                    <li>CucumberJVM</li>
-                    </ul>
                     <p>Ruby:</p>
                     <ul>
-                    <li>Cucumber</li>
+                      <li>Cucumber</li>
+                    </ul>
+                    <p>JavaScript:</p>
+                    <ul>
+                      <li>CucumberJS</li>
                     </ul>
                   </div>
 
@@ -1582,6 +1577,9 @@ public void the_feeling_is(String arg1) throws Throwable {
                     <aside class="notes">
                       <p>We want to make sure that our script ends up where it needs to go. In order to do so, we are going search for the text descriptor for the touch Paint activity we are performing actions on.</p>
                       <p>Demo the title as it appears in the applicaition. It should say Graphics/Touch Paint. Say that the getText() will get the text value of the title. If you feel inspired, you can open the inspector on your local machine to show the them the value of text is indeed what appears as the title.</p>
+                      <pre><code class="java" data-trim contenteditable>
+                          assertEquals(title.getText(), "Graphics/Touch Paint");
+                      </code></pre>
                     </aside>
                   </section>
 
