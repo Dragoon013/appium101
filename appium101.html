@@ -775,9 +775,9 @@ touch.tap(newGameBtn).perform();
                     <h3>Lab 1: Running the Sample Appium Script</h3>
 
                     <ol>
-                      <li>In the Eclipse package explorer left panel, <b>local-java-testng-appium-android > src/test/java > com.yourcompany > Local_SampleSauceTest.java</b>.</li>
-                      <li>Note the identified WebElement, and what we are enacting upon it..</li>
-                      <li>Right click <b>java-testng-simple</b> and select <b>Run As > 9 Maven test</b>.</li>
+                      <li>In the Eclipse package explorer left panel, local-java-testng-appium-android > src/test/java > com.yourcompany > Local_SampleSauceTest.java.</li>
+                      <li>Note the identified WebElement, and what we are enacting upon it.</li>
+                      <li>Right click java-testng-simple and select Run As > 9 Maven test.</li>
                       <li>Click the device and Appium icons on the toolbar.</li>
                       <li>What did you see happen? How did it happen?</li>
                     </ol>
@@ -923,8 +923,8 @@ driver.findElementByIosUIAutomation(uiautoFind);
                   <section data-state="lab">
                     <h3>Lab 2: Analyzing the Page Source</h3>
                     <ol>
-                      <li>Go to your desktop and open the folder <b>XML Inspector Examples</b>.</li>
-                      <li>Double-click the file <b>beforeScrollTo</b>.</li>
+                      <li>Go to your desktop and open the folder XML Inspector Examples.</li>
+                      <li>Double-click the file beforeScrollTo.</li>
                       <li>Note the formatted XML. Can you recognize elements in the XML that appear in the application?</li>
                     </ol>
                   </section>
@@ -1294,8 +1294,8 @@ https://saucelabs.com/rest/v1/storage/&#60;sauce_username&#62;/&#60;upload_filen
                   <h3>Lab 4: Testing Sauce Labs</h3>
                   <ol>
                     <li>Open a browser and log into <a href="https://saucelabs.com" target="_blank">saucelabs.com</a>.</li>
-                    <li>Go to <b>My Account</b> from the lower left drop-up menu and copy your access key.</li>
-                    <li>In the Eclipse package explorer left panel, open remote-java-testng-appium-android > src/test/java > com.yourcompany > Remote_SampleSauceTest.java</b></li>
+                    <li>Go to My Account from the lower left drop-up menu and copy your access key.</li>
+                    <li>In the Eclipse package explorer left panel, open remote-java-testng-appium-android > src/test/java > com.yourcompany > Remote_SampleSauceTest.java</li>
                     <li>Copy your access key into the script for the ACCESS_KEY variable.</li>
                     <li>Fill out the USERNAME variable with the correct value for your account.</li>
                   </ol>
@@ -1311,11 +1311,11 @@ https://saucelabs.com/rest/v1/storage/&#60;sauce_username&#62;/&#60;upload_filen
                   <ol>
                     <li>Note the DesiredCapabilities object in Remote_sampleSauceTest.java.</li>
                     <li>Open a browser to the <a href="https://wiki.saucelabs.com/display/DOCS/Platform+Configurator#/" target="_blank">Platform Configurator</a> shortcut.</li>
-                    <li>Set the API to <b>Appium</b>.</li>
-                    <li>Set the Device to <b>Android Emulator Phone</b>.</li>
-                    <li>Set the Operating System to <b>Android 4.4</b>.</li>
-                    <li>Set the Appium Version to <b>1.4.16</b>.</li>
-                    <li>Set the Web or App Testing to <b>App Testing</b></li>
+                    <li>Set the API to Appium.</li>
+                    <li>Set the Device to Android Emulator Phone.</li>
+                    <li>Set the Operating System to Android 4.4.</li>
+                    <li>Set the Appium Version to 1.4.16.</li>
+                    <li>Set the Web or App Testing to App Testing</li>
                     <li>Copy and paste the missing required lines into your script.</li>
                   </ol>
                   <aside class="notes">
@@ -1568,7 +1568,7 @@ public void the_feeling_is(String arg1) throws Throwable {
                 <section data-state="lab">
                     <h3>Lab 5: Assertions</h3>
                     <ol>
-                      <li>Note that the title of the Touch Paint activity is <b>Graphics/Touch Paint</b>.</li>
+                      <li>Note that the title of the Touch Paint activity is Graphics/Touch Paint.</li>
                       <li>Write an assertEquals assertion that uses the <pre style="display:inline;">getText()</pre> function on the title WebElement object.</li>
                       <li>The assertEquals assertion should compare the value of <pre style="display:inline;">title.getText()</pre> to the expected value, namely "Graphics/Touch Paint"</li>
                       <li>Save the script and run the test.</li>
@@ -1607,7 +1607,7 @@ public void the_feeling_is(String arg1) throws Throwable {
                     <li>Uncomment the AfterMethod function at the bottom of the script.</li>
                     <li>Save the script and run the test.</li>
                     <li>Open the Remote script for editing.</li>
-                    <li>Change the expected string in the assertEquals to <b>Graphics/Touch Banana/</b>.</li>
+                    <li>Change the expected string in the assertEquals to "Graphics/Touch Banana".</li>
                     <li>Save the script and run the test.</li>
                     <li>Open the saucelabs.com UI. What has changed about the test results?</li>
                   </ol>
