@@ -781,7 +781,7 @@ touch.tap(newGameBtn).perform();
                     <h3>Lab 1: Running the Sample Appium Script</h3>
 
                     <ol>
-                      <li>In the Eclipse package explorer left panel, local-java-testng-appium-android > src/test/java > com.yourcompany > Local_SampleSauceTest.java.</li>
+                      <li>In the Eclipse package explorer left panel, <b>local-java-testng-appium-android > src/test/java > com.yourcompany > Local_SampleSauceTest.java</b>.</li>
                       <li>Note the identified WebElement, and what we are enacting upon it..</li>
                       <li>Right click <b>java-testng-simple</b> and select <b>Run As > 9 Maven test</b>.</li>
                       <li>Click the device and Appium icons on the toolbar.</li>
@@ -929,8 +929,8 @@ driver.findElementByIosUIAutomation(uiautoFind);
                   <section data-state="lab">
                     <h3>Lab 2: Analyzing the Page Source</h3>
                     <ol>
-                      <li>Go to your desktop and open the folder called "XML Inspector Examples".</li>
-                      <li>Double-click on the file called "beforeScrollTo".</li>
+                      <li>Go to your desktop and open the folder <b>XML Inspector Examples</b>.</li>
+                      <li>Double-click the file <b>beforeScrollTo</b>.</li>
                       <li>Note the formatted XML. Can you recognize elements in the XML that appear in the application?</li>
                     </ol>
                   </section>
@@ -1096,7 +1096,7 @@ WebElement messageElement = wait.until(ExpectedConditions.
                   <h3>Lab 3: Action!</h3>
                   <ol>
                     <li>Restart the Appium Server.</li>
-                    <li>In the application, we need to <pre style="display:inline;">click()</pre> or <pre style="display:inline;">tap()</pre> on the "Touch Paint" option.</li>
+                    <li>In the application <pre style="display:inline;">click()</pre> or <pre style="display:inline;">tap()</pre> on the "Touch Paint" option.</li>
                     <li>In Local_SampleSauceTest.java, add in a <pre style="display:inline;">scrollTo()</pre> below our <pre style="display:inline;">println</pre>.</li>
                     <pre style="width:54%;"><code class="java" data-trim contenteditable>
                         driver.scrollTo("Touch Paint").click();
@@ -1114,7 +1114,7 @@ WebElement messageElement = wait.until(ExpectedConditions.
                   <ol>
                     <li>Uncomment the three TouchAction objects (eye1, eye2, smile).</li>
                     <li>Uncomment the <pre style="display:inline;">smile.press()</pre> column of <pre style="display:inline;">moveTo()</pre> actions.</li>
-                    <li>Below the TouchAction objects, insert a line that will initiate a press at x=150 and y=200 (150,200).</li>
+                    <li>Below the TouchAction objects, insert a line that initiates a press at x=150 and y=200 (150,200).</li>
                     <li>Add an action to release the touch at the end of the press.</li>
                     <li>Add a <pre style="display:inline;">perform()</pre> action to the end of the press and release sequence.</li>
                     <li>Repeat steps 3-5 at x=250 and y=200.</li>
@@ -1134,8 +1134,8 @@ eye2.press(250, 200).release().perform();
                   <h3>Lab 3: Waiting...</h3>
                   <ol>
                     <li>Restart the Appium Server.</li>
-                    <li>We need to implement a wait to give the Touch Paint activity time to load.</li>
-                    <li>Below the AndroidDriver object, write an explicit WebDriver wait, that will wait for 10 seconds.</li>
+                    <li>Implement a wait to give the Touch Paint activity time to load.</li>
+                    <li>Below the AndroidDriver object, write an explicit WebDriver wait, that waits for 10 seconds.</li>
                     <li>Uncomment the <pre style="display:inline;">wait.until()</pre> line.</li>
                     <li>Save the script and rerun the test.</li>
                     <li>What do you see on your application screen?</li>
@@ -1300,8 +1300,8 @@ https://saucelabs.com/rest/v1/storage/&#60;sauce_username&#62;/&#60;upload_filen
                   <h3>Lab 4: Testing Sauce Labs</h3>
                   <ol>
                     <li>Open a browser and log into <a href="https://saucelabs.com" target="_blank">saucelabs.com</a>.</li>
-                    <li>Go to "My Account" from the lower left drop-up menu and copy your access key.</li>
-                    <li>In the Eclipse package explorer left hand side panel, open remote-java-testng-appium-android > src/test/java > com.yourcompany > Remote_SampleSauceTest.java</li>
+                    <li>Go to <b>My Account</b> from the lower left drop-up menu and copy your access key.</li>
+                    <li>In the Eclipse package explorer left panel, open remote-java-testng-appium-android > src/test/java > com.yourcompany > Remote_SampleSauceTest.java</li>
                     <li>Copy your access key into the script for the ACCESS_KEY variable.</li>
                     <li>Fill out the USERNAME variable with the correct value for your account.</li>
                   </ol>
