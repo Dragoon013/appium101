@@ -775,7 +775,7 @@ touch.tap(newGameBtn).perform();
                     <h3>Lab 1: Running the Sample Appium Script</h3>
 
                     <ol>
-                      <li>In the Eclipse package explorer left panel, local-java-testng-appium-android > src/test/java > com.yourcompany > Local_SampleSauceTest.java.</li>
+                      <li>In the Eclipse package explorer left panel, <p style="color:rgb(87,193,232); display:inline;">local-java-testng-appium-android > src/test/java > com.yourcompany > Local_SampleSauceTest.java</p>.</li>
                       <li>Note the identified WebElement, and what we are enacting upon it.</li>
                       <li>Right click java-testng-simple and select Run As > 9 Maven test.</li>
                       <li>Click the device and Appium icons on the toolbar.</li>
@@ -907,7 +907,7 @@ driver.findElementByIosUIAutomation(uiautoFind);
                   <ol>
                     <li>Restart the Appium Server.</li>
                     <li>Bring Eclipse to the foreground.</li>
-                    <li>In Local_SampleSauceTest.java, write in the following line of code in the line after the button tap.</li>
+                    <li>In <p style="color:rgb(87,193,232); display:inline;">Local_SampleSauceTest.java</p>, write in the following line of code in the line before the <pre style="display:inline">tap()</pre> action.</li>
                     <pre style="width:58%;"><code class="java" data-trim contenteditable>
                         System.out.println(driver.getPageSource);
                     </code></pre>
@@ -924,9 +924,12 @@ driver.findElementByIosUIAutomation(uiautoFind);
                     <h3>Lab 2: Analyzing the Page Source</h3>
                     <ol>
                       <li>Go to your desktop and open the folder XML Inspector Examples.</li>
-                      <li>Double-click the file beforeScrollTo.</li>
+                      <li>Double-click on GraphicsViewScreen.xml.</li>
                       <li>Note the formatted XML. Can you recognize elements in the XML that appear in the application?</li>
                     </ol>
+		    <aside class="notes">
+		      <p>Notice the correlation between the XML and what we've seen in the application thus far.</p>
+		    </aside>
                   </section>
                 </section>
 
@@ -1090,17 +1093,23 @@ WebElement messageElement = wait.until(ExpectedConditions.
                   <h3>Lab 3: Action!</h3>
                   <ol>
                     <li>Restart the Appium Server.</li>
-                    <li>In the application <pre style="display:inline;">click()</pre> or <pre style="display:inline;">tap()</pre> on the "Touch Paint" option.</li>
-                    <li>In Local_SampleSauceTest.java, add in a <pre style="display:inline;">scrollTo()</pre> below our <pre style="display:inline;">println</pre>.</li>
+                    
+                    <li>In <p style="color:rgb(87,193,232); display:inline;">Local_SampleSauceTest.java</p>, add in a <pre style="display:inline;">scrollTo()</pre> below our <pre style="display:inline;">println</pre>.</li>
                     <pre style="width:54%;"><code class="java" data-trim contenteditable>
                         driver.scrollTo("Touch Paint").click();
                     </code></pre>
                   </ol>
                   <aside class="notes">
-                    <p>scrollTo() is a WebDriver action - that is, it comes from the Selenium library, and will scroll down on the apge until it finds an item that has the text string that is the argument.</p>
+		    <p>So this application is a collection of a lot of different activities that allow us to try out all kinds of interactions. We're trying to reach an activity called "Touch Paint"</p>
+		    <p>So in the application we need to, <pre style="display:inline;">click()</pre> or <pre style="display:inline;">tap()</pre> on the "Touch Paint" option.</p>
+		    <p>But the application isn't actually showing the element. If we just told it to tap or click on it, it wouldn't be able to find what we want. So we need to scroll down to it until it becomes visible.</p>
+		    <p>scrollTo() is a WebDriver action - that is, it comes from the Selenium library, and will scroll down on the page until it finds an item that has the text string that is the argument.</p>
                     <p>If you wanted to use tap, what would we have to change or add to our script?</p>
-                    <p>In this lab, our goal is to bring up the Touch Paint activity in the application, and then proceed to perform actions on the app.</p>
-                  </aside>
+		    <pre><code class="java" data-trim contenteditable>
+			driver.tap(1,driver.findElementByAccessibilityId("Touch Paint"),750)
+		    </code></pre>
+		    <p>Scrolling to the text, "Touch Paint" will allow the app to understand what Touch Paint is, and then click will take us to that next activity.</p>
+		  </aside>
                 </section>
 
                 <section data-state="lab">
@@ -1207,8 +1216,8 @@ public static final String ACCESS_KEY = "b89b7205-3aca-4af2-9c7bded";
                     <pre><code class="java" data-trim contenteditable>
                         public static final USERNAME = "dragoon013";
 public static final KEY = "b89b7205-3aca-4af2-a618-9bab4c7bdebd";
-public static final URL = "http://" + USERNAME
-                        + ":" + KEY + "@ondemand.saucelabs.com:80/wd/hub";
+public static final URL = "https://" + USERNAME
+                        + ":" + KEY + "@ondemand.saucelabs.com/wd/hub";
 
 @Test
 public static void main(){
@@ -1295,9 +1304,9 @@ https://saucelabs.com/rest/v1/storage/&#60;sauce_username&#62;/&#60;upload_filen
                   <ol>
                     <li>Open a browser and log into <a href="https://saucelabs.com" target="_blank">saucelabs.com</a>.</li>
                     <li>Go to My Account from the lower left drop-up menu and copy your access key.</li>
-                    <li>In the Eclipse package explorer left panel, open remote-java-testng-appium-android > src/test/java > com.yourcompany > Remote_SampleSauceTest.java</li>
-                    <li>Copy your access key into the script for the ACCESS_KEY variable.</li>
-                    <li>Fill out the USERNAME variable with the correct value for your account.</li>
+                    <li>In the Eclipse package explorer left panel, open <p style="color:rgb(87,193,232); display:inline;">remote-java-testng-appium-android > src/test/java > com.yourcompany > Remote_SampleSauceTest.java</p>.</li>
+                    <li>Copy your access key into the script for the <pre style="display:inline;">ACCESS_KEY</pre> variable.</li>
+                    <li>Fill out the <pre style="display:inline;">USERNAME</pre> variable with the correct value for your account.</li>
                   </ol>
                   <aside class="notes">
                     <p>We aren't going to use sauce storage in this course, so for now we are going to just point to an apk that we will grab directly from the github repository.</p>
@@ -1309,7 +1318,7 @@ https://saucelabs.com/rest/v1/storage/&#60;sauce_username&#62;/&#60;upload_filen
                 <section data-state="lab">
                   <h3>Lab 4: The Platform Configurator</h3>
                   <ol>
-                    <li>Note the DesiredCapabilities object in Remote_sampleSauceTest.java.</li>
+                    <li>Note the DesiredCapabilities object in <p style="color:rgb(87,193,232); display:inline;">Remote_sampleSauceTest.java</p>.</li>
                     <li>Open a browser to the <a href="https://wiki.saucelabs.com/display/DOCS/Platform+Configurator#/" target="_blank">Platform Configurator</a> shortcut.</li>
                     <li>Set the API to Appium.</li>
                     <li>Set the Device to Android Emulator Phone.</li>
