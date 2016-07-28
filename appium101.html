@@ -550,7 +550,7 @@ capabilities.setCapability("app", "https://github.com/appium/app.apk");
                       </code></pre>
                       <p>iOS</p>
                       <pre><code class="java" data-trim contenteditable>
-                          sIOSDriver&#60;MobileElement&#62; driver = new IOSDriver&#60;MobileElement&#62;(
+                          IOSDriver&#60;MobileElement&#62; driver = new IOSDriver&#60;MobileElement&#62;(
     new URL("http://localhost:4723/wd/hub"),
     capabilities);
                       </code></pre>
@@ -689,6 +689,7 @@ android.widget.TextView[10]"/&#62;
                     <pre style="width:92%">
                       <code class="java" data-trim contenteditable>
                         WebElement graphic_btn = driver.findElementByAccessibilityId("Graphics");
+
 driver.tap(1,graphic_btn,750);
 		      </code>
                     </pre>
@@ -885,9 +886,9 @@ UiObject cancelButton = device
                   <p>-ios uiautomation</p>
                   <li>UIAutomation JavaScript API script</li>
                   <pre><code class="java" data-trim contenteditable>
-                      UIATarget.localTarget().frontMostApp().mainWindow()" +
-    ".scrollViews()[0].cells()
-    .firstWithPredicate(\"name matches 'Sign In'\");
+                      UIATarget.localTarget().frontMostApp().mainWindow()
+    .scrollViews()[0].cells()
+    .firstWithPredicate("name matches 'Sign In'");
                   </code></pre>
 
                   <li>Appium script (Java)</li>
@@ -913,7 +914,7 @@ driver.findElementByIosUIAutomation(uiautoFind);
                     <li>Bring Eclipse to the foreground.</li>
                     <li>In <p style="color:rgb(87,193,232); display:inline;">Local_SampleSauceTest.java</p>, write in the following line of code in the line before the <pre style="display:inline">tap()</pre> action.</li>
                     <pre style="width:58%;"><code class="java" data-trim contenteditable>
-                        System.out.println(driver.getPageSource);
+                        System.out.println(driver.getPageSource());
                     </code></pre>
                     <li>Run the test.</li>
                     <li>Note the XML that apears in the Eclipse console.</li>
@@ -974,7 +975,7 @@ touch.press(btnElem, 150, 100).perform();
                     <p>moveTo(+x, +y)</p>
                     <pre><code class="java" data-trim contenteditable>
                         //moveTo(org.openqa.selenium.WebElement el, int x, int y)
-touch.press(10, 200).moveTo( 1, 1).perform();
+touch.press(10, 200).moveTo(1, 1).perform();
                     </code></pre>
 
                     <p>tap(element)</p>
@@ -997,18 +998,18 @@ touch.tap(btnElem).perform();
                     <p>waitAction(int ms)</p>
                     <pre><code class="java" data-trim contenteditable>
                         //waitAction(int ms)
-action1.press(el1).waitAction(300).moveTo(10, 0).release().perform();
+action1.press(element1).waitAction(300).moveTo(10, 0).release().perform();
                     </code></pre>
 
                     <p>longPress(x, y, duration)</p>
                     <pre style="width:93%;"><code class="java" data-trim contenteditable>
                         //longPress(org.openqa.selenium.WebElement el, int x, int y, int duration)
-action.longPress(ele1).moveTo(x1,580).release().perform();
+action.longPress(element1).moveTo(x1, 580).release().perform();
                     </code></pre>
 
                     <p>perform()</p>
                     <pre><code class="java" data-trim contenteditable>
-                        action.longPress(ele1).moveTo(x1,580).release().perform();
+                        action.longPress(element1).moveTo(x1, 580).release().perform();
                     </code></pre>
 
                     <aside class="notes">
@@ -1024,12 +1025,14 @@ action.longPress(ele1).moveTo(x1,580).release().perform();
                     <h3>MultiTouch</h3>
                     <pre><code class="java" data-trim contenteditable>
                         MultiTouchAction multiAction = new MultiTouchAction(driver);
-    TouchAction finger1 = new TouchAction(driver);
-    TouchAction finger2 = new TouchAction(driver;
 
-    finger1.longPress(x1,y1).waitAction(1500);
-    finger2.longPress(x2,y2).waitAction(1500);
-    multiAction.add(finger1).add(finger2).perform();
+TouchAction finger1 = new TouchAction(driver);
+TouchAction finger2 = new TouchAction(driver;
+
+finger1.longPress(x1, y1).waitAction(1500);
+finger2.longPress(x2, y2).waitAction(1500);
+
+multiAction.add(finger1).add(finger2).perform();
                     </code></pre>
                     <aside class="notes">
                       <p>And lastly for actions, we have Multitouches.</p>
@@ -1048,7 +1051,7 @@ action.longPress(ele1).moveTo(x1,580).release().perform();
 for (String contextName : contextNames){
     if (context == "NATIVE_APP")
         driver.switchTo().window("WEBVIEW_1");
-    }else if(context == "WEBVIEW_1"){
+    } else if(context == "WEBVIEW_1"){
         driver.switchTo().window("NATIVE_APP");
     }
 }
@@ -1192,14 +1195,14 @@ eye2.press(250, 200).release().perform();
 
                     <li>Environment Variables</li>
                     <pre><code class="zsh" data-trim contenteditable>
-                        export SAUCE_USERNAME=dragoon013
-export SAUCE_ACCESS_KEY=b89b7205-3aca-4af2-9c7bded
+                        export SAUCE_USERNAME="YOUR_SAUCE_USERNAME"
+export SAUCE_ACCESS_KEY="YOUR_ACCESS_KEY"
                     </code></pre>
 
                     <li>Explicit Variables</li>
                     <pre><code class="java" data-trim contenteditable>
-                        public static final String USERNAME = "dragoon013";
-public static final String ACCESS_KEY = "b89b7205-3aca-4af2-9c7bded";
+                        public static final String USERNAME = "YOUR_SAUCE_USERNAME";
+public static final String ACCESS_KEY = "YOUR_ACCESS_KEY";
                     </code></pre>
 
                   <aside class="notes">
@@ -1218,8 +1221,8 @@ public static final String ACCESS_KEY = "b89b7205-3aca-4af2-9c7bded";
                     </ul>
                     <div style="width:103%;">
                     <pre><code class="java" data-trim contenteditable>
-                        public static final USERNAME = "dragoon013";
-public static final KEY = "b89b7205-3aca-4af2-a618-9bab4c7bdebd";
+                        public static final USERNAME = "YOUR_SAUCE_USERNAME";
+public static final KEY = "YOUR_ACCESS_KEY";
 public static final URL = "https://" + USERNAME
                         + ":" + KEY + "@ondemand.saucelabs.com/wd/hub";
 
@@ -1260,6 +1263,7 @@ public static void main(){
                     <div style="float:left;">
                       <pre style="box-shadow:none; width:100%;"><code class="java" data-trim contenteditable>
                           DesiredCapabilities caps = new DesiredCapabilities();
+			  
 capabilities.setCapability("platformName", "Android");
 capabilities.setCapability("platformVersion", "4.4");
 capabilities.setCapability("browserName", "");
@@ -1285,11 +1289,11 @@ capabilities.setCapability("app", "https://github.com/appium/app.apk");
                       <li>Remote host: AWS, DigitalOcean, Github, etc</li>
                     </ul>
 
-                    <pre style="width:110%"><code class="zsh" data-trim contenteditable>
-                        curl -u &#60;sauce_username&#62;:&#60;sauce_access_key&#62;
--X POST -H "Content-Type: application/octet-stream"
-https://saucelabs.com/rest/v1/storage/&#60;sauce_username&#62;/&#60;upload_filename&#62;?overwrite=true
---data-binary @&#60;path/to/myApp.apk&#62;
+                    <pre style="width:116%"><code class="zsh" data-trim contenteditable>
+                        curl -u &#60;sauce_username&#62;:&#60;sauce_access_key&#62; \
+    -X POST -H "Content-Type: application/octet-stream" \
+    https://saucelabs.com/rest/v1/storage/&#60;sauce_username&#62;/&#60;upload_filename&#62;?overwrite=true \
+    --data-binary @&#60;path/to/myApp.apk&#62;
                     </code></pre>
 
                     <pre style="width:110%"><code class="zsh" data-trim contenteditable>
@@ -1546,8 +1550,8 @@ public void the_feeling_is(String arg1) throws Throwable {
                     <p>A testing framework directive that assumes a value to be true, and stops the test and/or throws an error if false.</p>
 
                     <pre><code class="java" data-trim contenteditable>
-                        assertTrue(compassBtn.clickable.value);
-                    </code></pre>
+		        assertTrue("The button is not visible", compassBtn.isDisplayed());
+		    </code></pre>
 
                     <aside class="notes">
                       <p>A common element of Appium scripts are Asserts. Asserts come with whichever testing framwork that you have decided to work with. They generally check whether a particular value is true or not. For example, if the compassBtn is not clickable, then that means the assert will fail, and the test will fail as well. It's basically the test itself. If an assert fails, that generally means the test has failed as well.</p>
@@ -1756,9 +1760,11 @@ public void the_feeling_is(String arg1) throws Throwable {
 
                     <p>Example:</p>
                     <pre><code class="java" data-trim contenteditable>
-                        public void setupLogin() {
+@BeforeMethod
+public void setupLogin() {
 
     DesiredCapabilities caps = new DesiredCapabilities();
+			
     caps.setCapability("platform", "Windows XP");
     caps.setCapability("browserName", "Chrome");
     caps.setCapability("version", "43.0");
@@ -1774,20 +1780,20 @@ public void the_feeling_is(String arg1) throws Throwable {
                   <p>The teardown function includes <i>Post requisite</i> tasks that need to occur, like closing the browser, logging out, or terminating the remote session.</p>
                   <p>Example:</p>
                   <pre><code class="java" data-trim contenteditable>
-                      public void tearDown(boolean testTrue) throws Exception {
+@AfterMethod
+public void after(ITestResult testResult) {
+    SauceREST restAPI = new SauceREST(USERNAME, ACCESS_KEY);
 
-    webDriver.get().quit();
-
-    if (testTrue)) {
-        r.jobPassed(id);
+    if (testResult.isSuccess()) {
+        restAPI.jobPassed(id);
     } else {
-        r.jobFailed(id);
+        restAPI.jobFailed(id);
     }
 }
                   </code></pre>
                   <aside class="notes"></aside>
                 </section>
-</section>
+		</section>
 
                 <section>
                   <section>
@@ -1839,9 +1845,9 @@ public void enterCommentText(String text){
         driver.type("inputBox", "testUser");
         driver.type("password", "my supersecret password");
         driver.click("sign-in");
-        driver.waitForPageToLoad("PageWaitPeriod");
-        Assert.assertTrue(driver.isElementPresent("compose button"),
-        "Login was unsuccessful");
+        
+	Assert.assertTrue("Login was unsuccessful",
+	    driver.findElementById("compose-button").isDisplayed());
     }
 }
                      </code></pre>
@@ -1858,10 +1864,12 @@ public void enterCommentText(String text){
                          public class TestLogin {
 
     public void testLogin() {
-        SignInPage signInPage = new SignInPage(driver);
+	SignInPage signInPage = new SignInPage(driver);
+			 
         HomePage homePage = signInPage.loginValidUser("userName", "password");
-        Assert.assertTrue(driver.isElementPresent("compose button"),
-        "Login was unsuccessful");
+
+	Assert.assertTrue("Login was unsuccessful",
+	    homePage.isUserLoggedIn());
     }
 }
                      </code></pre>
