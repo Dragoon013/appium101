@@ -1808,13 +1808,19 @@ public void the_feeling_is(String arg1) throws Throwable {
                 <section>
                   <section>
                     <h3>Test Dependencies</h3>
-                    <p>Hard coding dependencies to access external account or data</p>
-                    <ul><li>Development and testing environments may change between the writing of your test scripts and when they run</li></ul>
-                    <ul><li>Security</li></ul>
-                    <aside class="notes">
-                      <p>We've talked about avoiding this a bit already, but there are some other dependencies for tests that need to be considered as well.</p>
+		    <ul>
+		      <li>Hard coding dependencies to access external account or data</li>
+		      <li>Test Set-Up</li>
+		      <li>Test Teardown</li>
+		    </ul>
+		    <aside class="notes">
+		      <p>We've talked about avoiding this a bit already, but there are some other dependencies for tests that need to be considered as well.</p>
                       <p>Security we've talked about as well, we don't want to have a history of our credentials in a git history for example.</p>
-                    </aside>
+                      <ul>
+			<li>Development and testing environments may change between the writing of your test scripts and when they run</li>
+			<li>Security</li>
+		      </ul>
+		    </aside>
                   </section>
 
                   <section>
@@ -1875,6 +1881,7 @@ public void after(ITestResult testResult) {
                      </aside>
                    </section>
 
+		  <!--
                    <section>
                      <h3>Abstracting Page Element Locators</h3>
                      <pre><code class="jcva" data-trim contenteditable>
@@ -1940,7 +1947,8 @@ public void enterCommentText(String text){
                        <p>This is a good example of abstraction. We've made the signin page into its own object that we can now refer to, and do so on the next line, when we login, passing a username and password value.</p>
                      </aside>
                    </section>
-                </section>
+-->                
+</section>
 
                    <section>
                      <h3>Parallelization</h3>
