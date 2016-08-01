@@ -127,7 +127,7 @@
                     <p>One last thing before we continue, we won't be testing any iOS applications today. This is due to the limitations of the training environment. So just to be clear, we can test on iOS devices and test iPhone applicaitons with Sauce Labs. The problem lies with the "local" lab environment.</p>
                     <p>That's not to say I won't go over iOS at all though. I'll be showing iOS examples alongside Android examples throughout the course..</p>
                   </aside>
-                </section>
+	      </section>
 
               <section>
                 <h3>Agenda</h3>
@@ -192,25 +192,24 @@
                     <aside class="notes">
                       <p>Sauce Labs was founded in 2008 by Jason Huggins, co-creator of Selenium (the open source standard for automated testing frameworks) and Steve Hazel, current CTO. They set out to create a cloud-based platform for automated testing to free development teams from the hassle and cost of testing so they can focus on innovating their core capabilities.
                       </p>
-                      <p>In an interview, Jason said the inspiration for starting Sauce labs came when he was working as a QA consultant. He was using Selenium to do browser testing, and the process of testing the apps in different browsers was taking too long. The problem was that all the testing was being done on one machine, so he split the tests onto 4 different machines, effectively running the tests in parallel, which cut the time drastically. Which is precisely what Sauce Labs does today.</p>
+<!-- No need to talk about this anecdote.                      <p>In an interview, Jason said the inspiration for starting Sauce labs came when he was working as a QA consultant. He was using Selenium to do browser testing, and the process of testing the apps in different browsers was taking too long. The problem was that all the testing was being done on one machine, so he split the tests onto 4 different machines, effectively running the tests in parallel, which cut the time drastically. Which is precisely what Sauce Labs does today.</p> -->
                   </aside>
                 </section>
 
                 <section>
-					<h3>CI/CD Cycle</h3>
-
-                    <img src="assets/images/sauceCI2.png" style="border:0; text-align:center; background:none;">
-                    <p style="text-align:center;">Continuous Integration/Continuous Development</p>
-                    <aside class="notes">
-                      <p>Sauce Labs' value as a time saver is apparent even in its role in Continuous Integration and Delivery. </p>
-                      <p>Traditionally, testing and QA are bottlenecks for application delivery and release. Writing automated tests, maintaining testing infrastructure, painful manual testing, all consume huge amounts of time. The work is never done either, because the product is always changing.</p>
-                      <p>Sauce Labs takes away those worries though. With Selenium and Appium testing, we remove the barrier of time consuming test writing, and with Sauce Labs itself, we remove the need to have a propietary infrastructure. Sauce Labs provides the infrastructure for you, allowing you to test on a variety of platforms in a speedy manner. So you can focus on development, and releases,and leave the testing to Sauce Labs.</p>
-                      <p>Sauce Labs reduces the pain of testing, so that instead of traditionally waiting until the end of the development life cycle to test, you can test iteratively, as you go through each step of development.</p>
-                    </aside>
+		  <h3>CI/CD Cycle</h3>
+                  <img src="assets/images/sauceCI2.png" style="border:0; text-align:center; background:none;">
+                  <p style="text-align:center;">Continuous Integration/Continuous Development</p>
+                  <aside class="notes">
+                    <p>Sauce Labs' value as a time saver is apparent even in its role in Continuous Integration and Delivery. </p>
+                    <p>Traditionally, testing and QA are bottlenecks for application delivery and release. Writing automated tests, maintaining testing infrastructure, painful manual testing, all consume huge amounts of time. The work is never done either, because the product is always changing.</p>
+                    <p>Sauce Labs takes away those worries though. With Selenium and Appium testing, we remove the barrier of time consuming test writing, and with Sauce Labs itself, we remove the need to have a propietary infrastructure. Sauce Labs provides the infrastructure for you, allowing you to test on a variety of platforms in a speedy manner. So you can focus on development, and releases,and leave the testing to Sauce Labs.</p>
+                    <p>Sauce Labs reduces the pain of testing, so that instead of traditionally waiting until the end of the development life cycle to test, you can test iteratively, as you go through each step of development.</p>
+                  </aside>
                 </section>
 
                 <section>
-				  <h3>What is Appium?</h3>
+		  <h3>What is Appium?</h3>
                   <p>Open source mobile application automation framework developed in 2011 by Dan Cuellar, the Test Manager at Zoosk.</p>
 				  <p>Uses UIAutomation Framework to run in real time like an interpreter.</p>
                   <ul>
@@ -224,10 +223,10 @@
                     <p>Dan then presented his project at the Selenium Conference in 2012 and caught the attention of Jason Huggins. Jason and Dan worked together to release the source code and then present the project at the Mobile Testing Summit of 2013. Not long after, Sauce Lab fully backed Dan's project, changed the name to Appium and the rest is history.</p>
 
                   </aside>
-				</section>
+		</section>
 
                 <section>
-				  <h3>Local vs. Sauce Labs Appium Tests</h3>
+		  <h3>Local vs. Sauce Labs Appium Tests</h3>
 
                   <div style="float:left;width:50%;" class="centered">
                     <p>Local:</p>
@@ -241,7 +240,7 @@
                     <p>Sauce Labs:</p>
                     <ul>
                       <li>Appium server is remote and provisioned for you</li>
-                      <li>Device images and virtualization</li>
+                      <li>Real and virtual devices provisioned</li>
                       <li>Parallelization</li>
                       <li>Record Results</li>
                     </ul>
@@ -249,11 +248,11 @@
 
                   <aside class="notes">
                     <p>In general, no Appium test is going to be strictly "local". Running any kind of Appium test requires the use of the Appium Server, which acts as a middleman between the test commands and the emulator or simulator.</p>
-                    <p>You can test android on any OS, (windows, Mac OSX, linux). But testing iOS applications requires a Mac OSX operating system. This is because the simulator for the iOS operating system requires some libraries and frameworks that only come with XCode, which can only be used on Mac OSX.</p>
-                    <p>Android itself requires the SDK, and a lot of other helpful libraries and frameworks as well. But in order to test on a local machine, rather than in the cloud on Sauce labs or otherwise, you need to have the emulator/simulator program, and in the case of Android, you need to have the right OS version and phone libraries in order to run the emulator. The android SDK generally makes this pretty easy to get and apply, but it does take up a lot room on a machine. When you combine this with testing on many different OS versions and types or devices, then it can be a lot to manage.</p>
+                    <p>You can test android on any OS, (windows, Mac OSX, linux). But testing iOS applications requires a Mac OSX operating system.
+		    <p>Android itself requires the SDK, and a lot of other helpful libraries and frameworks as well.</p>
                     <p>Sauce Labs handles all of that device management for you. They run an Appium Server themselves, provide multiple mobile OS, version, and type combinations, and rent it out to their customers to run their Appium tests on. </p>
                   </aside>
-				</section>
+		</section>
 
                 <section>
                   <h3>Using Sauce Labs</h3>
@@ -261,9 +260,7 @@
                   </div>
 
                   <aside class="notes">
-                    <p>If hosting Mobile Application testing infrastructure itself isn't enough, Sauce Labs provides a whole slew of other additional features, such as security, recorded tests and integration with other tools. Sauce Labs provides security through it's Sauce Connect technology, which allows you to run tests on your locally hosted application. It sends your Selenium or appium commands through an encrypted tunnel, ensuring that your information is protected.</p>
-                    <p>Seamless integration refers the multitude of platforms that Sauce integrates with, such as Jenkins, Bamboo, JIRA, and more.</p>
-                    <p>And each test you run is recorded by default. This includes screenshots, a video recording of the entire test, as well as log files.</p>
+                    <p>If hosting Mobile Application testing infrastructure itself isn't enough, Sauce Labs provides a whole slew of other additional features.</p>
                   </aside>
                 </section>
 
@@ -276,7 +273,6 @@
                     <p>We have a tab for tests that are run and labelled as builds, one for our automated tests, and one for manual tests.</p>
                     <li>Tunnels: The tunnels tab will list out all of secure tunnels that are currently enabled and running between Sauce Labs and your local machine.</li>
                     <li>Account Details: Lastly, our account details page is important. You can see your VM usage, as well as find your access key, which is required for authentication when using Sauce Labs. We'll go into how to use it later on.</li>
-
                   </aside>
                 </section>
 
@@ -290,9 +286,10 @@
                   <aside class="notes">
                     <p>Do the demo on Android!!! It will go faster than iOS.</p>
 
-                    <p>Traditionally, once your mobile browser application was ready to be tested, you would load it onto a physical device, and then test it with your own fingers. There are a few problems with that, namely, it takes a lot of time to do and you're limited to the devices you have. So then you can run your test manually on an emulator or simulator to take care of the device problem. But the issue of time, of someone physically clicking on the device emulator or phyiscally touching the device is a huge time suck.</p>
+                    <p>Traditionally, once your mobile browser application was ready to be tested, you would load it onto a physical device, and then test it with your own fingers. There are a few problems with that, namely, it takes a lot of time to do and you're limited to the devices you have. So then you can run your test manually on an emulator or simulator to take care of the device problem. But the issue of time, of someone physically clicking on the device emulator or phyiscally touching the device is a big problem.</p>
                     <p>With Sauce Labs, you can run manual tests without having to set up the infrastructure locally. This can help you with memory issues you may run into running simulators and emulators on your own local machine, and can give you a good way test out a mobile browser application on more devices than you could easily do locally.</p>
-                    <p>One thing to note about manual testing with Sauce Labs - you can't start a manual test with an application preloaded. There are a couple ways to get around this though. If you start a normal automated test, you can interrupt it, and take control of the app. And if you use Sauce Connect Proxy, then you can interact with a local emulator you may be running, that can have your app installed on it.</p>
+		    <p><mark>Do not mention what is below this - for instructor knowledge.</mark></p>
+		    <p>One thing to note about manual testing with Sauce Labs - you can't start a manual test with an application preloaded. There are a couple ways to get around this though. If you start a normal automated test, you can interrupt it, and take control of the app. And if you use Sauce Connect Proxy, then you can interact with a local emulator you may be running, that can have your app installed on it.</p>
                     <p>Manual Test Demo: </p>
                     <ol>
                       <li>Go to saucelabs.com</li>
@@ -324,27 +321,10 @@
                 </section>
 
                 <section>
-                  <h3>4 Pillars of Appium Philosophy</h3>
-                  <p>Appium was designed to meet mobile automation needs according to a philosophy outlined by the following four tenets:</p>
-                  <ol>
-                    <li>You shouldn't have to recompile or modify your app to automate it</li>
-                    <li>You shouldn't be restricted to a specific language or framework to write and run your tests</li>
-                    <li>Appium shouldn't reinvent the wheel when it comes to automation APIs</li>
-                    <li>Appium should be open source</li>
-                  </ol>
-                  <aside class="notes">
-                    <p>Paraphrase the tenets.</p>
-
-                    <p></p>
-
-                  </aside>
-                </section>
-
-                <section>
-				  <h3>Appium Nuts and Bolts</h3>
-                 <div style="text-align:center;">
+		  <h3>Appium Nuts and Bolts</h3>
+                  <div style="text-align:center;">
                     <img src="assets/images/AppiumGears.png" style="border:0; background:none; width:50%">
-                 </div>
+                  </div>
                  <ul>
                    <li>Android UIAutomator and iOS UIAutomation Frameworks</li>
                    <li>Appium Client Libraries (extends Selenium Webdriver)</li>
@@ -352,17 +332,24 @@
                    <li>Appium GUI</li>
                  </ul>
                  <aside class="notes">
-                   <p>Appium's architecture was developed with the 4 four pillars in mind.</p>
-                   <p>The first pillar, about not having to recompile, is satisfied through Appium's usage of the Android UIAutomator and the iOS UIAutomation frameworks, by Google and Apple, respectively. Instead of creating Appium specific code, or using an Appium specific framework that would the have to be compiled into the app, Appium was built as a wrapper around these technologies. This means that it uses the tech that's already there, and it also means that you are testing the app that will be shipped - no need to adjust the actual app code.</p>
-                   <p>In order to actually use the vendor automation frameworks, the Selenium Webdriver wraps them both in one API, which is then wrapped by the Appium client libraries. So the vendor automation frameworks provide the ability to carry out the automated interactions, and the Selenium WebDriver provides the communication architecture.</p>
+                   <p>Appium's architecture was developed with a few things in mind.</p>
+		   <ol>
+                     <li>You shouldn't have to recompile or modify your app to automate it</li>
+                     <li>You shouldn't be restricted to a specific language or framework to write and run your tests</li>
+                     <li>Appium shouldn't reinvent the wheel when it comes to automation APIs</li>
+                     <li>Appium should be open source</li>
+                   </ol>
+		   
+                   <p>First, you shouldn't have to recompile or modify the core appliaction code that you are working with. In addition, no one wants to learn yet another proprietary language, and then test an application that contains test code within it - which can change the nature of the app!</p>
+		   <p>Plus, there are already automation framworks out there, designed by the people who made the devices that you are testing on - Apple and Google.</p>
+		   <p>In order to actually use the automation frameworks, the Selenium Webdriver wraps them both in one API, which is then wrapped by the Appium client libraries. So the vendor automation frameworks provide the ability to carry out the automated interactions, and the Selenium WebDriver provides the communication architecture.</p>
                    <p>This is what gives Appium it's client/server architecture.</p>
                    <p>The appium client is simply a library that you can use to write Appium test scripts in your favorite language. These client libraries are extensions of the Selenium WebDriver client, so they should have all the same functionalities, as well as syntax.</p>
-                   <p>The Appium server is a Node.js server that has an exposed REST API. It connects with the client, accepts commands, executes those commands on a mobile device, and then passes the results of those commands back in an HTTP response. The client/server architecture gives us a lot of freedom. It allows us to run the the server on a different machines than where we run our tests. This also allows Sauce Labs to run tests for you on their cloud service.</p>
+		   
+		   <p>The Appium server is a Node.js server that has an exposed REST API. It connects with the client, accepts commands, executes those commands on a mobile device, and then passes the results of those commands back in an HTTP response. The client/server architecture gives us a lot of freedom. It allows us to run the the server on a different machines than where we run our tests. This also allows Sauce Labs to run tests for you on their cloud service.</p>
                    <p>The Appium GUI is wrapped around an appium server, which means we don't have to worry about having Node installed on our system. It will come bundled with everything it needs to start up the server itself.</p>
-                   <p>But most importantly, the Appium GUI comes with the Inspector, which allows you to look through the element hierarchy of your app. This can help when you are writing your tests, so you know exactly what sequence of actions, on the correct elements, to perform on the app.</p>
-                   <p>Today, we'll be using the GUI to run a local appium server, but the inspector on the GUI doesn't work very well on Windows. But I'll show you a demo of what it looks like later on.</p>
-                  </aside>
-				</section>
+                 </aside>
+		</section>
 
                 <section>
                   <h3>UI Automator (Android)</h3>
@@ -390,7 +377,8 @@
                   </p>
                   <aside class="notes">
                     <p>The UI Automation tool was written by Apple to interact with iOS applications. Testing scripts written using the UI Automation tool proper use JavaScript, which then calls the UI Automation API to simulate interaction. Appium wraps itself around this API, converting your own Appium test scripts into JavaScripts that the UI Automation tool uses to interact with the application.We can also use the UI Automation syntax directly in our Appium scripts to locate elements.</p>
-                  </aside>
+		    <p>If you're interested in learning more about either the UI AUtomator or UI Automation frameworks, feel free to check out their documentation.</p>
+		  </aside>
                 </section>
 
                 <section>
@@ -420,8 +408,6 @@
                   </div>
                   <aside class="notes">
                     <p>On a windows operating system, you're only going to be able to test android applications. iOS mobile development requires some technology that only runs on mac.</p>
-                    <p>So we need a lot of technology here! We should be able to find all of these programs, frameworks and libraries on our environment, either as its own program, or bundled in with Eclipse.</p>
-                    <p>You should also install git if you are planning on having version control for your script code. Another program you can install is cURL, if you are planning on using Sauce storage to host your application to test on sauce labs.</p>
                     <p>If you'd like to see the exact set-up steps, you can look in the documentation. This whole set-up should be done already for you in today's lab environment.</p>
                   </aside>
                 </section>
@@ -470,7 +456,7 @@
                 </section>
 
                 <section>
-		  <h3>How Appium Works</h3>
+		  <h3>The Appium Process</h3>
                   <p>
                     <ol>
                       <li>Write script</li>
@@ -487,13 +473,12 @@
                     <p>Our script then takes those results, and it's up to us to pass those results onto Sauce Labs, or deal with them locally.</p>
                     <p>If we run this test using Sauce Labs, then one more additional step will be done, which is to create the test records, so the video recording, screenshots, and logs.</p>
                   </aside>
-				</section>
-
+		</section>
+		
                 <section>
-                  <section>
-				    <h3>Basic Steps of an Appium Script</h3>
-				    <div style="position:left;float:left;">
-                      <img src="assets/images/7Steps.png" style="border:none; background:none; width:50%">
+		    <h3>Basic Steps of an Appium Script</h3>
+		    <div style="position:left;float:left;">
+		      <img src="assets/images/7Steps.png" style="border:none; background:none; width:50%">
                     </div>
                     <div style="text-align:left;float:left;width:80%;">
                       <p>
@@ -510,10 +495,14 @@
                     </div>
 
                     <aside class="notes">
-                      Step through example script - point out each step that correlates to an element.
-                    </aside>
-				  </section>
+                      <p><strong>Step through example script - point out each step that correlates to an element!!!!!!!</strong></p>
+		      <p>We'll go over each of these steps throughout the course today.</p>
 
+                    </aside>
+		  </section>
+
+		<!--
+		<section>
                   <section>
 		    <h3>1. Set the Desired Capabilities</h3>
 
@@ -539,7 +528,6 @@ capabilities.setCapability("app", "https://github.com/appium/app.apk");
                       <p>There are quite a few desired capabilities we can set, and we'll take a look at some of them more in depth later. A key capability I want to point out here though is the "app" capability. You'll notice it goes to github.com to grab the app. We can set this to many different locations, and when doing local tests, it can point to somewhere in your filesystem as well. Sauce Labs also has their own application storage solution that can be used when running appium tests.</p>
                     </aside>
 		  </section>
-
                   <section>
                     <h3>2. Start an Appium Session</h3>
                     <p>Android</p>
@@ -758,7 +746,7 @@ driver.tap(1,graphic_btn,750);
                     </aside>
                   </section>
                 </section>
-
+-->
                 <section>
                   <section data-state="lab">
                     <h3>Lab 1: Set-up</h3>
@@ -801,6 +789,83 @@ driver.tap(1,graphic_btn,750);
                   </ul>
                 </section>
 
+		<section>
+		    <h3>Desired Capabilities</h3>
+
+		    <p style="text-align:center;">Describes a series of key/value pairs that encapsulate aspects of a browser.</p>
+		    
+                    <p>Web Browser</p>
+                    <pre><code class="java" data-trim contenteditable>
+                    capabilities.setCapability("platformName", "Android");
+capabilities.setCapability("platformVersion", "4.4");
+capabilities.setCapability("deviceName", "Android Emulator");
+capabilities.setCapability("browserName", "Chrome");
+                    </code></pre>
+                    <p>Native/Hybrid</p>
+                      <pre><code class="java" data-trim contenteditable>
+                          capabilities.setCapability("platformName", "Android");
+capabilities.setCapability("platformVersion", "4.4");
+capabilities.setCapability("deviceName", "Android Emulator");
+capabilities.setCapability("app", "https://github.com/appium/app.apk");
+                      </code></pre>
+
+                      <aside class="notes">
+			<p>First thing we need to consider when writing out a new appium script is the desired capabilties. The desired capabilities are basically the settings we want to apply to the webdriver, which starts up and drives interaction with an emulator/simulator.</p>
+			<p>With Appium, there are couple of different kinds of applications we can test, and in general ,you will need different sets of capabilities to run test you application successfully, depending on if you're running it remotely or locally.</p>
+                      <p>We are going to be testing on the generic Android Emulator. We will also load up our app from github onto that device and run our test on it.</p>
+                      <p>There are quite a few desired capabilities we can set, and we'll take a look at some of them more in depth later. A key capability I want to point out here though is the "app" capability. You'll notice it goes to github.com to grab the app. We can set this to many different locations, and when doing local tests, it can point to somewhere in your filesystem as well. Sauce Labs also has their own application storage solution that can be used when running appium tests.</p>
+                    </aside>
+		  </section>
+		
+		<section>
+		<section>
+                    <h3>Appium and Mobile Drivers</h3>
+                    <p>Android</p>
+                      <pre><code class="java" data-trim contenteditable>
+                          AndroidDriver&#60;MobileElement&#62; driver = new AndroidDriver&#60;MobileElement&#62;(
+    new URL("http://localhost:4723/wd/hub"),
+    capabilities);
+                      </code></pre>
+                      <p>iOS</p>
+                      <pre><code class="java" data-trim contenteditable>
+                          IOSDriver&#60;MobileElement&#62; driver = new IOSDriver&#60;MobileElement&#62;(
+    new URL("http://localhost:4723/wd/hub"),
+    capabilities);
+                      </code></pre>
+                    <aside class="notes">
+		      <p>That brings us to the acutal driver itself, that takes in the desired capabilities, starts an appium session with those settings, and communicates with the emulated/simulated device.</p>
+                      <p>These two examples we have here are both for starting tests with a local Appium Server and emulator/simulator.</p>
+                      <p>Note that the URL goes to localhost:4723, which is the default address for a local appium server.</p>
+                    </aside>
+                  </section>
+
+                  <section>
+                    <h3>Different Drivers</h3>
+                    <div style="float:left;width:50%;" class="centered">
+                      <ul>
+                        <li>RemoteWebDriver</li>
+                        <li>AppiumDriver</li>
+                      </ul>
+                    </div>
+                    <div style="float:right;width:50%;padding-right:0px;">
+                      <ul>
+                        <li>AndroidDriver</li>
+                        <li>IOSDriver</li>
+                      </ul>
+                    </div>
+                    <aside class="notes">
+                      <p>These are the different kinds of drivers that are generally available, when testing with Appium or even Selenium. It's important to know the differences between them. These are the drivers that are important to know for Appium testing.</p>
+                      <p>RemoteWebDriver: This driver class comes directly from Selenium. Since Appium operates on the client-server model, Appium uses this to initialize a driver session. All of the other drivers are pretty much built on top of this class.</p>
+
+                      <p>AppiumDriver: This driver class inherits from the RemoteWebDriver class, but it adds in additional functions that are useful in the context of a mobile automation test through the Appium server.</p>
+
+                      <p>AndroidDriver: This driver class inherits from AppiumDriver, but it adds in additional functions that are useful in the context of a mobile automation test on Android devices through Appium. Only use this driver class if you want to start a test on an Android device or Android emulator.</p>
+
+                      <p>IOSDriver: This driver class inherits from AppiumDriver, but it adds in additional functions that are useful in the context of a mobile automation test on iOS devices through Appium. Only use this driver class if you want to start a test on an iOS device or iOS emulator.</p>
+                    </aside>
+                  </section>
+		</section>
+		  
                 <section>
                   <section>
                     <h3>Identifying Elements</h3>
@@ -810,7 +875,7 @@ driver.tap(1,graphic_btn,750);
     By.id("com.google.android.divideandconquer:id/newGame"));
                     </code></pre>
                     <aside class="notes">
-                      <p>We took a look at locating elements briefly in the previous module, and now we have some examples on using each of the different locator types.</p>
+                      <p>Locating elements is vital for any test. Without locating our objects in an application, we can't perform actions on them, which means we can't test their functionality!</p>
                       <p>Generally, our locator expressions are made in Key:Value pairs. In our example here, the key would be the id, specifically, the resource id, which is then followed by the resource id value in parentheses.</p>
                     </aside>
                   </section>
@@ -913,7 +978,7 @@ driver.findElementByIosUIAutomation(uiautoFind);
                     <li>Restart the Appium Server.</li>
                     <li>Bring Eclipse to the foreground.</li>
                     <li>In <p style="color:rgb(87,193,232); display:inline;">Local_SampleSauceTest.java</p>, write in the following line of code in the line before the <pre style="display:inline">tap()</pre> action.</li>
-                    <pre style="width:58%;"><code class="java" data-trim contenteditable>
+                    <pre style="width:59%;"><code class="java" data-trim contenteditable>
                         System.out.println(driver.getPageSource());
                     </code></pre>
                     <li>Run the test.</li>
@@ -1288,15 +1353,14 @@ capabilities.setCapability("app", "https://github.com/appium/app.apk");
                       <li>Locally hosted webserver</li>
                       <li>Remote host: AWS, DigitalOcean, Github, etc</li>
                     </ul>
-
-                    <pre style="width:116%"><code class="zsh" data-trim contenteditable>
+                    <pre style="width:117%;"><code class="zsh" data-trim contenteditable>
                         curl -u &#60;sauce_username&#62;:&#60;sauce_access_key&#62; \
     -X POST -H "Content-Type: application/octet-stream" \
     https://saucelabs.com/rest/v1/storage/&#60;sauce_username&#62;/&#60;upload_filename&#62;?overwrite=true \
     --data-binary @&#60;path/to/myApp.apk&#62;
                     </code></pre>
 
-                    <pre style="width:110%"><code class="zsh" data-trim contenteditable>
+                    <pre style="width:77%"><code class="zsh" data-trim contenteditable>
                         capabilities.setCapability("app", "sauce-storage:myApp.apk");
                     </code></pre>
 
@@ -1391,31 +1455,30 @@ capabilities.setCapability("app", "https://github.com/appium/app.apk");
 
               </div>
 -->
-
                   <div style="float:left;width:50%;" class="centered">
                     <p><strong>Java:</strong></p>
                     <ul>
-                    <li>TestNG</li>
-                    <li>JUnit</li>
+                      <li>TestNG</li>
+                      <li>JUnit</li>
                     </ul>
                     <p><strong>Python:</strong></p>
                     <ul>
-                    <li>Robot</li>
-                    <li>UnitTest</li>
-                    <li>Nose</li>
+                      <li>Robot</li>
+                      <li>UnitTest</li>
+                      <li>Nose</li>
                     </ul>
                   </div>
                   <div style="float:right;width:50%;padding-right:0px;">
                     <p><strong>Ruby:</strong></p>
                     <ul>
-                    <li>RSpec</li>
-                    <li>Cucumber</li>
+                      <li>RSpec</li>
+                      <li>Cucumber</li>
                     </ul>
                     <p><strong>JavaScript:</strong></p>
                     <ul>
-                    <li>Protractor</li>
-                    <li>Nightwatch</li>
-                    <li>Mocha</li>
+                      <li>Protractor</li>
+                      <li>Nightwatch</li>
+                      <li>Mocha</li>
                     </ul>
                   </div>
                   <aside class="notes">
