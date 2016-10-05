@@ -131,12 +131,27 @@
 
 	      <section>
 		<h3>Accessing the ReadyTech Environment</h3>
-		
+		<ul>
+		  <li>Check your email for a link to the environment and your access code.</li>
+		  <ul><li>Look in spam!</li></ul>
+		  <li>Enter your access code.</li>
+		  <li>You will arrive in the <span style="color:rgb(87,193,232); display:inline;">Lobby</span> tab.</li>
+		  <li>Access the environment by clicking on the <span style="color:rgb(87,193,232); display:inline;">Lab</span> tab.</li>
+		  <li>Click on the Remote Desktop image. This will take to you to the remote desktop.</li>
+		</ul>
 	      </section>
 
 	      <section>
-		<h3>Preaparing for the Labs</h3>
-		
+		<h3>Preparing for the Labs</h3>
+		<ol>
+                  <li>Double-click the <p style="color:rgb(87,193,232); display:inline;">Android_virtual_device.bat</p> file on the desktop to start the AVD.</li>
+		  <li>Open Eclipse from the desktop shortcut.</li>
+		  <li>Double-click the Appium desktop icon.</li>
+                  <li>After the device loads, press the play button on the Appium GUI.</li>
+                </ol>
+                <aside class="notes">
+                  <p>A note for how these labs are going to work: The local Appium tests we are goingt to be running can take quite a bit, so as much as possible, people should follow along, and ask me to pause if you need to catch up.</p>
+                </aside>
 	      </section>
 	      
               <section>
@@ -293,21 +308,11 @@
                     <li>Sauce Labs Manual Tests</li>
                   </ul>
                   <aside class="notes">
-                    <p>Do the demo on Android!!! It will go faster than iOS.</p>
-
                     <p>Traditionally, once your mobile browser application was ready to be tested, you would load it onto a physical device, and then test it with your own fingers. There are a few problems with that, namely, it takes a lot of time to do and you're limited to the devices you have. So then you can run your test manually on an emulator or simulator to take care of the device problem. But the issue of time, of someone physically clicking on the device emulator or phyiscally touching the device is a big problem.</p>
                     <p>With Sauce Labs, you can run manual tests without having to set up the infrastructure locally. This can help you with memory issues you may run into running simulators and emulators on your own local machine, and can give you a good way test out a mobile browser application on more devices than you could easily do locally.</p>
+
 		    <p><mark>Do not mention what is below this - for instructor knowledge.</mark></p>
 		    <p>One thing to note about manual testing with Sauce Labs - you can't start a manual test with an application preloaded. There are a couple ways to get around this though. If you start a normal automated test, you can interrupt it, and take control of the app. And if you use Sauce Connect Proxy, then you can interact with a local emulator you may be running, that can have your app installed on it.</p>
-                    <p>Manual Test Demo: </p>
-                    <ol>
-                      <li>Go to saucelabs.com</li>
-                      <li>Click on manual tests tab</li>
-                      <li>click on new manual test in the top left.</li>
-                      <li>click on android bot</li>
-                      <li>select android emulator for the device</li>
-                      <li>point out sauce connect - then start the session.</li>
-                    </ol>
                     <p>Questions?</p>
                   </aside>
                 </section>
@@ -506,7 +511,6 @@
                     <aside class="notes">
                       <p><strong>Step through example script - point out each step that correlates to an element!!!!!!!</strong></p>
 		      <p>We'll go over each of these steps throughout the course today.</p>
-
                     </aside>
 		  </section>
 
@@ -756,21 +760,7 @@ driver.tap(1,graphic_btn,750);
                   </section>
                 </section>
 -->
-                <section>
-                  <section data-state="lab">
-                    <h3>Lab 1: Set-up</h3>
-                    <ol>
-                      <li>Double-click the <p style="color:rgb(87,193,232); display:inline;">Android_virtual_device.bat</p> file on the desktop to start the AVD.</li>
-                      <li>Double-click the Appium desktop icon.</li>
-                      <li>After the device loads, press the play button on the Appium GUI.</li>
-                      <li>Open Eclipse from the desktop shortcut.</li>
-                    </ol>
-                    <aside class="notes">
-                      <p>Just as a note for how these labs are going to work, I will always start by walking through the lab, and then I will give you guys time to do it as well. I'll wait to actually run our script when we are all done, and we can look at the results and what happens together.</p>
-                    </aside>
-                  </section>
-
-                  <section data-state="lab">
+                <section data-state="lab">
                     <h3>Lab 1: Running the Sample Appium Script</h3>
 
                     <ol>
@@ -781,8 +771,7 @@ driver.tap(1,graphic_btn,750);
                       <li>What did you see happen? How did it happen?</li>
                     </ol>
                   </section>
-                </section>
-
+                
 <!--Writing Appium Scripts Module-->
                 <section data-background="rgb(226, 35, 26)">
                   <h2>Write an Appium Test Script</h2>
