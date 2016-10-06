@@ -771,6 +771,7 @@ driver.tap(1,graphic_btn,750);
                     <h3>Lab 1: Running the Sample Appium Script</h3>
 
                     <ol>
+		      <li>If you haven't already, start the Appium Server.</li>
                       <li>In the Eclipse package explorer left panel, <p style="color:rgb(87,193,232); display:inline;">local-java-testng-appium-android > src/test/java > com.yourcompany > Local_SampleSauceTest.java</p>.</li>
                       <li>Note the identified WebElement, and what we are doing to it.</li>
                       <li>Right click java-testng-simple and select Run As > 9 Maven test.</li>
@@ -1171,7 +1172,7 @@ WebElement messageElement = wait.until(ExpectedConditions.
                   <ol>
                     <li>Restart the Appium Server.</li>
                     
-                    <li>In <p style="color:rgb(87,193,232); display:inline;">Local_SampleSauceTest.java</p>, add in a <pre style="display:inline;">scrollTo()</pre> below our <pre style="display:inline;">println</pre>.</li>
+                    <li>In <p style="color:rgb(87,193,232); display:inline;">Local_SampleSauceTest.java</p>, add in a <pre style="display:inline;">scrollTo()</pre> below our <pre style="display:inline;">tap action</pre>.</li>
                     <pre style="width:54%;"><code class="java" data-trim contenteditable>
                         driver.scrollTo("Touch Paint").click();
                     </code></pre>
@@ -1691,11 +1692,9 @@ public void the_feeling_is(String arg1) throws Throwable {
                     <li>Open the Remote script for editing.</li>
                     <li>Uncomment the <pre style="display:inline;">id</pre> variable under the AndroidDriver line.</li>
                     <li>Uncomment the AfterMethod function at the bottom of the script.</li>
+		    <li>Change the expected string in the assertEquals to "Graphics/Touch Banana".</li>
                     <li>Save the script and run the test.</li>
-                    <li>Open the Remote script for editing.</li>
-                    <li>Change the expected string in the assertEquals to "Graphics/Touch Banana".</li>
-                    <li>Save the script and run the test.</li>
-                    <li>Open the saucelabs.com UI. What has changed about the test results?</li>
+                    <li>Open the saucelabs.com UI. What do your test results look like?</li>
                   </ol>
                   <aside class="notes">
 
